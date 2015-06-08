@@ -1,4 +1,4 @@
-package com.dao.StudentDao;
+package com.dao.studentDao;
 
 import com.entity.Student;
 import org.hibernate.Session;

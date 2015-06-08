@@ -23,19 +23,19 @@
               </property>
        </bean>
 
-       <bean class="com.dao.FacultyDao.FacultyDao">
+       <bean class="com.dao.facultyDao.FacultyDao">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.StudentDao.StudentDao">
+       <bean class="com.dao.studentDao.StudentDao">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.CourseDao.CourseDao">
+       <bean class="com.dao.courseDao.CourseDao">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.MarkDao.MarkDao">
+       <bean class="com.dao.markDao.MarkDao">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 

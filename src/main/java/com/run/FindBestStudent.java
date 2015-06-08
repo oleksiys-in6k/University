@@ -1,7 +1,7 @@
 package com.run;
 
-import com.dao.FacultyDao.FacultyDao;
-import com.dao.MarkDao.MarkDao;
+import com.dao.facultyDao.FacultyDao;
+import com.dao.markDao.MarkDao;
 import com.entity.Student;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -27,7 +27,7 @@ public class FindBestStudent {
         int facultyId = chooseFacultyFromFist();
 
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-//        FacultyDao facultyDao= beanFactory.getBean(FacultyDao.class);
+//        facultyDao facultyDao= beanFactory.getBean(facultyDao.class);
         MarkDao markDao = beanFactory.getBean(MarkDao.class);
         return markDao.getBestStudent();
 

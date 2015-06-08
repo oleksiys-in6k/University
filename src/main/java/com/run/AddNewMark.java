@@ -1,8 +1,8 @@
 package com.run;
 
-import com.dao.CourseDao.CourseDao;
-import com.dao.MarkDao.MarkDao;
-import com.dao.StudentDao.StudentDao;
+import com.dao.courseDao.CourseDao;
+import com.dao.markDao.MarkDao;
+import com.dao.studentDao.StudentDao;
 import com.entity.Course;
 import com.entity.Mark;
 import com.entity.Student;

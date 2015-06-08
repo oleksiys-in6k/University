@@ -1,4 +1,4 @@
-package com.dao.FacultyDao;
+package com.dao.facultyDao;
 
 import com.entity.Faculty;
 

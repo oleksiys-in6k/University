@@ -45,9 +45,23 @@ public class Faculty {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Faculty faculty = (Faculty) o;
+
+        return !(title != null ? !title.equals(faculty.title) : faculty.title != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return title != null ? title.hashCode() : 0;
+    }
+
+    @Override
     public String toString() {
-        return "\n" +
-                facultyId + "\t\t" +
-                title;
+        return title + " Faculty ID: " + facultyId ;
     }
 }

@@ -1,22 +1,26 @@
-package com.dao.MarkDao;
+package com.dao.markDao;
 
 import com.entity.Mark;
 import com.entity.Student;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
 import java.util.List;
 
-@Transactional
+@Repository
 public class MarkDao implements IMarkDao {
 
+    @Autowired
     public SessionFactory sessionFactory;
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
     public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
@@ -26,7 +30,7 @@ public class MarkDao implements IMarkDao {
         session.save(mark);
     }
 
-    public Mark getMarkById(Long id) throws SQLException {
+    public Mark getMarkById(Integer id) throws SQLException {
         Session session = getSession();
         return (Mark) session.load(Mark.class, id);
     }
@@ -41,29 +45,21 @@ public class MarkDao implements IMarkDao {
         session.delete(mark);
     }
 
-    public String getBestStudentEver() throws SQLException {
-        return null;
-    }
 
     public Student getBestStudent() throws SQLException {
             Session session = getSession();
 
             SQLQuery query = session.createSQLQuery(
-                    "SELECT *"+
-                            "from Mark "+
-                            ";");
+//                    "SELECT *from Mark;");
 
-//        "SELECT Mark.studentId, student.name, AVG(Mark.mark)"+
-//                "from Mark INNER JOIN student on student.studentId = Mark.studentId"+
-//                "GROUP BY Mark.studentId"+
-//                "ORDER BY mark DESC LIMIT 1;");
+        "SELECT Mark.studentId, student.name, AVG(Mark.mark)"+
+                "from Mark INNER JOIN student on student.studentId = Mark.studentId"+
+                "GROUP BY Mark.studentId"+
+                "ORDER BY mark DESC LIMIT 1;");
 
+            System.out.println(query.list());
 
-
-            System.out.println(query);
-            System.out.println(query.getFirstResult());
-
-            return null;
+            return (Student ) query;
         }
 
 }

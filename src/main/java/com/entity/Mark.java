@@ -8,7 +8,7 @@ public class Mark {
     @Id
     @Column(name = "markId")
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int markId;
+    private Integer markId;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "courseId")
@@ -30,6 +30,27 @@ public class Mark {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Mark mark1 = (Mark) o;
+
+        if (mark != mark1.mark) return false;
+        if (course != null ? !course.equals(mark1.course) : mark1.course != null) return false;
+        return !(student != null ? !student.equals(mark1.student) : mark1.student != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = course != null ? course.hashCode() : 0;
+        result = 31 * result + (student != null ? student.hashCode() : 0);
+        result = 31 * result + mark;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "\n" +
                 markId + "\t\t" +
@@ -46,27 +67,16 @@ public class Mark {
         return mark;
     }
 
-    public void setMark(int mark) {
-        this.mark = mark;
-    }
-
     public Course getCourse() {
         return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
     }
 
     public Student getStudent() {
         return student;
     }
 
-    public int getMarkId() {
+    public Integer getMarkId() {
         return markId;
     }
 
-    public void setMarkId(int markId) {
-        this.markId = markId;
-    }
 }
