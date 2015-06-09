@@ -9,7 +9,7 @@ public class Faculty {
     @Id
     @Column(name = "facultyId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int facultyId;
+    private Integer facultyId;
 
     private String title;
 
@@ -30,14 +30,6 @@ public class Faculty {
     }
 
     public Faculty() {
-    }
-
-    public int getFacultyId() {
-        return facultyId;
-    }
-
-    public List<Student> getStudents() {
-        return students;
     }
 
     public String getTitle() {

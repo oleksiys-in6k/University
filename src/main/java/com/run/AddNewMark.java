@@ -1,8 +1,8 @@
 package com.run;
 
-import com.dao.courseDao.CourseDao;
-import com.dao.markDao.MarkDao;
-import com.dao.studentDao.StudentDao;
+import com.dao.courseDao.CourseDaoImpl;
+import com.dao.markDao.MarkDaoImpl;
+import com.dao.studentDao.StudentDaoImpl;
 import com.entity.Course;
 import com.entity.Mark;
 import com.entity.Student;
@@ -28,8 +28,8 @@ public class AddNewMark {
 
             mark = getMarFromKeyboard();
 
-            MarkDao markDao = beanFactory.getBean(MarkDao.class);
-            markDao.addMark(new Mark(student, course, mark));
+            MarkDaoImpl markDaoImpl = beanFactory.getBean(MarkDaoImpl.class);
+            markDaoImpl.addMark(new Mark(student, course, mark));
 
             flag = continueInputMark();
 
@@ -43,29 +43,30 @@ public class AddNewMark {
 
     private Student chooseStudentFromFist() throws SQLException {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-        StudentDao studentDao = beanFactory.getBean(StudentDao.class);
+        StudentDaoImpl studentDaoImpl = beanFactory.getBean(StudentDaoImpl.class);
 
         System.out.println("List of students");
         System.out.println("studentId\tfaculty\tname");
-        System.out.println(studentDao.getAllStudents());
+        System.out.println(studentDaoImpl.getAllStudents());
 
         String reply = keyboard("Choose student");
         Integer index = Integer.valueOf(reply);
-        return studentDao.getStudentById(index);
+        return studentDaoImpl.getStudentById(index);
     }
 
 
     private Course chooseCourseFromFist() throws SQLException {
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-        CourseDao courseDao = beanFactory.getBean(CourseDao.class);
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("/spring-config.xml");
+        CourseDaoImpl courseDaoImpl = beanFactory.getBean(CourseDaoImpl.class);
 
         System.out.println("List of courses");
         System.out.println("courseId\tfaculty\ttitle");
-        System.out.println(courseDao.getAllCourses());
+        System.out.println(courseDaoImpl.getAllCourses());
 
         String reply = keyboard("Choose course");
         Integer index = Integer.valueOf(reply);
-        return courseDao.getCourseById(index);
+        Course course = courseDaoImpl.getCourseById(index);
+        return course;
 
      }
 

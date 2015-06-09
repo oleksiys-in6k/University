@@ -1,8 +1,10 @@
 package com.run;
 
-import com.dao.facultyDao.FacultyDao;
-import com.dao.markDao.MarkDao;
+import com.dao.facultyDao.FacultyDaoImpl;
+import com.dao.markDao.MarkDaoImpl;
+import com.dao.studentDao.StudentDaoImpl;
 import com.entity.Student;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,11 +15,11 @@ public class FindBestStudent {
 
     private int chooseFacultyFromFist() throws SQLException {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-        FacultyDao facultyDao = beanFactory.getBean(FacultyDao.class);
+        FacultyDaoImpl facultyDaoImpl = beanFactory.getBean(FacultyDaoImpl.class);
 
         System.out.println("List of faculties");
         System.out.println("facultyId\ttitle");
-        System.out.println(facultyDao.getAllFaculties());
+        System.out.println(facultyDaoImpl.getAllFaculties());
 
         String reply = keyboard("Choose faculty");
         return Integer.valueOf(reply);
@@ -27,10 +29,21 @@ public class FindBestStudent {
         int facultyId = chooseFacultyFromFist();
 
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-//        facultyDao facultyDao= beanFactory.getBean(facultyDao.class);
-        MarkDao markDao = beanFactory.getBean(MarkDao.class);
-        return markDao.getBestStudent();
+        StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
 
+        Integer studentId = studentDao.getBestStudentFromFaculty(facultyId);
+
+        Student student = studentDao.getStudentById(studentId);
+
+        Hibernate.initialize(student);
+
+        return student;
+    }
+    public Student getBestStudentByFaculty(Integer studentId) throws SQLException {
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
+        StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
+        Student student = studentDao.getStudentById(studentId);
+        return student;
     }
 
 //    public void printBestStudent (Student student) {

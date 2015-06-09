@@ -1,14 +1,20 @@
 package com.run;
 
 
+import com.dao.studentDao.StudentDaoImpl;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        AddNewMark addNewMark = new AddNewMark();
-//        addNewMark.creatingMark();
+
+//        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
+//        StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
+//        System.out.println(studentDao.getBestStudentFromFaculty(1));
 
         boolean again = false;
         do {
@@ -19,6 +25,7 @@ public class Main {
 
             switch (choose) {
                 case 1 :
+                    AddNewMark addNewMark = new AddNewMark();
                     addNewMark.creatingMark();
                     break;
                 case 2 :
@@ -30,14 +37,6 @@ public class Main {
             again = continueWorking();
 
         } while (again);
-
-//        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-
-//        System.out.println("students" + studentDao.getAllStudents());
-//        System.out.println("courses" + courseDao.getAllCourses());
-//        System.out.println("marks" + markDao.getAllMarks());
-//        System.out.println("faculties" + facultyDao.getAllFaculties());
-
     }
 
     private static boolean continueWorking() {

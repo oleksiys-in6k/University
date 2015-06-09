@@ -1,8 +1,8 @@
 package com.dao.markDao;
 
-import com.dao.courseDao.CourseDao;
-import com.dao.facultyDao.FacultyDao;
-import com.dao.studentDao.StudentDao;
+import com.dao.courseDao.CourseDaoImpl;
+import com.dao.facultyDao.FacultyDaoImpl;
+import com.dao.studentDao.StudentDaoImpl;
 import com.entity.Course;
 import com.entity.Faculty;
 import com.entity.Mark;
@@ -23,36 +23,36 @@ import static org.hamcrest.Matchers.is;
 @ContextConfiguration("/testSpring-config.xml")
 @Transactional
 @TransactionConfiguration
-public class MarkDaoTest {
+public class MarkDaoImplTest {
 
     @Autowired
-    private FacultyDao facultyDao;
+    private FacultyDaoImpl facultyDaoImpl;
 
     @Autowired
-    private StudentDao studentDao;
+    private StudentDaoImpl studentDaoImpl;
 
     @Autowired
-    private CourseDao courseDao;
+    private CourseDaoImpl courseDaoImpl;
 
     @Autowired
-    private MarkDao markDao;
+    private MarkDaoImpl markDaoImpl;
 
     @Test
     public void testMarkDao() throws Exception {
         Faculty faculty = new Faculty("Economics");
-        facultyDao.addFaculty(faculty);
+        facultyDaoImpl.addFaculty(faculty);
 
         Student student = new Student("John Smith", faculty);
-        studentDao.addStudent(student);
+        studentDaoImpl.addStudent(student);
 
         Course course = new Course(faculty, "Busyness Strategy");
-        courseDao.addCourse(course);
+        courseDaoImpl.addCourse(course);
 
         Mark mark = new Mark(student, course, 2);
-        markDao.addMark(mark);
-        markDao.getSession().evict(mark);
+        markDaoImpl.addMark(mark);
+        markDaoImpl.getSession().evict(mark);
 
-        Mark storedMark = markDao.getMarkById(mark.getMarkId());
+        Mark storedMark = markDaoImpl.getMarkById(mark.getMarkId());
 
         assertThat(storedMark.getMark(), is(2));
         assertThat(storedMark.getCourse(), is(course));

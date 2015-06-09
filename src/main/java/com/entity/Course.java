@@ -10,7 +10,7 @@ public class Course {
     @Id
     @Column(name = "courseId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int courseId;
+    private Integer courseId;
 
     private String title;
 
@@ -27,22 +27,6 @@ public class Course {
     }
 
     public Course() {
-    }
-
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
-    }
-
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getCourseId() {
-        return courseId;
     }
 
     public String getTitle() {

@@ -7,7 +7,7 @@
               <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
               <property name="url" value="jdbc:mysql://localhost:3306/university"/>
               <property name="username" value="root"/>
-              <property name="password" value="root"/>
+              <property name="password" value=""/>
        </bean>
 
        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -23,19 +23,19 @@
               </property>
        </bean>
 
-       <bean class="com.dao.facultyDao.FacultyDao">
+       <bean class="com.dao.facultyDao.FacultyDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.studentDao.StudentDao">
+       <bean class="com.dao.studentDao.StudentDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.courseDao.CourseDao">
+       <bean class="com.dao.courseDao.CourseDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.markDao.MarkDao">
+       <bean class="com.dao.markDao.MarkDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
