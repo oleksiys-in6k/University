@@ -32,6 +32,10 @@ public class Faculty {
     public Faculty() {
     }
 
+    public Integer getFacultyId() {
+        return facultyId;
+    }
+
     public String getTitle() {
         return title;
     }

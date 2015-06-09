@@ -37,6 +37,14 @@ public class Student {
     public Student() {
     }
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
     public String getName() {
         return name;
     }

@@ -1,10 +1,6 @@
 package com.run;
 
 
-import com.dao.studentDao.StudentDaoImpl;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -14,7 +10,7 @@ public class Main {
 
 //        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
 //        StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
-//        System.out.println(studentDao.getBestStudentFromFaculty(1));
+//        System.out.println(studentDao.getBestStudentOfUniversityByFaculty(1));
 
         boolean again = false;
         do {

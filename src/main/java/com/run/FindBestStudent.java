@@ -1,10 +1,8 @@
 package com.run;
 
 import com.dao.facultyDao.FacultyDaoImpl;
-import com.dao.markDao.MarkDaoImpl;
 import com.dao.studentDao.StudentDaoImpl;
 import com.entity.Student;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -31,13 +29,13 @@ public class FindBestStudent {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
         StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
 
-        Integer studentId = studentDao.getBestStudentFromFaculty(facultyId);
+//        Integer studentId = studentDao.getBestStudentOfUniversityByFaculty(facultyId);
 
-        Student student = studentDao.getStudentById(studentId);
+//        Student student = studentDao.getStudentById(studentId);
 
-        Hibernate.initialize(student);
+//        Hibernate.initialize(student);
 
-        return student;
+        return studentDao.getBestStudentOfUniversityByFaculty(facultyId);
     }
     public Student getBestStudentByFaculty(Integer studentId) throws SQLException {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");

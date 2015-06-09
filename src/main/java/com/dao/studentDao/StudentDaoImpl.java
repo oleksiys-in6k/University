@@ -1,7 +1,6 @@
 package com.dao.studentDao;
 
 import com.entity.Student;
-import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
 
 //@Repository
 @Transactional
@@ -55,7 +53,7 @@ public class StudentDaoImpl implements StudentDao {
         return session.createCriteria(Student.class).list().size();
     }
 
-    public Integer getBestStudentFromFaculty(Integer id) throws SQLException {
+    public Student getBestStudentOfUniversityByFaculty(Integer id) throws SQLException {
         Session session = getSession();
 
         SQLQuery query = session.createSQLQuery(
@@ -63,16 +61,16 @@ public class StudentDaoImpl implements StudentDao {
                         "FROM student INNER JOIN Mark ON student.studentId = Mark.studentId " +
                         "WHERE facultyId = 1 " +
                         "GROUP BY student.name DESC LIMIT 1;");
+//                .setInteger(0,id);
 
-        System.out.println(query.list());
         Object obj[] = (Object[]) query.list().get(0);
 
         BigDecimal rez = (BigDecimal) obj[1];
         Integer studentId = rez.intValue();
-//        Hibernate.initialize();
 
-//        return (Student) session.load(Student.class, i);
-        return studentId;
+//        Hibernate.initialize(session);
+
+        return (Student) session.load(Student.class, studentId);
     }
 
 }

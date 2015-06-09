@@ -33,6 +33,14 @@ public class Course {
         return title;
     }
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
