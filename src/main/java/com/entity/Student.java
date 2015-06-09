@@ -1,8 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity(name = "student")
@@ -10,7 +8,7 @@ public class Student {
 
     @Id
     @Column(name = "studentId")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int studentId;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -64,6 +62,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return name + "(" + faculty + ")" + " Student ID: " + studentId;
+        return name + "(" + faculty + ")" + " Student ID: " + studentId + "\n";
     }
 }

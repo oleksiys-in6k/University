@@ -53,9 +53,9 @@ public class Mark {
     @Override
     public String toString() {
         return "\n" +
-                markId + "\t\t" +
-                course.getTitle() + "\t\t" +
-                student.getName() + "\t\t" +
+                markId +
+                course +
+                student +
                 mark;
     }
 

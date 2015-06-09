@@ -2,6 +2,7 @@ package com.run;
 
 import com.dao.facultyDao.FacultyDaoImpl;
 import com.dao.studentDao.StudentDaoImpl;
+import com.entity.Faculty;
 import com.entity.Student;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,52 +12,30 @@ import java.util.Scanner;
 
 public class FindBestStudent {
 
-    private int chooseFacultyFromFist() throws SQLException {
+    private Faculty chooseFacultyFromFist() throws SQLException {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
         FacultyDaoImpl facultyDaoImpl = beanFactory.getBean(FacultyDaoImpl.class);
 
         System.out.println("List of faculties");
-        System.out.println("facultyId\ttitle");
         System.out.println(facultyDaoImpl.getAllFaculties());
 
-        String reply = keyboard("Choose faculty");
-        return Integer.valueOf(reply);
+        Integer facultyId = Integer.valueOf(keyboard("Choose faculty"));
+        return facultyDaoImpl.getFacultyById(facultyId);
     }
 
-    public Student getBestStudentByFaculty() throws SQLException {
-//        int facultyId = chooseFacultyFromFist();
+    public Student getBestStudent() throws SQLException {
 
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
         StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
 
-//        Integer studentId = studentDao.getBestStudentOfUniversity(facultyId);
+        Faculty faculty = chooseFacultyFromFist();
 
-//        Student student = studentDao.getStudentById(studentId);
-
-//        Hibernate.initialize(student);
-
-//        return studentDao.getBestStudentOfUniversity(new);
-        return null;
+        return studentDao.getBestStudent(faculty);
     }
-    public Student getBestStudentByFaculty(Integer studentId) throws SQLException {
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-        StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
-        Student student = studentDao.getStudentById(studentId);
-        return student;
-    }
-
-//    public void printBestStudent (Student student) {
-//        System.out.println("Id" + student.getStudentId());
-//        System.out.println("name - " + student.getName());
-//        System.out.println("faculty" + student.getFaculty());
-//    }
-
-
 
     private String keyboard(String message) {
         System.out.println(message + " ");
         Scanner scan = new Scanner(System.in);
-        return  scan.next();
+        return scan.next();
     }
-
 }

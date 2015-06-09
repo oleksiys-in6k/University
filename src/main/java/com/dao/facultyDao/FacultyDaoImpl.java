@@ -30,7 +30,7 @@ public class FacultyDaoImpl implements FacultyDao {
 
     public Faculty getFacultyById(Integer id) throws SQLException {
         Session session = getSession();
-        return (Faculty) session.load(Faculty.class, id);
+        return (Faculty) session.get(Faculty.class, id);
     }
 
     public List getAllFaculties() throws SQLException {

@@ -15,7 +15,6 @@ import java.util.List;
 @Transactional
 public class StudentDaoImpl implements StudentDao {
 
-
     SessionFactory sessionFactory;
 
     @Autowired
@@ -27,6 +26,7 @@ public class StudentDaoImpl implements StudentDao {
         return sessionFactory.getCurrentSession();
     }
 
+
     public void addStudent(Student student) throws SQLException {
         Session session = getSession();
         session.save(student);
@@ -34,7 +34,7 @@ public class StudentDaoImpl implements StudentDao {
 
     public Student getStudentById(Integer id) throws SQLException {
         Session session = getSession();
-        return (Student) session.get(Student.class, id);
+        return (Student) session.load(Student.class, id);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,16 +53,21 @@ public class StudentDaoImpl implements StudentDao {
         return session.createCriteria(Student.class).list().size();
     }
 
-    public Student getBestStudentOfUniversity(Faculty faculty) throws SQLException {
-        SQLQuery query = getSession().createSQLQuery(
+
+    public Student getBestStudent(Faculty faculty) throws SQLException {
+        Session session = getSession();
+        SQLQuery query = session.createSQLQuery(
                 "SELECT student.studentId, student.name, sum(Mark.mark) " +
                         "FROM student INNER JOIN Mark ON student.studentId = Mark.studentId " +
                         "WHERE facultyId = :facultyId " +
                         "GROUP BY student.name DESC LIMIT 1;");
-        query.addEntity(Student.class);
-        query.setParameter("facultyId", faculty.getFacultyId());
 
-        return (Student) query.uniqueResult();
+        query.addEntity(Student.class);
+        Student student = new Student();
+
+        query.setParameter("facultyId", faculty.getFacultyId()).uniqueResult();
+
+        return (Student) query;
     }
 
 }

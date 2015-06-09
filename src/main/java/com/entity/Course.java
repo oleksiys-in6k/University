@@ -1,8 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity(name = "course")
 public class Course {
@@ -59,9 +57,6 @@ public class Course {
 
     @Override
     public String toString() {
-        return "\n" +
-                courseId + "\t\t" +
-                faculty.getTitle() + "\t\t" +
-                title;
+        return title + courseId + faculty;
     }
 }

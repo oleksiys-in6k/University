@@ -1,16 +1,14 @@
 package com.run;
 
 
+import com.entity.Student;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-
-//        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-//        StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
-//        System.out.println(studentDao.getBestStudentOfUniversity(1));
 
         boolean again = false;
         do {
@@ -20,13 +18,14 @@ public class Main {
             int choose = Integer.valueOf(keyboard(""));
 
             switch (choose) {
-                case 1 :
+                case 1:
                     AddNewMark addNewMark = new AddNewMark();
                     addNewMark.creatingMark();
                     break;
-                case 2 :
+                case 2:
                     FindBestStudent findBestStudent = new FindBestStudent();
-                    System.out.println(findBestStudent.getBestStudentByFaculty());
+                    Student bestStudent = findBestStudent.getBestStudent();
+                    System.out.println(findBestStudent.getBestStudent());
                     break;
             }
 
@@ -45,10 +44,8 @@ public class Main {
     public static String keyboard(String message) {
         System.out.println(message + " ");
         Scanner scan = new Scanner(System.in);
-        return  scan.next();
+        return scan.next();
     }
-
-
 
 
 }

@@ -14,26 +14,17 @@ import java.util.Scanner;
 
 public class AddNewMark {
 
-    private Course course;
-    private Student student;
-    private int mark;
-
     public void creatingMark() throws SQLException {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-        boolean flag;
 
-        do {
-            course = chooseCourseFromFist();
-            student = chooseStudentFromFist();
+        Course course = chooseCourseFromFist();
+        Student student = chooseStudentFromFist();
+        int mark = getMarFromKeyboard();
 
-            mark = getMarFromKeyboard();
+        MarkDaoImpl markDaoImpl = beanFactory.getBean(MarkDaoImpl.class);
+        Mark newMark = new Mark(student, course, mark);
 
-            MarkDaoImpl markDaoImpl = beanFactory.getBean(MarkDaoImpl.class);
-            markDaoImpl.addMark(new Mark(student, course, mark));
-
-            flag = continueInputMark();
-
-        } while (flag);
+        markDaoImpl.addMark(newMark);
     }
 
     private int getMarFromKeyboard() {
@@ -68,19 +59,19 @@ public class AddNewMark {
         Course course = courseDaoImpl.getCourseById(index);
         return course;
 
-     }
+    }
 
     private boolean continueInputMark() {
         System.out.println("Create new mark? ");
         System.out.println("1 - yes, 2 - no");
         String index = keyboard("");
         return (index.equals("1"));
-        }
+    }
 
     public String keyboard(String message) {
         System.out.println(message + " ");
         Scanner scan = new Scanner(System.in);
-        return  scan.next();
+        return scan.next();
     }
 
 }

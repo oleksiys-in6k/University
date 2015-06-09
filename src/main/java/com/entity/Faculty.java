@@ -1,7 +1,6 @@
 package com.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity(name = "faculty")
 public class Faculty {

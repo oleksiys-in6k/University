@@ -13,10 +13,12 @@ import java.util.List;
 public class CourseDaoImpl implements CourseDao {
 
     SessionFactory sessionFactory;
-//    @Autowired
+
+    //    @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
     private Session getSession() {
         return sessionFactory.getCurrentSession();
     }
@@ -33,7 +35,7 @@ public class CourseDaoImpl implements CourseDao {
 
     public List getAllCourses() throws SQLException {
         Session session = getSession();
-        return session.createCriteria(Course.class).list() ;
+        return session.createCriteria(Course.class).list();
     }
 
     public void deleteCourse(Course course) throws SQLException {

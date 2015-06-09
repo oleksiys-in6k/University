@@ -14,7 +14,7 @@ public interface StudentDao {
     List getAllStudents() throws SQLException;
     void deleteStudent(Student student) throws SQLException;
     Integer getCountOfStudents() throws SQLException;
-    Student getBestStudentOfUniversity(Faculty faculty) throws SQLException;
+    Student getBestStudent(Faculty faculty) throws SQLException;
 
 
 }
