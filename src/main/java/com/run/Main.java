@@ -1,6 +1,5 @@
 package com.run;
 
-
 import com.entity.Student;
 
 import java.sql.SQLException;
@@ -10,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        boolean again = false;
+        boolean again;
         do {
             System.out.println("Chose action");
             System.out.println("\t1 - set new mark");
@@ -19,18 +18,15 @@ public class Main {
 
             switch (choose) {
                 case 1:
-                    AddNewMark addNewMark = new AddNewMark();
-                    addNewMark.creatingMark();
+                    new AddNewMark().creatingMark();
                     break;
                 case 2:
-                    FindBestStudent findBestStudent = new FindBestStudent();
-                    Student bestStudent = findBestStudent.getBestStudent();
-                    System.out.println(findBestStudent.getBestStudent());
+                    Student student =  new FindBestStudent().getBestStudent();
+                    System.out.println();
+                    System.out.println("Best student are \n" + student);
                     break;
             }
-
             again = continueWorking();
-
         } while (again);
     }
 

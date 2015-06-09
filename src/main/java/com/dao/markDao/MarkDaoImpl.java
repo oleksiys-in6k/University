@@ -31,7 +31,7 @@ public class MarkDaoImpl implements MarkDao {
 
     public Mark getMarkById(Integer id) throws SQLException {
         Session session = getSession();
-        return (Mark) session.load(Mark.class, id);
+        return (Mark) session.get(Mark.class, id);
     }
 
     public List getAllMarks() throws SQLException {
@@ -43,22 +43,5 @@ public class MarkDaoImpl implements MarkDao {
         Session session = getSession();
         session.delete(mark);
     }
-
-
-//    public Student getBestStudent() throws SQLException {
-//            Session session = getSession();
-//
-//            SQLQuery query = session.createSQLQuery(
-////                    "SELECT *from Mark;");
-//
-//        "SELECT Mark.studentId, student.name, AVG(Mark.mark)"+
-//                "from Mark INNER JOIN student on student.studentId = Mark.studentId"+
-//                "GROUP BY Mark.studentId"+
-//                "ORDER BY mark DESC LIMIT 1;");
-//
-//            System.out.println(query.list());
-//
-//            return (Student ) query;
-//        }
 
 }

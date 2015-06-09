@@ -2,16 +2,17 @@ package com.dao.studentDao;
 
 import com.entity.Faculty;
 import com.entity.Student;
+import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.type.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.List;
 
-//@Repository
 @Transactional
 public class StudentDaoImpl implements StudentDao {
 
@@ -34,7 +35,7 @@ public class StudentDaoImpl implements StudentDao {
 
     public Student getStudentById(Integer id) throws SQLException {
         Session session = getSession();
-        return (Student) session.load(Student.class, id);
+        return (Student) session.get(Student.class, id);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,21 +54,25 @@ public class StudentDaoImpl implements StudentDao {
         return session.createCriteria(Student.class).list().size();
     }
 
-
     public Student getBestStudent(Faculty faculty) throws SQLException {
         Session session = getSession();
         SQLQuery query = session.createSQLQuery(
-                "SELECT student.studentId, student.name, sum(Mark.mark) " +
+                "SELECT student.studentId, student.name, student.facultyId " +
                         "FROM student INNER JOIN Mark ON student.studentId = Mark.studentId " +
                         "WHERE facultyId = :facultyId " +
                         "GROUP BY student.name DESC LIMIT 1;");
 
+
+//        query.addScalar("facultyId", (Type) faculty);
+
+
         query.addEntity(Student.class);
-        Student student = new Student();
 
-        query.setParameter("facultyId", faculty.getFacultyId()).uniqueResult();
+        query.setParameter("facultyId", faculty.getFacultyId());
 
-        return (Student) query;
+        Student student = (Student) query.uniqueResult();
+
+        return student;
     }
 
 }

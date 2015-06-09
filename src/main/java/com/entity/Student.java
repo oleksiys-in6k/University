@@ -18,8 +18,8 @@ public class Student {
     private String name;
 
     public Student(String name, Faculty faculty) {
-        this.faculty = faculty;
         this.name = name;
+        this.faculty = faculty;
     }
 
     public Student(String name) {
