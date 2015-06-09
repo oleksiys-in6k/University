@@ -24,18 +24,19 @@ public class FindBestStudent {
     }
 
     public Student getBestStudentByFaculty() throws SQLException {
-        int facultyId = chooseFacultyFromFist();
+//        int facultyId = chooseFacultyFromFist();
 
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
         StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
 
-//        Integer studentId = studentDao.getBestStudentOfUniversityByFaculty(facultyId);
+//        Integer studentId = studentDao.getBestStudentOfUniversity(facultyId);
 
 //        Student student = studentDao.getStudentById(studentId);
 
 //        Hibernate.initialize(student);
 
-        return studentDao.getBestStudentOfUniversityByFaculty(facultyId);
+//        return studentDao.getBestStudentOfUniversity(new);
+        return null;
     }
     public Student getBestStudentByFaculty(Integer studentId) throws SQLException {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");

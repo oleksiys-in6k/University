@@ -13,18 +13,6 @@ public class Faculty {
 
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
-    private List <Student> students;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
-    private List <Course> courses ;
-
-
-    public Faculty (List<Student> students, String title) {
-        this.students = students;
-        this.title = title;
-    }
-
     public Faculty (String title) {
         this.title = title;
     }

@@ -1,5 +1,6 @@
 package com.dao.studentDao;
 
+import com.entity.Faculty;
 import com.entity.Student;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -7,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class StudentDaoImpl implements StudentDao {
 
     public Student getStudentById(Integer id) throws SQLException {
         Session session = getSession();
-        return (Student) session.load(Student.class, id);
+        return (Student) session.get(Student.class, id);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,24 +53,16 @@ public class StudentDaoImpl implements StudentDao {
         return session.createCriteria(Student.class).list().size();
     }
 
-    public Student getBestStudentOfUniversityByFaculty(Integer id) throws SQLException {
-        Session session = getSession();
-
-        SQLQuery query = session.createSQLQuery(
-                "SELECT student.name, sum(Mark.mark) " +
+    public Student getBestStudentOfUniversity(Faculty faculty) throws SQLException {
+        SQLQuery query = getSession().createSQLQuery(
+                "SELECT student.studentId, student.name, sum(Mark.mark) " +
                         "FROM student INNER JOIN Mark ON student.studentId = Mark.studentId " +
-                        "WHERE facultyId = 1 " +
+                        "WHERE facultyId = :facultyId " +
                         "GROUP BY student.name DESC LIMIT 1;");
-//                .setInteger(0,id);
+        query.addEntity(Student.class);
+        query.setParameter("facultyId", faculty.getFacultyId());
 
-        Object obj[] = (Object[]) query.list().get(0);
-
-        BigDecimal rez = (BigDecimal) obj[1];
-        Integer studentId = rez.intValue();
-
-//        Hibernate.initialize(session);
-
-        return (Student) session.load(Student.class, studentId);
+        return (Student) query.uniqueResult();
     }
 
 }

@@ -10,7 +10,7 @@ public class Main {
 
 //        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
 //        StudentDaoImpl studentDao = beanFactory.getBean(StudentDaoImpl.class);
-//        System.out.println(studentDao.getBestStudentOfUniversityByFaculty(1));
+//        System.out.println(studentDao.getBestStudentOfUniversity(1));
 
         boolean again = false;
         do {

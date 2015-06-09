@@ -18,9 +18,6 @@ public class Course {
     @JoinColumn(name = "facultyId")
     private Faculty faculty;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
-    private List <Mark> marks = new ArrayList<Mark>();
-
     public Course(Faculty faculty, String title) {
         this.faculty = faculty;
         this.title = title;

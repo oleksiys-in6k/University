@@ -3,7 +3,6 @@ package com.dao.courseDao;
 import com.entity.Course;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
@@ -29,7 +28,7 @@ public class CourseDaoImpl implements CourseDao {
 
     public Course getCourseById(Integer id) throws SQLException {
         Session session = getSession();
-        return (Course) session.load(Course.class, id);
+        return (Course) session.get(Course.class, id);
     }
 
     public List getAllCourses() throws SQLException {

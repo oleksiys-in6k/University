@@ -17,12 +17,6 @@ public class Student {
     @JoinColumn(name = "facultyId")
     private Faculty faculty;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
-    private List <Course> course = new ArrayList<Course>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "markId")
-    private List <Mark> marks = new ArrayList<Mark>();
-
     private String name;
 
     public Student(String name, Faculty faculty) {
