@@ -22,12 +22,19 @@ public class ConsoleMarkReader implements MarkReader {
     @Autowired
     private CourseDao courseDao;
 
-    public ConsoleMarkReader() {
-        this.scanner = new Scanner(System.in);
-    }
+    public Mark getMark() {
+        Course course = null;
+        Student student = null;
+        try {
+            course = chooseCourseFromFist();
+            student = chooseStudentFromFist();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-    public void setScanner(Scanner scanner) {
-        this.scanner = scanner;
+        int score = getMarFromKeyboard();
+
+        return new Mark(student, course, score);
     }
 
     private int getMarFromKeyboard() {
@@ -66,18 +73,13 @@ public class ConsoleMarkReader implements MarkReader {
         this.courseDao = courseDao;
     }
 
-    public Mark getMark() {
-        Course course = null;
-        Student student = null;
-        try {
-            course = chooseCourseFromFist();
-            student = chooseStudentFromFist();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        int score = getMarFromKeyboard();
-
-        return new Mark(student, course, score);
+    public ConsoleMarkReader() {
+        this.scanner = new Scanner(System.in);
     }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+
 }

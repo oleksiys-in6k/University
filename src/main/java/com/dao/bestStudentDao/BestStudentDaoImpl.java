@@ -1,4 +1,4 @@
-package com.dao.bestSudentDao;
+package com.dao.bestStudentDao;
 
 import com.entity.Faculty;
 import com.entity.Student;
@@ -9,18 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class bestStudentDaoImpl implements bestStudentDao {
+public class BestStudentDaoImpl implements BestStudentDao {
 
     SessionFactory sessionFactory;
 
     public Student getBestStudent(Faculty faculty) {
         Session session = getSession();
         SQLQuery query = session.createSQLQuery(
-                "SELECT student.studentId, student.name, student.facultyId, sum(Mark.mark) as sumMark " +
-                        "FROM student INNER JOIN Mark ON student.studentId = Mark.studentId " +
-                        "WHERE facultyId = :facultyId " +
-                        "GROUP BY student.name " +
-                        "ORDER BY sumMark DESC LIMIT 1;");
+                "SELECT student.studentId, student.name, course.facultyId, sum(Mark.mark) as sumMark " +
+                        "FROM student " +
+                        "INNER JOIN Mark ON student.studentId = Mark.studentId " +
+                        "INNER JOIN course ON course.courseId = Mark.courseId " +
+                        "WHERE course.facultyId = :facultyId " +
+                        "GROUP BY student.studentId " +
+                        "ORDER BY sumMark " +
+                        "DESC LIMIT 1;  ");
 
         query.addEntity(Student.class);
 

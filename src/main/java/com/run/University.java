@@ -4,7 +4,7 @@ import com.MarkIO.reader.MarkReader;
 import com.MarkIO.writer.MarkWriter;
 import com.entity.Mark;
 import com.entity.Student;
-import com.searchingRequests.FindBestStudent;
+import com.searchingRequests.SearchBestStudent;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -13,6 +13,8 @@ public class University {
 
     MarkReader markReader;
     MarkWriter markWriter;
+
+    SearchBestStudent searchBestStudent;
 
     public void execute() throws SQLException {
 
@@ -29,9 +31,9 @@ public class University {
                     markWriter.saveMark(mark);
                     break;
                 case 2:
-                    Student student = new FindBestStudent().getBestStudent();
+                    Student best = searchBestStudent.getBestStudent();
                     System.out.println();
-                    System.out.println("Best student are \n" + student);
+                    System.out.println("Best student are \n" + best);
                     break;
             }
             again = continueWorking();
@@ -53,13 +55,13 @@ public class University {
         return (index.equals("1"));
     }
 
-    public static String keyboard(String message) {
+    private static String keyboard(String message) {
         System.out.println(message + " ");
         Scanner scan = new Scanner(System.in);
         return scan.next();
     }
+
+    public void setSearchBestStudent(SearchBestStudent searchBestStudent) {
+        this.searchBestStudent = searchBestStudent;
+    }
 }
-
-
-
-

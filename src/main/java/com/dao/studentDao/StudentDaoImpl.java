@@ -52,20 +52,4 @@ public class StudentDaoImpl implements StudentDao {
         Session session = getSession();
         return session.createCriteria(Student.class).list().size();
     }
-
-    public Student getBestStudent(Faculty faculty) throws SQLException {
-        Session session = getSession();
-        SQLQuery query = session.createSQLQuery(
-                "SELECT student.studentId, student.name, student.facultyId, sum(Mark.mark) as sumMark " +
-                        "FROM student INNER JOIN Mark ON student.studentId = Mark.studentId " +
-                        "WHERE facultyId = :facultyId " +
-                        "GROUP BY student.name " +
-                        "ORDER BY sumMark DESC LIMIT 1;");
-
-        query.addEntity(Student.class);
-
-        query.setParameter("facultyId", faculty.getFacultyId());
-
-        return (Student) query.uniqueResult();
-    }
 }

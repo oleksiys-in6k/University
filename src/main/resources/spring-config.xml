@@ -7,7 +7,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/university"/>
         <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="password" value=""/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -26,7 +26,15 @@
     <bean id="University" class="com.run.University">
         <property name="markReader" ref="reader"/>
         <property name="markWriter" ref="writer"/>
+        <property name="searchBestStudent" ref="bestStudent"/>
     </bean>
+
+    <bean id="bestStudent" class="com.searchingRequests.SearchBestStudentImpl">
+        <property name="bestStudentDao" ref="bestStudentDao"/>
+        <property name="facultyDao" ref="facultyDao"/>
+    </bean>
+    
+
 
     <bean id="reader" class="com.MarkIO.reader.ConsoleMarkReader">
         <property name="studentDao" ref="studentDao"/>
@@ -36,6 +44,13 @@
     <bean id="writer" class="com.MarkIO.writer.MarkWriterImpl">
         <property name="markDao" ref="markDao"/>
     </bean>
+
+
+
+    <bean id="bestStudentDao" class="com.dao.bestStudentDao.BestStudentDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
 
     <bean id="facultyDao" class="com.dao.facultyDao.FacultyDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
