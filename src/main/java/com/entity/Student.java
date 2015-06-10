@@ -48,8 +48,7 @@ public class Student {
 
         Student student = (Student) o;
 
-        if (faculty != null ? !faculty.equals(student.faculty) : student.faculty != null) return false;
-        return !(name != null ? !name.equals(student.name) : student.name != null);
+        return !(faculty != null ? !faculty.equals(student.faculty) : student.faculty != null) && !(name != null ? !name.equals(student.name) : student.name != null);
 
     }
 

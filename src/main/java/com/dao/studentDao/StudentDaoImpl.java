@@ -6,7 +6,6 @@ import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.type.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,22 +56,18 @@ public class StudentDaoImpl implements StudentDao {
     public Student getBestStudent(Faculty faculty) throws SQLException {
         Session session = getSession();
         SQLQuery query = session.createSQLQuery(
-                "SELECT student.studentId, student.name, student.facultyId " +
+                "SELECT student.studentId, student.name, student.facultyId, sum(Mark.mark) as sumMark " +
                         "FROM student INNER JOIN Mark ON student.studentId = Mark.studentId " +
                         "WHERE facultyId = :facultyId " +
-                        "GROUP BY student.name DESC LIMIT 1;");
-
+                        "GROUP BY student.name " +
+                        "ORDER BY sumMark DESC LIMIT 1;");
 
 //        query.addScalar("facultyId", (Type) faculty);
-
 
         query.addEntity(Student.class);
 
         query.setParameter("facultyId", faculty.getFacultyId());
 
-        Student student = (Student) query.uniqueResult();
-
-        return student;
+        return (Student) query.uniqueResult();
     }
-
 }
