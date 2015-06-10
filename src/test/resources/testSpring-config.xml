@@ -23,10 +23,9 @@
               </property>
        </bean>
 
-       <bean class="com.run.AddNewMark">
-              <property name="studentDaoImpl" ref="studentDao"/>
-              <property name="courseDaoImpl" ref="courseDao"/>
-              <property name="markDaoImpl" ref="markDao"/>
+       <bean class="com.run.ConsoleMarkReader">
+              <property name="studentDao" ref="studentDao"/>
+              <property name="courseDao" ref="courseDao"/>
        </bean>
 
        <bean id="facultyDao" class="com.dao.facultyDao.FacultyDaoImpl">

@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
 
         BeanFactory factory = new ClassPathXmlApplicationContext("spring-config.xml");
-        AddNewMark addNewMark = factory.getBean(AddNewMark.class);
+        ConsoleMarkReader consoleMarkReader = factory.getBean(ConsoleMarkReader.class);
 
         boolean again;
         do {
@@ -25,8 +25,7 @@ public class Main {
 
             switch (choose) {
                 case 1:
-//                    addNewMark.setScanner(new Scanner(new ByteArrayInputStream(input.getBytes())));
-                    addNewMark.creatingMark();
+                    consoleMarkReader.readMark();
                     break;
                 case 2:
                     Student student = new FindBestStudent().getBestStudent();

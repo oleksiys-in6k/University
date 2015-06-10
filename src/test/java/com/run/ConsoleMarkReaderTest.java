@@ -15,16 +15,16 @@ import java.util.Scanner;
 @ContextConfiguration("classpath:testSpring-config.xml")
 @Transactional
 @TransactionConfiguration
-public class AddNewMarkTest {
+public class ConsoleMarkReaderTest {
 
     @Autowired
-    private AddNewMark addNewMark;
+    private ConsoleMarkReader consoleMarkReader;
 
     @Test
     public void readsNewMark() throws Exception {
         String input = "1\n1\n1\n";
 
-        addNewMark.setScanner(new Scanner(new ByteArrayInputStream(input.getBytes())));
-        addNewMark.creatingMark();
+        consoleMarkReader.setScanner(new Scanner(new ByteArrayInputStream(input.getBytes())));
+        consoleMarkReader.readMark();
     }
 }

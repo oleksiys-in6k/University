@@ -1,11 +1,7 @@
 package com.run;
 
 import com.dao.courseDao.CourseDao;
-import com.dao.courseDao.CourseDaoImpl;
-import com.dao.markDao.MarkDao;
-import com.dao.markDao.MarkDaoImpl;
 import com.dao.studentDao.StudentDao;
-import com.dao.studentDao.StudentDaoImpl;
 import com.entity.Course;
 import com.entity.Mark;
 import com.entity.Student;
@@ -19,7 +15,7 @@ import java.util.Scanner;
 
 @Repository
 @Transactional
-public class AddNewMark {
+public class ConsoleMarkReader {
 
     private Scanner scanner;
 
@@ -29,10 +25,7 @@ public class AddNewMark {
     @Autowired
     private CourseDao courseDao;
 
-    @Autowired
-    private MarkDao markDao;
-
-    public AddNewMark() {
+    public ConsoleMarkReader() {
         this.scanner = new Scanner(System.in);
     }
 
@@ -40,13 +33,12 @@ public class AddNewMark {
         this.scanner = scanner;
     }
 
-    public void creatingMark() throws SQLException {
+    public Mark readMark() throws SQLException {
         Course course = chooseCourseFromFist();
         Student student = chooseStudentFromFist();
-        int mark = getMarFromKeyboard();
+        int score = getMarFromKeyboard();
 
-        Mark newMark = new Mark(student, course, mark);
-        markDao.addMark(newMark);
+        return new Mark(student, course, score);
     }
 
     private int getMarFromKeyboard() {
@@ -77,15 +69,11 @@ public class AddNewMark {
         return scanner.next();
     }
 
-    public void setStudentDaoImpl(StudentDaoImpl studentDaoImpl) {
-        this.studentDao = studentDaoImpl;
+    public void setStudentDao(StudentDao studentDao) {
+        this.studentDao = studentDao;
     }
 
-    public void setCourseDaoImpl(CourseDaoImpl courseDaoImpl) {
-        this.courseDao = courseDaoImpl;
-    }
-
-    public void setMarkDaoImpl(MarkDaoImpl markDaoImpl) {
-        this.markDao = markDaoImpl;
+    public void setCourseDao(CourseDao courseDao) {
+        this.courseDao = courseDao;
     }
 }
