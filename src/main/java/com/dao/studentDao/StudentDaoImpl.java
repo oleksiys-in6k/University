@@ -2,10 +2,10 @@ package com.dao.studentDao;
 
 import com.entity.Faculty;
 import com.entity.Student;
-import org.hibernate.Hibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -61,8 +61,6 @@ public class StudentDaoImpl implements StudentDao {
                         "WHERE facultyId = :facultyId " +
                         "GROUP BY student.name " +
                         "ORDER BY sumMark DESC LIMIT 1;");
-
-//        query.addScalar("facultyId", (Type) faculty);
 
         query.addEntity(Student.class);
 

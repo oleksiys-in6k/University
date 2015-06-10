@@ -1,4 +1,4 @@
-package com.run;
+package com.searchingRequests;
 
 import com.dao.facultyDao.FacultyDaoImpl;
 import com.dao.studentDao.StudentDaoImpl;

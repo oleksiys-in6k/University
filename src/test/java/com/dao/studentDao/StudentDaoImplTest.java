@@ -8,8 +8,6 @@ import com.entity.Course;
 import com.entity.Faculty;
 import com.entity.Mark;
 import com.entity.Student;
-
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/testSpring-config.xml")
@@ -59,7 +59,6 @@ public class StudentDaoImplTest {
         Student student = new Student("John Smith", faculty);
         studentDaoImpl.addStudent(student);
 
-
         //when
         studentDaoImpl.deleteStudent(student);
         Student someStudent = studentDaoImpl.getStudentById(student.getStudentId());
@@ -69,7 +68,6 @@ public class StudentDaoImplTest {
     }
 
     @Test
-    @Ignore
     public void testGetAllStudents__givenOneStudentOnly() throws Exception {
         //given
         Faculty faculty = new Faculty("Economical");
@@ -80,7 +78,7 @@ public class StudentDaoImplTest {
         List <Student> students = studentDaoImpl.getAllStudents();
 
         //then
-        assertThat(students.size(), is(1));
+        assertThat(students, contains(student));
     }
 
     @Test
@@ -89,13 +87,12 @@ public class StudentDaoImplTest {
         Faculty faculty = new Faculty("Economical");
         Student student = new Student("John Smith", faculty);
         studentDaoImpl.addStudent(student);
-        int sizeListOfAllStudent = studentDaoImpl.getAllStudents().size();
 
         //when
         int count = studentDaoImpl.getCountOfStudents();
 
         //then
-        assertThat(count, is(sizeListOfAllStudent));
+        assertThat(count, is(1));
     }
 
     @Test

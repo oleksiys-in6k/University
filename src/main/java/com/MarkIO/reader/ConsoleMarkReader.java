@@ -1,4 +1,4 @@
-package com.run;
+package com.MarkIO.reader;
 
 import com.dao.courseDao.CourseDao;
 import com.dao.studentDao.StudentDao;
@@ -6,16 +6,13 @@ import com.entity.Course;
 import com.entity.Mark;
 import com.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-
-@Repository
 @Transactional
-public class ConsoleMarkReader {
+public class ConsoleMarkReader implements MarkReader {
 
     private Scanner scanner;
 
@@ -31,14 +28,6 @@ public class ConsoleMarkReader {
 
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
-    }
-
-    public Mark readMark() throws SQLException {
-        Course course = chooseCourseFromFist();
-        Student student = chooseStudentFromFist();
-        int score = getMarFromKeyboard();
-
-        return new Mark(student, course, score);
     }
 
     private int getMarFromKeyboard() {
@@ -75,5 +64,20 @@ public class ConsoleMarkReader {
 
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
+    }
+
+    public Mark getMark() {
+        Course course = null;
+        Student student = null;
+        try {
+            course = chooseCourseFromFist();
+            student = chooseStudentFromFist();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        int score = getMarFromKeyboard();
+
+        return new Mark(student, course, score);
     }
 }

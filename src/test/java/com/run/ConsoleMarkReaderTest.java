@@ -1,5 +1,6 @@
 package com.run;
 
+import com.MarkIO.reader.ConsoleMarkReader;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,6 @@ public class ConsoleMarkReaderTest {
         String input = "1\n1\n1\n";
 
         consoleMarkReader.setScanner(new Scanner(new ByteArrayInputStream(input.getBytes())));
-        consoleMarkReader.readMark();
+        consoleMarkReader.getMark();
     }
 }

@@ -23,7 +23,7 @@
               </property>
        </bean>
 
-       <bean class="com.run.ConsoleMarkReader">
+       <bean class="com.MarkIO.reader.ConsoleMarkReader">
               <property name="studentDao" ref="studentDao"/>
               <property name="courseDao" ref="courseDao"/>
        </bean>

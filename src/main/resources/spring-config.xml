@@ -23,9 +23,18 @@
         </property>
     </bean>
 
-    <bean class="com.run.ConsoleMarkReader">
+    <bean id="University" class="com.run.University">
+        <property name="markReader" ref="reader"/>
+        <property name="markWriter" ref="writer"/>
+    </bean>
+
+    <bean id="reader" class="com.MarkIO.reader.ConsoleMarkReader">
         <property name="studentDao" ref="studentDao"/>
         <property name="courseDao" ref="courseDao"/>
+    </bean>
+
+    <bean id="writer" class="com.MarkIO.writer.MarkWriterImpl">
+        <property name="markDao" ref="markDao"/>
     </bean>
 
     <bean id="facultyDao" class="com.dao.facultyDao.FacultyDaoImpl">
@@ -50,6 +59,4 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
-
 </beans>

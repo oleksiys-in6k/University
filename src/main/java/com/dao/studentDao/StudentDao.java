@@ -1,7 +1,6 @@
 package com.dao.studentDao;
 
 
-import com.entity.Faculty;
 import com.entity.Student;
 
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ public interface StudentDao {
     List getAllStudents() throws SQLException;
     void deleteStudent(Student student) throws SQLException;
     Integer getCountOfStudents() throws SQLException;
-    Student getBestStudent(Faculty faculty) throws SQLException;
+
 
 
 }
