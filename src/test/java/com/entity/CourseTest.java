@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.is;
 public class CourseTest {
 
     @Test
-    public void createCourse() throws Exception {
+    public void fulfilsCourse() throws Exception {
         // given
         Faculty historicalFaculty = new Faculty("Historical");
         Course course = new Course(historicalFaculty, "Ancient history");

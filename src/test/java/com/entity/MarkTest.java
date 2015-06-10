@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.is;
 public class MarkTest {
 
     @Test
-    public void createsMark() throws Exception {
+    public void fulfilsMarkInConstructor() throws Exception {
         // given
         Faculty faculty = new Faculty("faculty");
         Student student = new Student("name", faculty);

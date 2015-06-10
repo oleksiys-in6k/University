@@ -8,17 +8,13 @@ import static org.hamcrest.Matchers.is;
 public class FacultyTest {
 
     @Test
-    public void createFaculty() throws Exception {
+    public void setTitleInConstructor() throws Exception {
         // given
         Faculty faculty = new Faculty("Historical");
 
-
-        // when
-
-
         // then
         assertThat(faculty.getTitle(), is("Historical"));
-
-
     }
+
+
 }

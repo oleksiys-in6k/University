@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.is;
 public class StudentTest {
 
     @Test
-    public void createStudent() throws Exception {
+    public void fulfilsStudent() throws Exception {
         // given
         Faculty historicalFaculty = new Faculty("Historical");
         Student student = new Student("Josh Smith", historicalFaculty);
