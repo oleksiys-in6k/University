@@ -37,6 +37,8 @@ public class MarkDaoImplTest {
     @Autowired
     private MarkDaoImpl markDaoImpl;
 
+
+
     @Test
     public void testMarkDao() throws Exception {
         Faculty faculty = new Faculty("Economics");

@@ -1,13 +1,20 @@
 package com.run;
 
 import com.entity.Student;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
+    static String input = "1\n1\n1\n";
+
 
     public static void main(String[] args) throws SQLException {
+
+        BeanFactory factory = new ClassPathXmlApplicationContext("spring-config.xml");
+        AddNewMark addNewMark = factory.getBean(AddNewMark.class);
 
         boolean again;
         do {
@@ -18,10 +25,11 @@ public class Main {
 
             switch (choose) {
                 case 1:
-                    new AddNewMark().creatingMark();
+//                    addNewMark.setScanner(new Scanner(new ByteArrayInputStream(input.getBytes())));
+                    addNewMark.creatingMark();
                     break;
                 case 2:
-                    Student student =  new FindBestStudent().getBestStudent();
+                    Student student = new FindBestStudent().getBestStudent();
                     System.out.println();
                     System.out.println("Best student are \n" + student);
                     break;

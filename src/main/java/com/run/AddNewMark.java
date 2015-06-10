@@ -1,30 +1,52 @@
 package com.run;
 
+import com.dao.courseDao.CourseDao;
 import com.dao.courseDao.CourseDaoImpl;
+import com.dao.markDao.MarkDao;
 import com.dao.markDao.MarkDaoImpl;
+import com.dao.studentDao.StudentDao;
 import com.dao.studentDao.StudentDaoImpl;
 import com.entity.Course;
 import com.entity.Mark;
 import com.entity.Student;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
+
+@Repository
+@Transactional
 public class AddNewMark {
 
-    public void creatingMark() throws SQLException {
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
+    private Scanner scanner;
 
+    @Autowired
+    private StudentDao studentDao;
+
+    @Autowired
+    private CourseDao courseDao;
+
+    @Autowired
+    private MarkDao markDao;
+
+    public AddNewMark() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public void creatingMark() throws SQLException {
         Course course = chooseCourseFromFist();
         Student student = chooseStudentFromFist();
         int mark = getMarFromKeyboard();
 
         Mark newMark = new Mark(student, course, mark);
-
-        MarkDaoImpl markDaoImpl = beanFactory.getBean(MarkDaoImpl.class);
-        markDaoImpl.addMark(newMark);
+        markDao.addMark(newMark);
     }
 
     private int getMarFromKeyboard() {
@@ -33,32 +55,37 @@ public class AddNewMark {
     }
 
     private Student chooseStudentFromFist() throws SQLException {
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("spring-config.xml");
-        StudentDaoImpl studentDaoImpl = beanFactory.getBean(StudentDaoImpl.class);
-
         System.out.println("List of students:");
-        System.out.println(studentDaoImpl.getAllStudents());
+        System.out.println(studentDao.getAllStudents());
 
         String reply = keyboard("Choose student ");
         Integer index = Integer.valueOf(reply);
-        return studentDaoImpl.getStudentById(index);
+        return studentDao.getStudentById(index);
     }
 
     private Course chooseCourseFromFist() throws SQLException {
-        BeanFactory beanFactory = new ClassPathXmlApplicationContext("/spring-config.xml");
-        CourseDaoImpl courseDaoImpl = beanFactory.getBean(CourseDaoImpl.class);
-
         System.out.println("List of courses:");
-        System.out.println(courseDaoImpl.getAllCourses());
+        System.out.println(courseDao.getAllCourses());
 
         String reply = keyboard("Choose course");
         Integer index = Integer.valueOf(reply);
-        return courseDaoImpl.getCourseById(index);
+        return courseDao.getCourseById(index);
     }
 
-    public String keyboard(String message) {
+    private String keyboard(String message) {
         System.out.println(message + " ");
-        Scanner scan = new Scanner(System.in);
-        return scan.next();
+        return scanner.next();
+    }
+
+    public void setStudentDaoImpl(StudentDaoImpl studentDaoImpl) {
+        this.studentDao = studentDaoImpl;
+    }
+
+    public void setCourseDaoImpl(CourseDaoImpl courseDaoImpl) {
+        this.courseDao = courseDaoImpl;
+    }
+
+    public void setMarkDaoImpl(MarkDaoImpl markDaoImpl) {
+        this.markDao = markDaoImpl;
     }
 }

@@ -37,8 +37,9 @@ public class Mark {
         Mark mark1 = (Mark) o;
 
         if (mark != mark1.mark) return false;
-        if (course != null ? !course.equals(mark1.course) : mark1.course != null) return false;
-        return !(student != null ? !student.equals(mark1.student) : mark1.student != null);
+        return !(course != null ?
+                !course.equals(mark1.course) : mark1.course != null) &&
+                !(student != null ? !student.equals(mark1.student) : mark1.student != null);
 
     }
 

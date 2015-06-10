@@ -7,7 +7,7 @@
               <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
               <property name="url" value="jdbc:mysql://localhost:3306/testDBUniversity"/>
               <property name="username" value="root"/>
-              <property name="password" value=""/>
+              <property name="password" value="root"/>
        </bean>
 
        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -23,19 +23,25 @@
               </property>
        </bean>
 
-       <bean class="com.dao.facultyDao.FacultyDaoImpl">
+       <bean class="com.run.AddNewMark">
+              <property name="studentDaoImpl" ref="studentDao"/>
+              <property name="courseDaoImpl" ref="courseDao"/>
+              <property name="markDaoImpl" ref="markDao"/>
+       </bean>
+
+       <bean id="facultyDao" class="com.dao.facultyDao.FacultyDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.studentDao.StudentDaoImpl">
+       <bean id="studentDao" class="com.dao.studentDao.StudentDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.courseDao.CourseDaoImpl">
+       <bean id="courseDao" class="com.dao.courseDao.CourseDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean class="com.dao.markDao.MarkDaoImpl">
+       <bean id="markDao" class="com.dao.markDao.MarkDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
