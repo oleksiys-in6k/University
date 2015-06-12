@@ -11,11 +11,11 @@
     <title>University</title>
 </head>
 <body>
-<a href="students/new">Add new student</a>
+<a href="students/newStudent">Add new student</a>
 <br>
 <a href="students/studentsList">Get list of all students</a>
 <br>
-<a href="">Get list of all faculties</a>
+<a href="faculties/facultiesList">Get list of all faculties</a>
 <br>
 <a href="">Get list of all courses</a>
 <br>

@@ -1,31 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-  <title>Show All Students</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Show All Students</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 </head>
 <body>
-<table border=1>
-  <thead>
-  <tr>
-    <th>StudentId</th>
-    <th>Name</th>
-    <th>FacultyId</th>
-    <th></th>
-    <th colspan=2>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <c:forEach items="${users}" var="users">
-    <tr>
-      <td><c:out value="${user.userid}" /></td>
-    </tr>
-  </c:forEach>
-  </tbody>
-</table>
-<p><a href="UserController?action=insert">Add User</a></p>
+<div class="container">
+    <p><a href="/students/newStudent" class="btn btn-primary">Add User</a></p>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>StudentId</th>
+            <th>Name</th>
+            <th>FacultyId</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <c:forEach items="${students}" var="student">
+            <tr>
+                <td>${student.studentId}</td>
+                <td>${student.name}</td>
+                <td>${student.faculty}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
