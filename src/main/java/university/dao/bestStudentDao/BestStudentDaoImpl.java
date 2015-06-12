@@ -1,5 +1,6 @@
 package university.dao.bestStudentDao;
 
+import org.springframework.stereotype.Repository;
 import university.entity.Faculty;
 import university.entity.Student;
 import org.hibernate.SQLQuery;
@@ -8,9 +9,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+@Repository("bestStudentDao")
 @Transactional
 public class BestStudentDaoImpl implements BestStudentDao {
 
+    @Autowired
     SessionFactory sessionFactory;
 
     public Student getBestStudent(Faculty faculty) {
@@ -30,11 +33,6 @@ public class BestStudentDaoImpl implements BestStudentDao {
         query.setParameter("facultyId", faculty.getFacultyId());
 
         return (Student) query.uniqueResult();
-    }
-
-    @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
     }
 
     private Session getSession() {

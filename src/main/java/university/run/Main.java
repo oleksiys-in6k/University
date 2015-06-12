@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        BeanFactory factory = new ClassPathXmlApplicationContext("spring-config.xml");
+        BeanFactory factory = new ClassPathXmlApplicationContext("database.xml");
         University universityClass = factory.getBean(University.class);
         universityClass.execute();
     }

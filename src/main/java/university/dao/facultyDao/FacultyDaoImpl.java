@@ -1,24 +1,23 @@
 package university.dao.facultyDao;
 
-import university.entity.Faculty;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import university.entity.Faculty;
 
 import java.sql.SQLException;
 import java.util.List;
 
 
-//@Repository
+@Repository("facultyDao")
 @Transactional
 public class FacultyDaoImpl implements FacultyDao {
 
-
+    @Autowired
     SessionFactory sessionFactory;
-//    @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+
     private Session getSession() {
         return sessionFactory.getCurrentSession();
     }

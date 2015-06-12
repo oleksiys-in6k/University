@@ -12,5 +12,14 @@
 </head>
 <body>
 <a href="students/new">Add new student</a>
+<br>
+<a href="students/studentsList">Get list of all students</a>
+<br>
+<a href="">Get list of all faculties</a>
+<br>
+<a href="">Get list of all courses</a>
+<br>
+<a href="">Get best student via faculty</a>
+
 </body>
 </html>

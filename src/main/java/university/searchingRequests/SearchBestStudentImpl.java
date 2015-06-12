@@ -1,12 +1,11 @@
 package university.searchingRequests;
 
-import university.dao.bestStudentDao.BestStudentDao;
-import university.dao.facultyDao.FacultyDaoImpl;
-import university.entity.Faculty;
-import university.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import university.dao.bestStudentDao.BestStudentDaoImpl;
+import university.dao.bestStudentDao.BestStudentDao;
+import university.dao.facultyDao.FacultyDao;
+import university.entity.Faculty;
+import university.entity.Student;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -18,7 +17,7 @@ public class SearchBestStudentImpl implements SearchBestStudent {
     private BestStudentDao bestStudentDao;
 
     @Autowired
-    private FacultyDaoImpl facultyDao;
+    private FacultyDao facultyDao;
 
     public Student getBestStudent() throws SQLException {
         Faculty faculty = getFacultyFromList();
@@ -36,13 +35,5 @@ public class SearchBestStudentImpl implements SearchBestStudent {
         System.out.println(message + " ");
         Scanner scan = new Scanner(System.in);
         return scan.next();
-    }
-
-    public void setFacultyDao(FacultyDaoImpl facultyDao) {
-        this.facultyDao = facultyDao;
-    }
-
-    public void setBestStudentDao(BestStudentDaoImpl bestStudentDao) {
-        this.bestStudentDao = bestStudentDao;
     }
 }

@@ -2,7 +2,7 @@
 <body>
 	<h1> STUDENT ADMISSION </h1>
 
-	<form action="/university/submitAdmissionForm.html" method="post">
+	<form action="/students/done" method="post">
 		<p>
 			Student's Name : <input type="text" name="studentName" />
 		</p>

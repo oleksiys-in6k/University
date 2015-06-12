@@ -1,23 +1,21 @@
 package university.dao.courseDao;
 
-import university.entity.Course;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import university.entity.Course;
 
 import java.sql.SQLException;
 import java.util.List;
 
+@Repository("courseDao")
 @Transactional
-//@Repository
 public class CourseDaoImpl implements CourseDao {
 
+    @Autowired
     SessionFactory sessionFactory;
-
-    //    @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     private Session getSession() {
         return sessionFactory.getCurrentSession();

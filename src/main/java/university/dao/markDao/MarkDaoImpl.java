@@ -1,24 +1,21 @@
 package university.dao.markDao;
 
-import university.entity.Mark;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import university.entity.Mark;
 
 import java.sql.SQLException;
 import java.util.List;
 
-//@Repository
+@Repository("markDao")
 @Transactional
 public class MarkDaoImpl implements MarkDao {
 
     @Autowired
     public SessionFactory sessionFactory;
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     public Session getSession() {
         return sessionFactory.getCurrentSession();

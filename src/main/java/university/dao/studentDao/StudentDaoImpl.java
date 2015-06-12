@@ -1,5 +1,6 @@
 package university.dao.studentDao;
 
+import org.springframework.stereotype.Repository;
 import university.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,15 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.SQLException;
 import java.util.List;
 
+@Repository("studentDao")
 @Transactional
 public class StudentDaoImpl implements StudentDao {
 
-    SessionFactory sessionFactory;
-
     @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    SessionFactory sessionFactory;
 
     private Session getSession() {
         return sessionFactory.getCurrentSession();
