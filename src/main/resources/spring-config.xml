@@ -23,48 +23,43 @@
         </property>
     </bean>
 
-    <bean id="University" class="com.run.University">
+    <bean id="University" class="university.run.University">
         <property name="markReader" ref="reader"/>
         <property name="markWriter" ref="writer"/>
         <property name="searchBestStudent" ref="bestStudent"/>
     </bean>
 
-    <bean id="bestStudent" class="com.searchingRequests.SearchBestStudentImpl">
+    <bean id="bestStudent" class="university.searchingRequests.SearchBestStudentImpl">
         <property name="bestStudentDao" ref="bestStudentDao"/>
         <property name="facultyDao" ref="facultyDao"/>
     </bean>
     
-
-
-    <bean id="reader" class="com.MarkIO.reader.ConsoleMarkReader">
+    <bean id="reader" class="university.MarkIO.reader.ConsoleMarkReader">
         <property name="studentDao" ref="studentDao"/>
         <property name="courseDao" ref="courseDao"/>
     </bean>
 
-    <bean id="writer" class="com.MarkIO.writer.MarkWriterImpl">
+    <bean id="writer" class="university.MarkIO.writer.MarkWriterImpl">
         <property name="markDao" ref="markDao"/>
     </bean>
 
-
-
-    <bean id="bestStudentDao" class="com.dao.bestStudentDao.BestStudentDaoImpl">
+    <bean id="bestStudentDao" class="university.dao.bestStudentDao.BestStudentDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-
-    <bean id="facultyDao" class="com.dao.facultyDao.FacultyDaoImpl">
+    <bean id="facultyDao" class="university.dao.facultyDao.FacultyDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="studentDao" class="com.dao.studentDao.StudentDaoImpl">
+    <bean id="studentDao" class="university.dao.studentDao.StudentDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="courseDao" class="com.dao.courseDao.CourseDaoImpl">
+    <bean id="courseDao" class="university.dao.courseDao.CourseDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="markDao" class="com.dao.markDao.MarkDaoImpl">
+    <bean id="markDao" class="university.dao.markDao.MarkDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 

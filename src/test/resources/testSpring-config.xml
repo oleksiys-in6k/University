@@ -23,24 +23,46 @@
               </property>
        </bean>
 
-       <bean class="com.MarkIO.reader.ConsoleMarkReader">
+       <!--<bean id="University" class="University">-->
+              <!--<property name="markReader" ref="reader"/>-->
+              <!--<property name="markWriter" ref="writer"/>-->
+              <!--<property name="searchBestStudent" ref="bestStudent"/>-->
+       <!--</bean>-->
+
+       <!--<bean id="bestStudent" class="SearchBestStudentImpl">-->
+              <!--<property name="bestStudentDao" ref="bestStudentDao"/>-->
+              <!--<property name="facultyDao" ref="facultyDao"/>-->
+       <!--</bean>-->
+
+
+       <bean id="reader" class="university.MarkIO.reader.ConsoleMarkReader">
               <property name="studentDao" ref="studentDao"/>
               <property name="courseDao" ref="courseDao"/>
        </bean>
 
-       <bean id="facultyDao" class="com.dao.facultyDao.FacultyDaoImpl">
+       <bean id="writer" class="university.MarkIO.writer.MarkWriterImpl">
+              <property name="markDao" ref="markDao"/>
+       </bean>
+
+
+       <bean class="university.MarkIO.reader.ConsoleMarkReader">
+              <property name="studentDao" ref="studentDao"/>
+              <property name="courseDao" ref="courseDao"/>
+       </bean>
+
+       <bean id="facultyDao" class="university.dao.facultyDao.FacultyDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean id="studentDao" class="com.dao.studentDao.StudentDaoImpl">
+       <bean id="studentDao" class="university.dao.studentDao.StudentDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean id="courseDao" class="com.dao.courseDao.CourseDaoImpl">
+       <bean id="courseDao" class="university.dao.courseDao.CourseDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
-       <bean id="markDao" class="com.dao.markDao.MarkDaoImpl">
+       <bean id="markDao" class="university.dao.markDao.MarkDaoImpl">
               <property name="sessionFactory" ref="sessionFactory"/>
        </bean>
 
