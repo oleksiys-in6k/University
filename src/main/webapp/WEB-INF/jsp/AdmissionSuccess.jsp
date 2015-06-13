@@ -1,9 +1,8 @@
-
 <html>
 <body>
-	<h1>Congratulations!!</h1>
+<h1>Done!! Next student was adding.</h1>
 
-	<h2>${msg}</h2>
+<h2>${msg}</h2>
 
 </body>
 </html>

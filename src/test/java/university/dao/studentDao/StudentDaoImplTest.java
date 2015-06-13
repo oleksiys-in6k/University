@@ -29,6 +29,7 @@ import static org.hamcrest.Matchers.nullValue;
 @ContextConfiguration("/testSpring-config.xml")
 @Transactional
 @TransactionConfiguration
+@Ignore
 public class StudentDaoImplTest {
 
     @Autowired

@@ -12,7 +12,7 @@ public class Faculty {
 
     private String title;
 
-    public Faculty (String title) {
+    public Faculty(String title) {
         this.title = title;
     }
 
@@ -45,6 +45,6 @@ public class Faculty {
 
     @Override
     public String toString() {
-        return title + " Faculty ID: " + facultyId ;
+        return title + "(Faculty ID: " + facultyId + ")";
     }
 }

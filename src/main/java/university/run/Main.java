@@ -8,7 +8,6 @@ import java.sql.SQLException;
 public class Main {
     static String input = "1\n1\n1\n";
 
-
     public static void main(String[] args) throws SQLException {
 
         BeanFactory factory = new ClassPathXmlApplicationContext("database.xml");

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -12,35 +12,28 @@
 </head>
 <body>
 <div class="container">
-<h1> STUDENT ADMISSION </h1>
+    <h1> Student admission </h1>
 
-<form action="/students/done" method="post">
-    <p>
-        Student's Name : <input type="text" name="studentName"/>
-    </p>
+    <form action="/students/doneStudent" method="get">
+        <p>
+            Student's Name : <input type="text" name="studentName"/>
+        </p>
 
-    <p>
-        Student's faculty :
+        <p>
+            Student's faculty :
 
-            <select name="roleName">
-                <option value="faculty1"selected='selected'>Technical</option>
-                <option value="faculty2">Economical</option>
-                <option value="faculty3">Historical</option>
+            <select name="studentFaculty" items="${faculties}">
+                <c:forEach items="${faculties}" var="faculty">
+                    <option value="${faculty.facultyId}">${faculty.title}</option>
+                </c:forEach>
             </select>
+        </p>
+        <button type="submit" value=" Send" class="btn btn-success">
+            Submit this form by clicking here</button>
+        <a href="/" class="btn btn-primary">Back to main menu</a>
 
 
-    <%--ToDo here --%>
-
-    <%--<select items="${faculties}">--%>
-        <%--<c:forEach items="${faculties}" var="student">--%>
-            <%--<option value="${faculty.facultyId}">${faculty.title}</option>--%>
-        <%--</c:forEach>--%>
-    <%--</select>--%>
-
-
-    </p>
-    <input type="submit" value="Submit this form by clicking here"/>
-</form>
+    </form>
 </div>
 </body>
 </html>

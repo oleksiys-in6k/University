@@ -1,5 +1,6 @@
 package university.run;
 
+import org.junit.Ignore;
 import university.MarkIO.reader.ConsoleMarkReader;
 import org.junit.Test;
 import org.junit.runner.RunWith;

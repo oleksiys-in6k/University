@@ -1,5 +1,6 @@
 package university.dao.markDao;
 
+import org.junit.Ignore;
 import university.dao.courseDao.CourseDaoImpl;
 import university.dao.facultyDao.FacultyDaoImpl;
 import university.dao.markDao.MarkDaoImpl;
@@ -24,6 +25,7 @@ import static org.hamcrest.Matchers.is;
 @ContextConfiguration("/testSpring-config.xml")
 @Transactional
 @TransactionConfiguration
+@Ignore
 public class MarkDaoImplTest {
 
     @Autowired

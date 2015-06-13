@@ -13,13 +13,18 @@
 </head>
 <body>
 <div class="container">
-    <p><a href="/students/newStudent" class="btn btn-primary">Add User</a></p>
+    <br>
+    <p>
+        <a href="/students/newStudent" class="btn btn-primary">Add User</a>
+        <a href="/" class="btn btn-primary">Back to main menu </a>
+
+    </p>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
             <th>StudentId</th>
             <th>Name</th>
-            <th>FacultyId</th>
+            <th>Faculty</th>
         </tr>
         </thead>
         <tbody>
