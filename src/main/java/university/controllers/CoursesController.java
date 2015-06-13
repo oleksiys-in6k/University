@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import university.dao.courseDao.CourseDao;
-import university.dao.facultyDao.FacultyDao;
 
 import java.sql.SQLException;
 
@@ -19,7 +18,7 @@ public class CoursesController {
 
     @RequestMapping(value = "/coursesList", method = RequestMethod.GET)
     public ModelAndView index() throws SQLException {
-        ModelAndView model = new ModelAndView("ShowCourses");
+        ModelAndView model = new ModelAndView("course/ShowCourses");
         model.addObject("courses", courseDao.getAllCourses());
         return model;
     }

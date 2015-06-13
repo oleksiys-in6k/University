@@ -24,14 +24,14 @@ public class StudentsController {
 
 	@RequestMapping(value = "/studentsList", method = RequestMethod.GET)
 	public ModelAndView getAllUsers() throws SQLException {
-		ModelAndView model = new ModelAndView("ShowStudents");
+		ModelAndView model = new ModelAndView("student/ShowStudents");
 		model.addObject("students", studentDao.getAllStudents());
 		return model;
 	}
 
 	@RequestMapping(value="/newStudent", method = RequestMethod.GET)
 	public ModelAndView getAdmissionForm() throws SQLException {
-		ModelAndView model = new ModelAndView("AdmissionStudentForm");
+		ModelAndView model = new ModelAndView("student/AdmissionStudentForm");
 		model.addObject("faculties", facultyDao.getAllFaculties());
 		return model;
 	}
@@ -45,7 +45,7 @@ public class StudentsController {
 		studentDao.addStudent(new Student(name, facultyDao.getFacultyById(id)));
 
 
-		ModelAndView model = new ModelAndView("AdmissionStudentSuccess");
+		ModelAndView model = new ModelAndView("student/AdmissionStudentSuccess");
 		model.addObject("msg","Details:: Name: "+name+ ", Faculty: " + facultyDao.getFacultyById(id).getTitle());
 
 		return model;

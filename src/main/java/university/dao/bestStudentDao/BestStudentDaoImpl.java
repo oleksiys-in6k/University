@@ -19,7 +19,7 @@ public class BestStudentDaoImpl implements BestStudentDao {
     public Student getBestStudent(Faculty faculty) {
         Session session = getSession();
         SQLQuery query = session.createSQLQuery(
-                "SELECT student.studentId, student.name, course.facultyId, sum(Mark.mark) as sumMark " +
+                "SELECT student.studentId, student.name, course.facultyId, sum(Mark.rating) as sumMark " +
                         "FROM student " +
                         "INNER JOIN Mark ON student.studentId = Mark.studentId " +
                         "INNER JOIN course ON course.courseId = Mark.courseId " +

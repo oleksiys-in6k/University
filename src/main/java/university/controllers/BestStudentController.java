@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import university.dao.bestStudentDao.BestStudentDao;
 import university.dao.facultyDao.FacultyDao;
-import university.dao.studentDao.StudentDao;
 import university.entity.Student;
 
 import java.sql.SQLException;
@@ -25,7 +24,7 @@ public class BestStudentController {
 
     @RequestMapping(value = "/getBestStudent", method = RequestMethod.GET)
     public ModelAndView getAdmissionForm() throws SQLException {
-        ModelAndView model = new ModelAndView("SearchingBestStudent");
+        ModelAndView model = new ModelAndView("search/SearchingBestStudent");
         model.addObject("faculties", facultyDao.getAllFaculties());
         return model;
     }
@@ -36,7 +35,7 @@ public class BestStudentController {
         int id = Integer.parseInt(facultyId);
         Student bestStudent = bestStudentDao.getBestStudent(facultyDao.getFacultyById(id));
 
-        ModelAndView model = new ModelAndView("SearchingResult");
+        ModelAndView model = new ModelAndView("search/SearchingResult");
         model.addObject("msg", "Result:: Name: " + bestStudent.getName()
                 + ", is best via faculty: " + facultyDao.getFacultyById(id).getTitle());
         return model;

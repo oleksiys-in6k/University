@@ -18,10 +18,10 @@ public class Mark {
     @JoinColumn(name = "studentId")
     private Student student;
 
-    private int mark;
+    private int rating;
 
-    public Mark(Student student, Course course, int mark) {
-        this.mark = mark;
+    public Mark(Student student, Course course, int rating) {
+        this.rating = rating;
         this.student = student;
         this.course = course;
     }
@@ -36,7 +36,7 @@ public class Mark {
 
         Mark mark1 = (Mark) o;
 
-        if (mark != mark1.mark) return false;
+        if (rating != mark1.rating) return false;
         return !(course != null ?
                 !course.equals(mark1.course) : mark1.course != null) &&
                 !(student != null ? !student.equals(mark1.student) : mark1.student != null);
@@ -47,7 +47,7 @@ public class Mark {
     public int hashCode() {
         int result = course != null ? course.hashCode() : 0;
         result = 31 * result + (student != null ? student.hashCode() : 0);
-        result = 31 * result + mark;
+        result = 31 * result + rating;
         return result;
     }
 
@@ -57,15 +57,15 @@ public class Mark {
                 markId +
                 course +
                 student +
-                mark;
+                rating;
     }
 
     public void setStudent(Student student) {
         this.student = student;
     }
 
-    public int getMark() {
-        return mark;
+    public int getRating() {
+        return rating;
     }
 
     public Course getCourse() {

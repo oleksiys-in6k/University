@@ -13,7 +13,7 @@
 <div class="container">
     <h1> Student admission </h1>
 
-    <form action="/students/doneStudent" method="get">
+    <form action="<c:url value="/students/doneStudent"/>" method="get">
         <p>
             Student's Name : <input type="text" name="studentName"/>
         </p>
@@ -21,15 +21,17 @@
         <p>
             Student's faculty :
 
-            <select name="studentFaculty" items="${faculties}">
-                <c:forEach items="${faculties}" var="faculty">
-                    <option value="${faculty.facultyId}">${faculty.title}</option>
-                </c:forEach>
-            </select>
+            <label>
+                <select name="studentFaculty" items="${faculties}">
+                    <c:forEach items="${faculties}" var="faculty">
+                        <option value="${faculty.facultyId}">${faculty.title}</option>
+                    </c:forEach>
+                </select>
+            </label>
         </p>
         <button type="submit" value=" Send" class="btn btn-success">
             Submit this form by clicking here</button>
-        <a href="/" class="btn btn-primary">Back to main menu</a>
+        <a href="<c:url value="/"/>" class="btn btn-primary">Back to main menu</a>
 
     </form>
 </div>

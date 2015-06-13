@@ -14,20 +14,20 @@
 <div class="container">
     <h2> search for the best student (the sum of marks) throughout the university on faculty </h2>
 
-    <form action="/bestStudent/doneStudent" method="get">
+    <form action="<c:url value="/bestStudent/doneStudent"/>" method="get">
         <p>
             Choose faculty :
 
-            <select type="submit" value=" Send" name="studentFaculty" items="${faculties}">
-                <c:forEach items="${faculties}" var="faculty">
-                    <option value="${faculty.facultyId}">${faculty.title}</option>
-                </c:forEach>
-            </select>
+            <label>
+                <select name="studentFaculty" items="${faculties}">
+                    <c:forEach items="${faculties}" var="faculty">
+                        <option value="${faculty.facultyId}">${faculty.title}</option>
+                    </c:forEach>
+                </select>
+            </label>
         </p>
         <button type="submit" value=" Send" class="btn btn-success">Get best student</button>
-        <a href="/" class="btn btn-primary">Back to main menu</a>
-
-        <h2>best student is ${faculty.facultyId}</h2>
+        <a href="<c:url value="/"/>" class="btn btn-primary">Back to main menu</a>
 
     </form>
 </div>

@@ -3,7 +3,6 @@ package university.dao.markDao;
 import org.junit.Ignore;
 import university.dao.courseDao.CourseDaoImpl;
 import university.dao.facultyDao.FacultyDaoImpl;
-import university.dao.markDao.MarkDaoImpl;
 import university.dao.studentDao.StudentDaoImpl;
 import university.entity.Course;
 import university.entity.Faculty;
@@ -59,7 +58,7 @@ public class MarkDaoImplTest {
 
         Mark storedMark = markDaoImpl.getMarkById(mark.getMarkId());
 
-        assertThat(storedMark.getMark(), is(2));
+        assertThat(storedMark.getRating(), is(2));
         assertThat(storedMark.getCourse(), is(course));
         assertThat(storedMark.getStudent(), is(student));
     }

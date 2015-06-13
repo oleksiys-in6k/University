@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,7 +16,7 @@
     <br>
 
     <p>
-        <a href="students/newStudent" class="btn btn-primary">Add new student</a>
+        <a href="marks/marksList" class="btn btn-primary">Get list of all marks</a>
     </p>
 
     <p>
@@ -31,7 +32,7 @@
     </p>
 
     <p>
-        <a href="/bestStudent/getBestStudent" class="btn btn-primary">Get best student via faculty</a>
+        <a href="<c:url value="/bestStudent/getBestStudent"/>" class="btn btn-primary">Get best student via faculty</a>
     </p>
 
 </div>
