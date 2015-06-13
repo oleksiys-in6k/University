@@ -10,16 +10,22 @@
     <title>Show All Faculties</title>
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
 </head>
 <body>
 <div class="container">
-    <p><a href="/faculties/newFaculty" class="btn btn-primary">Add faculty</a></p>
+    <br>
+
+    <p>
+        <%--<a href="/faculties/newFaculty" class="btn btn-primary">Add faculty</a>--%>
+        <a href="/" class="btn btn-primary">Back to main menu</a>
+        <a href="/" class="btn btn-primary">Get best student via faculty</a>
+    </p>
+
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>FacultyId</th>
+            <th>Faculty Id</th>
             <th>Title</th>
         </tr>
         </thead>

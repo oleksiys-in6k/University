@@ -41,11 +41,12 @@ public class StudentsController {
 											@RequestParam("studentFaculty") String facultyId) throws SQLException {
 
 		// Uncommon this for saving in DB
-//		int id = Integer.parseInt(facultyId);
-//		studentDao.addStudent(new Student(name, facultyDao.getFacultyById(id)));
+		int id = Integer.parseInt(facultyId);
+		studentDao.addStudent(new Student(name, facultyDao.getFacultyById(id)));
 
-		ModelAndView model = new ModelAndView("AdmissionSuccess");
-		model.addObject("msg","Details:: Name: "+name+ ", Faculty: " + facultyId);
+
+		ModelAndView model = new ModelAndView("AdmissionStudentSuccess");
+		model.addObject("msg","Details:: Name: "+name+ ", Faculty: " + facultyDao.getFacultyById(id).getTitle());
 
 		return model;
 	}

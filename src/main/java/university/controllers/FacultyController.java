@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import university.dao.facultyDao.FacultyDao;
+import university.entity.Faculty;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,17 +19,29 @@ public class FacultyController {
     @Autowired
     private FacultyDao facultyDao;
 
-    @RequestMapping(value = "/facultiesList", method = RequestMethod.POST)
+    @RequestMapping(value = "/facultiesList", method = RequestMethod.GET)
     public ModelAndView index() throws SQLException {
         ModelAndView model = new ModelAndView("ShowFaculties");
         model.addObject("faculties", facultyDao.getAllFaculties());
         return model;
     }
 
-//    @RequestMapping(value="/newFaculty", method = RequestMethod.GET)
+//    @RequestMapping(value = "/newFaculty", method = RequestMethod.GET)
 //    public ModelAndView getAdmissionForm(@RequestParam("studentFaculty") List list) throws SQLException {
 //        ModelAndView model = new ModelAndView("AdmissionStudentForm");
 //        model.addObject("faculties", facultyDao.getAllFaculties());
+//        return model;
+//    }
+//
+//    @RequestMapping(value = "/doneFaculty", method = RequestMethod.GET)
+//    public ModelAndView submitAdmissionForm(@RequestParam("studentTitle") String title) throws SQLException {
+//
+//        // Uncommon this for saving in DB
+//        facultyDao.addFaculty(new Faculty(title));
+//
+//        ModelAndView model = new ModelAndView("AdmissionStudentSuccess");
+//        model.addObject("msg", "Details:: Title: " + title);
+//
 //        return model;
 //    }
 

@@ -7,32 +7,32 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Show All Students</title>
+    <title>Show All Courses</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
     <br>
     <p>
-        <a href="/students/newStudent" class="btn btn-primary">Add Student</a>
+        <%--<a href="/students/newCourses" class="btn btn-primary">Add Course</a>--%>
         <a href="/" class="btn btn-primary">Back to main menu </a>
 
     </p>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>Student Id</th>
-            <th>Name</th>
+            <th>Course Id</th>
+            <th>Title</th>
             <th>Faculty</th>
         </tr>
         </thead>
         <tbody>
 
-        <c:forEach items="${students}" var="student">
+        <c:forEach items="${courses}" var="course">
             <tr>
-                <td>${student.studentId}</td>
-                <td>${student.name}</td>
-                <td>${student.faculty.title}</td>
+                <td>${course.courseId}</td>
+                <td>${course.title}</td>
+                <td>${course.faculty.title}</td>
             </tr>
         </c:forEach>
         </tbody>
