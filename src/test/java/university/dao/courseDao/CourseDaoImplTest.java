@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import university.dao.facultyDao.FacultyDaoImpl;
+import university.dao.facultyDao.FacultyDao;
 import university.entity.Course;
 import university.entity.Faculty;
 
@@ -16,16 +16,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/testSpring-config.xml")
+@ContextConfiguration(locations = "classpath:/testSpring-config.xml")
 @Transactional
 @TransactionConfiguration
 public class CourseDaoImplTest {
 
     @Autowired
-    private FacultyDaoImpl facultyDaoImpl;
+    private FacultyDao facultyDao;
 
     @Autowired
-    private CourseDaoImpl courseDaoImpl;
+    private CourseDao courseDao;
 
     @Autowired
     SessionFactory sessionFactory;
@@ -33,13 +33,13 @@ public class CourseDaoImplTest {
     @Test
     public void testCourseDao() throws Exception {
         Faculty faculty = new Faculty("Economics");
-        facultyDaoImpl.addFaculty(faculty);
+        facultyDao.addFaculty(faculty);
 
         Course course = new Course(faculty, "Busyness Strategy");
-        courseDaoImpl.addCourse(course);
+        courseDao.addCourse(course);
         evict(course);
 
-        Course someCourse = courseDaoImpl.getCourseById(course.getCourseId());
+        Course someCourse = courseDao.getCourseById(course.getCourseId());
 
         assertThat(someCourse, is(course));
     }

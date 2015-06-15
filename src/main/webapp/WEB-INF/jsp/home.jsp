@@ -32,7 +32,7 @@
     </p>
 
     <p>
-        <a href="<c:url value="/bestStudent/getBestStudent"/>" class="btn btn-primary">Get best student via faculty</a>
+        <a href="bestStudent/getBestStudent" class="btn btn-primary">Get best student via faculty</a>
     </p>
 
 </div>

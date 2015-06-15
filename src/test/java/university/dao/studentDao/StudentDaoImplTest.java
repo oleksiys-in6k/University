@@ -1,14 +1,6 @@
 package university.dao.studentDao;
 
 
-import university.dao.courseDao.CourseDaoImpl;
-import university.dao.facultyDao.FacultyDaoImpl;
-import university.dao.markDao.MarkDaoImpl;
-import university.dao.studentDao.StudentDaoImpl;
-import university.entity.Course;
-import university.entity.Faculty;
-import university.entity.Mark;
-import university.entity.Student;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,16 +9,21 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import university.dao.courseDao.CourseDaoImpl;
+import university.dao.facultyDao.FacultyDaoImpl;
+import university.dao.markDao.MarkDaoImpl;
+import university.entity.Course;
+import university.entity.Faculty;
+import university.entity.Mark;
+import university.entity.Student;
 
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/testSpring-config.xml")
+@ContextConfiguration(locations = "classpath:/testSpring-config.xml")
 @Transactional
 @TransactionConfiguration
 @Ignore

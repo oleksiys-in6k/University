@@ -15,9 +15,9 @@
     <h2>${msg}</h2>
 
     <p>
-        <a href="<c:url value="/"/>" class="btn btn-primary">Back to main menu</a>
-        <a href="<c:url value="/marks/newMark"/>" class="btn btn-primary">Add new mark</a>
-        <a href="<c:url value="/marks/marksList"/>" class="btn btn-primary">Show all marks</a>
+        <a href="/" class="btn btn-primary">Back to main menu</a>
+        <a href="/marks/newMark" class="btn btn-primary">Add new mark</a>
+        <a href="/marks/marksList" class="btn btn-primary">Show all marks</a>
     </p>
 
 </div>

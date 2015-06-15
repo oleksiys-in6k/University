@@ -1,4 +1,4 @@
-package university.entity;
+package university.entity.facultyDao;
 
 import org.junit.Test;
 import university.entity.Faculty;

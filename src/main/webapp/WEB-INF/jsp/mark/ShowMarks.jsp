@@ -14,8 +14,8 @@
 <div class="container">
     <br>
     <p>
-        <a href="<c:url value="/marks/newMark"/>" class="btn btn-primary">Add new mark</a>
-        <a href="<c:url value="/"/>" class="btn btn-primary">Back to main menu </a>
+        <a href="/marks/newMark" class="btn btn-primary">Add new mark</a>
+        <a href="/" class="btn btn-primary">Back to main menu </a>
 
     </p>
     <table class="table table-striped table-bordered">

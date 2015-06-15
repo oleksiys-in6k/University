@@ -19,9 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/testSpring-config.xml")
+@ContextConfiguration(locations = "classpath:/testSpring-config.xml")
 @Transactional
 @TransactionConfiguration
 @Ignore
@@ -38,8 +37,6 @@ public class MarkDaoImplTest {
 
     @Autowired
     private MarkDaoImpl markDaoImpl;
-
-
 
     @Test
     public void testMarkDao() throws Exception {

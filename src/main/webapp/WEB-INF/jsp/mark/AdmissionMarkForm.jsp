@@ -13,7 +13,7 @@
 <div class="container">
     <h1> Mark admission </h1>
 
-    <form action="<c:url value="/marks/doneMark"/>" method="post">
+    <form action="/marks/doneMark" method="post">
 
         <p>
             Choose student :

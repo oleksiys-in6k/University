@@ -1,6 +1,10 @@
-package university.entity;
+package university.entity.markDao;
 
 import org.junit.Test;
+import university.entity.Course;
+import university.entity.Faculty;
+import university.entity.Mark;
+import university.entity.Student;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
