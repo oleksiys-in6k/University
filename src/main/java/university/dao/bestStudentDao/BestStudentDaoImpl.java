@@ -32,7 +32,11 @@ public class BestStudentDaoImpl implements BestStudentDao {
 
         query.setParameter("facultyId", faculty.getFacultyId());
 
-        return (Student) query.uniqueResult();
+        Student student = (Student) query.uniqueResult();
+         if (student == null)
+             student = new Student(null,null);
+
+        return student;
     }
 
     private Session getSession() {

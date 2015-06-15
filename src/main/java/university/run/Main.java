@@ -6,11 +6,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.sql.SQLException;
 
 public class Main {
-    static String input = "1\n1\n1\n";
+//    static String input = "1\n1\n1\n";
 
     public static void main(String[] args) throws SQLException {
 
-        BeanFactory factory = new ClassPathXmlApplicationContext("database.xml");
+        BeanFactory factory = new ClassPathXmlApplicationContext("university.xml");
         University universityClass = factory.getBean(University.class);
         universityClass.execute();
     }

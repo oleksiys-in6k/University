@@ -22,24 +22,4 @@ public class FacultyController {
         model.addObject("faculties", facultyDao.getAllFaculties());
         return model;
     }
-
-//    @RequestMapping(value = "/newFaculty", method = RequestMethod.GET)
-//    public ModelAndView getAdmissionForm(@RequestParam("studentFaculty") List list) throws SQLException {
-//        ModelAndView model = new ModelAndView("AdmissionStudentForm");
-//        model.addObject("faculties", facultyDao.getAllFaculties());
-//        return model;
-//    }
-//
-//    @RequestMapping(value = "/doneFaculty", method = RequestMethod.GET)
-//    public ModelAndView submitAdmissionForm(@RequestParam("studentTitle") String title) throws SQLException {
-//
-//        // Uncommon this for saving in DB
-//        facultyDao.addFaculty(new Faculty(title));
-//
-//        ModelAndView model = new ModelAndView("AdmissionStudentSuccess");
-//        model.addObject("msg", "Details:: Title: " + title);
-//
-//        return model;
-//    }
-
 }

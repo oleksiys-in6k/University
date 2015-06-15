@@ -13,7 +13,6 @@ public class University {
 
     MarkReader markReader;
     MarkWriter markWriter;
-
     SearchBestStudent searchBestStudent;
 
     public void execute() throws SQLException {
@@ -40,14 +39,6 @@ public class University {
         } while (again);
     }
 
-    public void setMarkReader(MarkReader markReader) {
-        this.markReader = markReader;
-    }
-
-    public void setMarkWriter(MarkWriter markWriter) {
-        this.markWriter = markWriter;
-    }
-
     private static boolean continueWorking() {
         System.out.println("Continue working with program? ");
         System.out.println("1 - yes, 2 - no");
@@ -59,6 +50,14 @@ public class University {
         System.out.println(message + " ");
         Scanner scan = new Scanner(System.in);
         return scan.next();
+    }
+
+    public void setMarkReader(MarkReader markReader) {
+        this.markReader = markReader;
+    }
+
+    public void setMarkWriter(MarkWriter markWriter) {
+        this.markWriter = markWriter;
     }
 
     public void setSearchBestStudent(SearchBestStudent searchBestStudent) {

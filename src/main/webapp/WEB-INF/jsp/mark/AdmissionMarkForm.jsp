@@ -11,9 +11,9 @@
 </head>
 <body>
 <div class="container">
-    <h1> Student admission </h1>
+    <h1> Mark admission </h1>
 
-    <form action="<c:url value="/marks/doneMark"/>" method="get">
+    <form action="<c:url value="/marks/doneMark"/>" method="post">
 
         <p>
             Choose student :
@@ -36,12 +36,14 @@
                 </select>
             </label>
         </p>
+
         <p>
-            Mark is : <input type="text" name="markValue"/>
+            Mark is : <input type="text" name="rating"/>
         </p>
 
-        <button type="submit" value=" Send" class="btn btn-success">
-            Submit this form by clicking here</button>
+        <button type="submit" class="btn btn-success">
+            Add new mark
+        </button>
         <a href="<c:url value="/"/>" class="btn btn-primary">Back to main menu</a>
 
     </form>

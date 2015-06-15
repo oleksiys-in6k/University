@@ -29,7 +29,7 @@ public class StudentsController {
 		return model;
 	}
 
-	@RequestMapping(value="/newStudent", method = RequestMethod.GET)
+	@RequestMapping(value="/newStudent", method = RequestMethod.POST)
 	public ModelAndView getAdmissionForm() throws SQLException {
 		ModelAndView model = new ModelAndView("student/AdmissionStudentForm");
 		model.addObject("faculties", facultyDao.getAllFaculties());
@@ -42,7 +42,7 @@ public class StudentsController {
 
 		// Uncommon this for saving in DB
 		int id = Integer.parseInt(facultyId);
-		studentDao.addStudent(new Student(name, facultyDao.getFacultyById(id)));
+//		studentDao.addStudent(new Student(name, facultyDao.getFacultyById(id)));
 
 
 		ModelAndView model = new ModelAndView("student/AdmissionStudentSuccess");
