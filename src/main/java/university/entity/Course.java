@@ -12,7 +12,7 @@ public class Course {
 
     private String title;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "facultyId")
     private Faculty faculty;
 
