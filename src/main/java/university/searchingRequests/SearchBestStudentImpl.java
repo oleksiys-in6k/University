@@ -6,9 +6,7 @@ import university.dao.bestStudentDao.BestStudentDao;
 import university.dao.facultyDao.FacultyDao;
 import university.entity.Faculty;
 import university.entity.Student;
-import university.service.facultyService.FacultyService;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 @Transactional
@@ -18,7 +16,7 @@ public class SearchBestStudentImpl implements SearchBestStudent {
     private BestStudentDao bestStudentDao;
 
     @Autowired
-    private FacultyService facultyService;
+    private FacultyDao facultyDao;
 
     public Student getBestStudent() {
         Faculty faculty = getFacultyFromList();
@@ -27,9 +25,9 @@ public class SearchBestStudentImpl implements SearchBestStudent {
 
     private Faculty getFacultyFromList() {
         System.out.println("List of faculties");
-        System.out.println(facultyService.getAllFaculties());
-        Integer facultyId = Integer.valueOf(keyboard("Choose faculty"));
-        return facultyService.getFacultyById(facultyId);
+        System.out.println(facultyDao.getAllFaculties());
+        Integer facultyId = Integer.valueOf(keyboard("Choose Faculty"));
+        return facultyDao.getFacultyById(facultyId);
     }
 
     private String keyboard(String message) {

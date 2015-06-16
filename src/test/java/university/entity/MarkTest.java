@@ -10,7 +10,7 @@ public class MarkTest {
     @Test
     public void fulfilsMarkInConstructor() throws Exception {
         // given
-        Faculty faculty = new Faculty("faculty");
+        Faculty faculty = new Faculty("Faculty");
         Student student = new Student("name", faculty);
         Course course = new Course(faculty, "course");
 

@@ -2,12 +2,12 @@ package university.dao.markDao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import university.entity.Mark;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository("markDao")
@@ -38,7 +38,17 @@ public class MarkDaoImpl implements MarkDao {
 
     public void deleteMark(Mark mark) {
         Session session = getSession();
-        session.delete(mark);
+
+
+        Mark delMark = (Mark) session.createCriteria(Mark.class)
+                .add(Restrictions.idEq(mark.getMarkId()))
+                .uniqueResult();
+
+
+        if (delMark != null)
+        {
+            session.delete(delMark);
+        }
     }
 
 }

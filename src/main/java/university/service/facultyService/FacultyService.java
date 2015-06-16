@@ -1,13 +1,16 @@
-package university.dao.facultyDao;
+package university.service.facultyService;
+
 
 import university.entity.Faculty;
 
 import java.util.List;
 
-public interface FacultyDao {
+public interface FacultyService {
+
     void addFaculty(Faculty faculty);
-    Faculty getFacultyById(Integer id);
     void updateFaculty(Faculty faculty);
-    List getAllFaculties();
     void deleteFaculty(Faculty faculty);
+    Faculty getFacultyById(Integer id);
+    List getAllFaculties();
+
 }

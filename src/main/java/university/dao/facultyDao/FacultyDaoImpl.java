@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import university.entity.Faculty;
 
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -22,9 +21,14 @@ public class FacultyDaoImpl implements FacultyDao {
         return sessionFactory.getCurrentSession();
     }
 
-    public void addFaculty(Faculty faculty) {
+    public void addFaculty(Faculty faculty){
         Session session = getSession();
         session.save(faculty);
+    }
+
+    public Faculty getFacultyById(Integer id) {
+        Session session = getSession();
+        return (Faculty) session.get(Faculty.class, id);
     }
 
     @Override
@@ -33,12 +37,7 @@ public class FacultyDaoImpl implements FacultyDao {
         session.update(faculty);
     }
 
-    public Faculty getFacultyById(Integer id) {
-        Session session = getSession();
-        return (Faculty) session.get(Faculty.class, id);
-    }
-
-    public List getAllFaculties() {
+    public List getAllFaculties(){
         Session session = getSession();
         return session.createCriteria(Faculty.class).list();
     }
@@ -46,6 +45,6 @@ public class FacultyDaoImpl implements FacultyDao {
     public void deleteFaculty(Faculty faculty) {
         Session session = getSession();
         session.delete(faculty);
-
     }
+
 }

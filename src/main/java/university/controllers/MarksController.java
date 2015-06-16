@@ -3,15 +3,15 @@ package university.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import university.dao.courseDao.CourseDao;
-import university.dao.markDao.MarkDao;
-import university.dao.studentDao.StudentDao;
-
-import java.sql.SQLException;
+import university.entity.Mark;
+import university.service.courseService.CourseService;
+import university.service.markService.MarkService;
+import university.service.studentService.StudentService;
 
 @Controller
 @Transactional
@@ -19,64 +19,59 @@ import java.sql.SQLException;
 public class MarksController {
 
     @Autowired
-    private MarkDao markDao;
+    private MarkService markService;
     @Autowired
-    private StudentDao studentDao;
+    private StudentService studentService;
     @Autowired
-    private CourseDao courseDao;
+    private CourseService courseService;
 
-    @RequestMapping(value = "/marksList", method = RequestMethod.GET)
-    public ModelAndView getAllMarks() throws SQLException {
-        ModelAndView model = new ModelAndView("mark/ShowMarks");
-        model.addObject("marks", markDao.getAllMarks());
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView index() {
+        ModelAndView model = new ModelAndView("marks/index");
+        model.addObject("marks", markService.getAllMarks());
         return model;
     }
 
-    @RequestMapping(value = "/newMark", method = RequestMethod.GET)
-    public ModelAndView getAdmissionMarkForm(
-    ) throws SQLException {
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public ModelAndView getAdmissionMarkForm() {
 
-        ModelAndView model = new ModelAndView("mark/AdmissionMarkForm");
-        model.addObject("students", studentDao.getAllStudents());
-        model.addObject("courses", courseDao.getAllCourses());
+        ModelAndView model = new ModelAndView("marks/new");
+        model.addObject("students", studentService.getAllStudents());
+        model.addObject("courses", courseService.getAllCourses());
         return model;
     }
 
-    @RequestMapping(value = "/doneMark", method = RequestMethod.POST)
-    public ModelAndView submitAdmissionForm(@RequestParam("markStudent") String studentId,
-                                            @RequestParam("markCourse") String courseId,
-                                            @RequestParam("rating") String rating
-    ) throws SQLException {
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ModelAndView submitAdmissionForm(@RequestParam("markStudent") Integer studentId,
+                                            @RequestParam("markCourse") Integer courseId,
+                                            @RequestParam("rating") Integer rating
+    ) {
 
-        int studId = Integer.parseInt(studentId);
-        int courId = Integer.parseInt(courseId);
+        markService.addMark(new Mark(
+                studentService.getStudentById(studentId),
+                courseService.getCourseById(courseId),
+                rating));
 
-        if (isString(rating)) {
-            ModelAndView model = new ModelAndView("mark/AdmissionMarkForm");
-            model.addObject("students", studentDao.getAllStudents());
-            model.addObject("courses", courseDao.getAllCourses());
+        ModelAndView model = new ModelAndView("marks/index");
 
-            return model;
-        }
-
-        int ratingMark = Integer.parseInt(rating);
-
-//        markDao.addMark(new Mark(
-//                studentDao.getStudentById(studId),
-//                courseDao.getCourseById(courId),
-//                ratingMark));
-
-        ModelAndView model = new ModelAndView("mark/AdmissionMarkSuccess");
-        model.addObject("msg", "Details:: Mark: " + ratingMark +
-                ", Student: " + studentDao.getStudentById(studId).getName() + ", Course: " +
-                courseDao.getCourseById(courId).getTitle());
-
+        model.addObject("marks", markService.getAllMarks());
         return model;
     }
 
-    public boolean isString(String string) {
-        if (string == null) return true;
-        return !string.matches("^-?\\d+$");
+
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    public ModelAndView delete(@PathVariable("id") Integer markId) {
+
+        System.out.println(markId);
+
+        // Uncomment this for saving in DB
+        Mark mark = markService.getMarkById(markId);
+        markService.deleteMark(mark);
+
+        ModelAndView model = new ModelAndView("marks/index");
+        model.addObject("marks", markService.getAllMarks());
+
+        return model;
     }
 
 }

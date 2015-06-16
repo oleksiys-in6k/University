@@ -21,34 +21,31 @@
         </h1>
     </div>
     <div class="row">
-        <div class="col-lg-2">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/faculties">Faculties</a></li>
-                <li><a href="/students">Students</a></li>
-                <li><a href="/courses">Courses</a></li>
-            </ul>
+        <div class="col-md-3">
+            <div class="list-group  navbar" id="sidebar">
+                <ul class="nav" id="mynav" data-spy="affix" data-offset-top="280">
+                    <li><a href="/" class="list-group-item active">Home</a></li>
+                    <li><a href="/faculties" class="list-group-item" contenteditable="false">Faculties</a></li>
+                    <li><a href="/students" class="list-group-item" contenteditable="false">Students</a></li>
+                    <li><a href="/courses" class="list-group-item" contenteditable="false">Courses</a></li>
+                </ul>
 
-            <br>
+                <br>
 
-            <ul class="nav nav-sidebar">
-                <li><a href="/marks">Marks</a></li>
-                <li class="active"><a href="bestStudent/getBestStudent">Get best student via faculty</a></li>
-                <li><a href="#">Get list of all marks</a></li>
-            </ul>
-        </div>
-        <div class="col-lg-10">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/marks" class="list-group-item" contenteditable="false">Marks</a></li>
+                    <li><a href="bestStudent/getBestStudent" class="list-group-item" contenteditable="false">Get best
+                        student via faculty</a></li>
+                    <li><a href="#" class="list-group-item" contenteditable="false">Get list of all marks</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-10">
 
 
+            </div>
         </div>
     </div>
-</div>
-<br>
-
-<p>
-    <%--<a href="marks/marksList" class="btn btn-primary">Get list of all marks</a>--%>
-</p>
-
+    <br>
 
 </div>
 </body>

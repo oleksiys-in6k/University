@@ -26,7 +26,7 @@ public class University {
         do {
             System.out.println("Chose action");
             System.out.println("\t1 - set new mark");
-            System.out.println("\t2 - get best student by faculty");
+            System.out.println("\t2 - get best student by Faculty");
             int choose = Integer.valueOf(keyboard(""));
 
             switch (choose) {

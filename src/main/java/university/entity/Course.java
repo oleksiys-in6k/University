@@ -24,6 +24,14 @@ public class Course {
     public Course() {
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
     public String getTitle() {
         return title;
     }

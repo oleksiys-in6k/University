@@ -2,51 +2,62 @@ package university.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import university.dao.facultyDao.FacultyDao;
-import university.dao.studentDao.StudentDao;
 import university.entity.Student;
-
-import java.sql.SQLException;
+import university.service.facultyService.FacultyService;
+import university.service.studentService.StudentService;
 
 @Controller
 @RequestMapping("/students")
 public class StudentsController {
 
 	@Autowired
-	private StudentDao studentDao;
+	private StudentService studentService;
 
 	@Autowired
-	private FacultyDao facultyDao;
+	private FacultyService facultyService;
 
-	@RequestMapping(value = "/studentsList", method = RequestMethod.GET)
-	public ModelAndView getAllUsers() throws SQLException {
-		ModelAndView model = new ModelAndView("student/ShowStudents");
-		model.addObject("students", studentDao.getAllStudents());
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView index() {
+		ModelAndView model = new ModelAndView("students/index");
+		model.addObject("students", studentService.getAllStudents());
 		return model;
 	}
 
-	@RequestMapping(value="/newStudent", method = RequestMethod.POST)
-	public ModelAndView getAdmissionForm() throws SQLException {
-		ModelAndView model = new ModelAndView("student/AdmissionStudentForm");
-		model.addObject("faculties", facultyDao.getAllFaculties());
+	@RequestMapping(value = "new" , method = RequestMethod.GET)
+	public ModelAndView newStudent() {
+		ModelAndView model = new ModelAndView("students/new");
+		model.addObject("faculties", facultyService.getAllFaculties());
 		return model;
 	}
 
-	@RequestMapping(value="/doneStudent", method = RequestMethod.GET)
-	public ModelAndView submitAdmissionForm(@RequestParam("studentName") String name,
-											@RequestParam("studentFaculty") String facultyId) throws SQLException {
+	@RequestMapping( value = "create", method = RequestMethod.POST)
+	public ModelAndView create(
+			@RequestParam("studentName") String name,
+			@RequestParam("studentFaculty") Integer facultyId) {
 
-		// Uncommon this for saving in DB
-		int id = Integer.parseInt(facultyId);
-//		studentDao.addStudent(new Student(name, facultyDao.getFacultyById(id)));
+		// Uncomment this for saving in DB
+		studentService.addStudent(new Student(name, facultyService.getFacultyById(facultyId)));
 
+		ModelAndView model = new ModelAndView("students/index");
+		model.addObject("students", studentService.getAllStudents());
 
-		ModelAndView model = new ModelAndView("student/AdmissionStudentSuccess");
-		model.addObject("msg","Details:: Name: "+name+ ", Faculty: " + facultyDao.getFacultyById(id).getTitle());
+		return model;
+	}
+	@RequestMapping( value = "/{id}/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@PathVariable("id") Integer studentId) {
+
+		System.out.println(studentId);
+		// Uncomment this for saving in DB
+		Student student = studentService.getStudentById(studentId);
+		studentService.deleteStudent(student);
+
+		ModelAndView model = new ModelAndView("students/index");
+		model.addObject("students", studentService.getAllStudents());
 
 		return model;
 	}

@@ -19,6 +19,8 @@ public class Faculty {
     public Faculty() {
     }
 
+
+
     public void setTitle(String title) {
         this.title = title;
     }

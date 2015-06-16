@@ -10,8 +10,6 @@ import university.dao.bestStudentDao.BestStudentDao;
 import university.dao.facultyDao.FacultyDao;
 import university.entity.Student;
 
-import java.sql.SQLException;
-
 @Controller
 @RequestMapping("/bestStudent")
 public class BestStudentController {
@@ -23,21 +21,21 @@ public class BestStudentController {
     private FacultyDao facultyDao;
 
     @RequestMapping(value = "/getBestStudent", method = RequestMethod.GET)
-    public ModelAndView getAdmissionForm() throws SQLException {
+    public ModelAndView getAdmissionForm() {
         ModelAndView model = new ModelAndView("search/SearchingBestStudent");
         model.addObject("faculties", facultyDao.getAllFaculties());
         return model;
     }
 
     @RequestMapping(value = "/doneStudent", method = RequestMethod.GET)
-    public ModelAndView searchingResult(@RequestParam("studentFaculty") String facultyId) throws SQLException {
+    public ModelAndView searchingResult(@RequestParam("studentFaculty") String facultyId) {
 
         int id = Integer.parseInt(facultyId);
         Student bestStudent = bestStudentDao.getBestStudent(facultyDao.getFacultyById(id));
 
         ModelAndView model = new ModelAndView("search/SearchingResult");
         model.addObject("msg", "Result:: Name: " + bestStudent.getName()
-                + ", is best via faculty: " + facultyDao.getFacultyById(id).getTitle());
+                + ", is best via Faculty: " + facultyDao.getFacultyById(id).getTitle());
         return model;
     }
 }
