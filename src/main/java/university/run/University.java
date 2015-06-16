@@ -1,5 +1,6 @@
 package university.run;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import university.MarkIO.reader.MarkReader;
 import university.MarkIO.writer.MarkWriter;
 import university.entity.Mark;
@@ -11,11 +12,15 @@ import java.util.Scanner;
 
 public class University {
 
+    @Autowired
     MarkReader markReader;
+
+    @Autowired
     MarkWriter markWriter;
+
     SearchBestStudent searchBestStudent;
 
-    public void execute() throws SQLException {
+    public void execute() {
 
         boolean again;
         do {

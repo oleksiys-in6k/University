@@ -1,12 +1,12 @@
 package university.MarkIO.reader;
 
-import university.dao.courseDao.CourseDao;
-import university.dao.studentDao.StudentDao;
 import university.entity.Course;
 import university.entity.Mark;
 import university.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import university.service.courseService.CourseService;
+import university.service.studentService.StudentService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -17,47 +17,32 @@ public class ConsoleMarkReader implements MarkReader {
     private Scanner scanner;
 
     @Autowired
-    private StudentDao studentDao;
+    private StudentService studentService;
 
     @Autowired
-    private CourseDao courseDao;
-
-    public Mark getMark() {
-        Course course = null;
-        Student student = null;
-        try {
-            course = chooseCourseFromFist();
-            student = chooseStudentFromFist();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        int score = getMarFromKeyboard();
-
-        return new Mark(student, course, score);
-    }
+    private CourseService courseService;
 
     private int getMarFromKeyboard() {
         String reply = keyboard("InputMark: ");
         return Integer.valueOf(reply);
     }
 
-    private Student chooseStudentFromFist() throws SQLException {
+    private Student chooseStudentFromFist() {
         System.out.println("List of students:");
-        System.out.println(studentDao.getAllStudents());
+        System.out.println(studentService.getAllStudents());
 
         String reply = keyboard("Choose student ");
         Integer index = Integer.valueOf(reply);
-        return studentDao.getStudentById(index);
+        return studentService.getStudentById(index);
     }
 
-    private Course chooseCourseFromFist() throws SQLException {
+    private Course chooseCourseFromFist() {
         System.out.println("List of courses:");
-        System.out.println(courseDao.getAllCourses());
+        System.out.println(courseService.getAllCourses());
 
         String reply = keyboard("Choose course");
         Integer index = Integer.valueOf(reply);
-        return courseDao.getCourseById(index);
+        return courseService.getCourseById(index);
     }
 
     private String keyboard(String message) {
@@ -65,12 +50,12 @@ public class ConsoleMarkReader implements MarkReader {
         return scanner.next();
     }
 
-    public void setStudentDao(StudentDao studentDao) {
-        this.studentDao = studentDao;
+    public void setStudentDao(StudentService studentService) {
+        this.studentService = studentService;
     }
 
-    public void setCourseDao(CourseDao courseDao) {
-        this.courseDao = courseDao;
+    public void setCourseDao(CourseService courseService) {
+        this.courseService = courseService;
     }
 
     public ConsoleMarkReader() {
@@ -82,4 +67,13 @@ public class ConsoleMarkReader implements MarkReader {
     }
 
 
+    @Override
+    public Mark getMark() {
+        Course course = chooseCourseFromFist();
+        Student student = chooseStudentFromFist();
+
+        int score = getMarFromKeyboard();
+
+        return new Mark(student, course, score);
+    }
 }

@@ -6,9 +6,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface FacultyDao {
-    void addFaculty(Faculty faculty) throws SQLException;
-    Faculty getFacultyById(Integer id) throws SQLException;
-    List getAllFaculties() throws SQLException;
-    void deleteFaculty(Faculty faculty) throws SQLException;
+    void addFaculty(Faculty faculty);
+    void updateFaculty(Faculty faculty);
+    void deleteFaculty(Faculty faculty);
+    Faculty getFacultyById(Integer id);
+    List getAllFaculties();
 
 }

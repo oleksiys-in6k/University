@@ -11,29 +11,44 @@
 
 </head>
 <body>
+
+
 <div class="container">
 
-    <br>
+    <div class="page-header">
+        <h1>University
+            <small>university</small>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-2">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/faculties">Faculties</a></li>
+                <li><a href="/students">Students</a></li>
+                <li><a href="/courses">Courses</a></li>
+            </ul>
 
-    <p>
-        <a href="marks/marksList" class="btn btn-primary">Get list of all marks</a>
-    </p>
+            <br>
 
-    <p>
-        <a href="students/studentsList" class="btn btn-primary">Get list of all students</a>
-    </p>
+            <ul class="nav nav-sidebar">
+                <li><a href="/marks">Marks</a></li>
+                <li class="active"><a href="bestStudent/getBestStudent">Get best student via faculty</a></li>
+                <li><a href="#">Get list of all marks</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-10">
 
-    <p>
-        <a href="faculties/facultiesList" class="btn btn-primary">Get list of all faculties</a>
-    </p>
 
-    <p>
-        <a href="courses/coursesList" class="btn btn-primary">Get list of all courses</a>
-    </p>
+        </div>
+    </div>
+</div>
+<br>
 
-    <p>
-        <a href="<c:url value="/bestStudent/getBestStudent"/>" class="btn btn-primary">Get best student via faculty</a>
-    </p>
+<p>
+    <%--<a href="marks/marksList" class="btn btn-primary">Get list of all marks</a>--%>
+</p>
+
 
 </div>
 </body>

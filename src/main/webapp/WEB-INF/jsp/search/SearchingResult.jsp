@@ -12,8 +12,8 @@
 <div class="container">
     <br>
     <p>
-        <a href="<c:url value="/"/>" class="btn btn-primary">Back to main menu</a>
-        <a href="<c:url value="/students/studentsList"/>" class="btn btn-primary">Show all student</a>
+        <a href="/" class="btn btn-primary">Back to main menu</a>
+        <a href="/students/studentsList" class="btn btn-primary">Show all student</a>
     </p>
 
     <h3>${msg}</h3>

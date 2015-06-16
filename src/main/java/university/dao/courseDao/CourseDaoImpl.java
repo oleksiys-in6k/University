@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import university.entity.Course;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository("courseDao")
@@ -21,23 +20,29 @@ public class CourseDaoImpl implements CourseDao {
         return sessionFactory.getCurrentSession();
     }
 
-    public void addCourse(Course course) throws SQLException {
+    public void addCourse(Course course) {
         Session session = getSession();
         session.save(course);
     }
 
-    public Course getCourseById(Integer id) throws SQLException {
+    public Course getCourseById(Integer id) {
         Session session = getSession();
         return (Course) session.get(Course.class, id);
     }
 
-    public List getAllCourses() throws SQLException {
+    public List getAllCourses() {
         Session session = getSession();
         return session.createCriteria(Course.class).list();
     }
 
-    public void deleteCourse(Course course) throws SQLException {
+    public void deleteCourse(Course course) {
         Session session = getSession();
         session.delete(course);
+    }
+
+    @Override
+    public void updateCourse(Course course) {
+        Session session = getSession();
+        session.update(course);
     }
 }

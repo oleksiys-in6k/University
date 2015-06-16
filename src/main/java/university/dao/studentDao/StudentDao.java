@@ -8,11 +8,12 @@ import java.util.List;
 
 public interface StudentDao {
 
-    void addStudent(Student student) throws SQLException;
-    Student getStudentById(Integer id) throws SQLException;
-    List getAllStudents() throws SQLException;
-    void deleteStudent(Student student) throws SQLException;
-    Integer getCountOfStudents() throws SQLException;
+    void addStudent(Student student);
+    void deleteStudent(Student student);
+    void updateStudent(Student student);
+    Student getStudentById(Integer id);
+    List getAllStudents();
+    Integer getCountOfStudents();
 
 
 

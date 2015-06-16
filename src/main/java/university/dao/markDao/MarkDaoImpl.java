@@ -21,22 +21,22 @@ public class MarkDaoImpl implements MarkDao {
         return sessionFactory.getCurrentSession();
     }
 
-    public void addMark(Mark mark) throws SQLException {
+    public void addMark(Mark mark) {
         Session session = getSession();
         session.save(mark);
     }
 
-    public Mark getMarkById(Integer id) throws SQLException {
+    public Mark getMarkById(Integer id) {
         Session session = getSession();
         return (Mark) session.get(Mark.class, id);
     }
 
-    public List getAllMarks() throws SQLException {
+    public List getAllMarks(){
         Session session = getSession();
         return session.createCriteria(Mark.class).list();
     }
 
-    public void deleteMark(Mark mark) throws SQLException {
+    public void deleteMark(Mark mark) {
         Session session = getSession();
         session.delete(mark);
     }

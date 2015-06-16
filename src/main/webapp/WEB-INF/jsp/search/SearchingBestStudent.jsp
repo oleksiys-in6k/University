@@ -14,7 +14,7 @@
 <div class="container">
     <h2> search for the best student (the sum of marks) throughout the university on faculty </h2>
 
-    <form action="<c:url value="/bestStudent/doneStudent"/>" method="get">
+    <form action="/bestStudent/doneStudent" method="get">
         <p>
             Choose faculty :
 

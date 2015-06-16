@@ -22,29 +22,34 @@ public class StudentDaoImpl implements StudentDao {
         return sessionFactory.getCurrentSession();
     }
 
-
-    public void addStudent(Student student) throws SQLException {
+    public void addStudent(Student student) {
         Session session = getSession();
         session.save(student);
     }
 
-    public Student getStudentById(Integer id) throws SQLException {
+    public Student getStudentById(Integer id) {
         Session session = getSession();
         return (Student) session.get(Student.class, id);
     }
 
     @SuppressWarnings("unchecked")
-    public List<Student> getAllStudents() throws SQLException {
+    public List<Student> getAllStudents() {
         Session session = getSession();
         return session.createCriteria(Student.class).list();
     }
 
-    public void deleteStudent(Student student) throws SQLException {
+    public void deleteStudent(Student student) {
         Session session = getSession();
         session.delete(student);
     }
 
-    public Integer getCountOfStudents() throws SQLException {
+    @Override
+    public void updateStudent(Student student) {
+        Session session = getSession();
+        session.update(student);
+    }
+
+    public Integer getCountOfStudents() {
         Session session = getSession();
         return session.createCriteria(Student.class).list().size();
     }

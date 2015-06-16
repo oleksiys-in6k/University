@@ -22,25 +22,30 @@ public class FacultyDaoImpl implements FacultyDao {
         return sessionFactory.getCurrentSession();
     }
 
-    public void addFaculty(Faculty faculty) throws SQLException {
+    public void addFaculty(Faculty faculty) {
         Session session = getSession();
         session.save(faculty);
     }
 
-    public Faculty getFacultyById(Integer id) throws SQLException {
+    @Override
+    public void updateFaculty(Faculty faculty) {
+        Session session = getSession();
+        session.update(faculty);
+    }
+
+    public Faculty getFacultyById(Integer id) {
         Session session = getSession();
         return (Faculty) session.get(Faculty.class, id);
     }
 
-    public List getAllFaculties() throws SQLException {
+    public List getAllFaculties() {
         Session session = getSession();
         return session.createCriteria(Faculty.class).list();
     }
 
-    public void deleteFaculty(Faculty faculty) throws SQLException {
+    public void deleteFaculty(Faculty faculty) {
         Session session = getSession();
         session.delete(faculty);
 
     }
-
 }
