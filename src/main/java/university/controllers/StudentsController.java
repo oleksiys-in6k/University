@@ -30,7 +30,7 @@ public class StudentsController {
 
 	@RequestMapping(value = "new" , method = RequestMethod.GET)
 	public ModelAndView newStudent() {
-		ModelAndView model = new ModelAndView("students/new");
+		ModelAndView model = new ModelAndView("newStudent");
 		model.addObject("faculties", facultyService.getAllFaculties());
 		return model;
 	}
@@ -43,7 +43,7 @@ public class StudentsController {
 		// Uncomment this for saving in DB
 		studentService.addStudent(new Student(name, facultyService.getFacultyById(facultyId)));
 
-		ModelAndView model = new ModelAndView("students/index");
+		ModelAndView model = new ModelAndView("indexStudent");
 		model.addObject("students", studentService.getAllStudents());
 
 		return model;
@@ -56,7 +56,7 @@ public class StudentsController {
 		Student student = studentService.getStudentById(studentId);
 		studentService.deleteStudent(student);
 
-		ModelAndView model = new ModelAndView("students/index");
+		ModelAndView model = new ModelAndView("indexStudent");
 		model.addObject("students", studentService.getAllStudents());
 
 		return model;

@@ -27,7 +27,7 @@ public class MarksController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index() {
-        ModelAndView model = new ModelAndView("marks/index");
+        ModelAndView model = new ModelAndView("indexMark");
         model.addObject("marks", markService.getAllMarks());
         return model;
     }
@@ -35,7 +35,7 @@ public class MarksController {
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView getAdmissionMarkForm() {
 
-        ModelAndView model = new ModelAndView("marks/new");
+        ModelAndView model = new ModelAndView("newMark");
         model.addObject("students", studentService.getAllStudents());
         model.addObject("courses", courseService.getAllCourses());
         return model;
@@ -52,7 +52,7 @@ public class MarksController {
                 courseService.getCourseById(courseId),
                 rating));
 
-        ModelAndView model = new ModelAndView("marks/index");
+        ModelAndView model = new ModelAndView("indexMark");
 
         model.addObject("marks", markService.getAllMarks());
         return model;
@@ -68,7 +68,7 @@ public class MarksController {
         Mark mark = markService.getMarkById(markId);
         markService.deleteMark(mark);
 
-        ModelAndView model = new ModelAndView("marks/index");
+        ModelAndView model = new ModelAndView("indexMark");
         model.addObject("marks", markService.getAllMarks());
 
         return model;

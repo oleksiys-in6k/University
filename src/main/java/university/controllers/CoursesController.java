@@ -50,13 +50,22 @@ public class CoursesController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public ModelAndView editCourse(@RequestParam("title") String title,
-                                    @RequestParam("faculty") Integer facultyId,
+                                    @RequestParam("facultyId") Integer facultyId,
                                     @PathVariable("id") Integer courseId) {
         ModelAndView model = new ModelAndView("indexCourse");
+
+        System.out.println(title);
+        System.out.println(facultyService.getFacultyById(facultyId));
+        System.out.println(courseService.getCourseById(courseId));
+
         Course course = courseService.getCourseById(courseId);
         course.setTitle(title);
         course.setFaculty(facultyService.getFacultyById(facultyId));
         courseService.updateCourse(course);
+
+        System.out.println(title);
+        System.out.println(facultyService.getFacultyById(facultyId));
+        System.out.println(courseService.getCourseById(courseId));
 
         model.addObject("courses", courseService.getAllCourses());
 
