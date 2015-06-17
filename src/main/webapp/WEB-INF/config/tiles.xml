@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="mainTemplate" template="/WEB-INF/views/mainTemplate.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+        </definition>
+
+    <!--main JSP-->
+
+    <definition name="/main" extends="mainTemplate">
+        <put-attribute name="title" value="Main title"/>
+        <!--<put-attribute name="body" value="/WEB-INF/tiles/body.jsp"/>-->
+    </definition>
+
+    <!--Departments JSP-->
+
+    <definition name="faculties" extends="mainTemplate">
+        <put-attribute name="title" value="Departments"/>
+        <put-attribute name="actions" value="/WEB-INF/views/tiles/departments/actions.jsp"/>
+    </definition>
+
+    <!--<definition name="faculties/" extends="Departments">-->
+        <!--<put-attribute name="body" value="/WEB-INF/tiles/departments/body_table.jsp"/>-->
+    <!--</definition>-->
+
+    <!--<definition name="faculties/new" extends="Departments">-->
+        <!--<put-attribute name="body" value="/WEB-INF/tiles/departments/body_new.jsp"/>-->
+    <!--</definition>-->
+
+    <!--<definition name="faculties/edit" extends="Departments">-->
+        <!--<put-attribute name="body" value="/WEB-INF/tiles/departments/body_edit.jsp"/>-->
+    <!--</definition>-->
+
+</tiles-definitions>

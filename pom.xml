@@ -16,7 +16,6 @@
         <java.version>1.8</java.version>
         <spring.version>4.1.6.RELEASE</spring.version>
         <hibernate.version>4.3.10.Final</hibernate.version>
-        <apache.tiles>3.0.5</apache.tiles>
     </properties>
 
     <dependencies>
@@ -106,16 +105,32 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>5.1.3.Final</version>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>3.0.5</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-jsp</artifactId>
-            <version>${apache.tiles}</version>
+            <artifactId>tiles-core</artifactId>
+            <version>3.0.5</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-api</artifactId>
+            <version>3.0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+
 
     </dependencies>
 
@@ -132,14 +147,15 @@
                 </configuration>
             </plugin>
 
+
             <!--disabling tests-->
 
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<artifactId>maven-surefire-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<skip>true</skip>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
 
         </plugins>
     </build>

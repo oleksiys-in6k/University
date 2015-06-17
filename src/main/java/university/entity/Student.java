@@ -11,7 +11,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int studentId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "facultyId")
     private Faculty faculty;
 

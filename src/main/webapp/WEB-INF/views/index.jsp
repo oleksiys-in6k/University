@@ -12,7 +12,6 @@
 </head>
 <body>
 
-
 <div class="container">
 
     <div class="page-header">
@@ -40,7 +39,6 @@
                 </ul>
             </div>
             <div class="col-lg-10">
-
 
             </div>
         </div>
