@@ -20,10 +20,11 @@ public class BestStudentController {
     @Autowired
     private FacultyDao facultyDao;
 
-    @RequestMapping(value = "/getBestStudent", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getAdmissionForm() {
-        ModelAndView model = new ModelAndView("search/SearchingBestStudent");
+        ModelAndView model = new ModelAndView("bestStudent");
         model.addObject("faculties", facultyDao.getAllFaculties());
+//        model.addObject("msg", "Result:: Name: , is best via Faculty: ");
         return model;
     }
 
@@ -33,7 +34,11 @@ public class BestStudentController {
         int id = Integer.parseInt(facultyId);
         Student bestStudent = bestStudentDao.getBestStudent(facultyDao.getFacultyById(id));
 
-        ModelAndView model = new ModelAndView("search/SearchingResult");
+
+
+        ModelAndView model = new ModelAndView("bestStudent");
+
+        model.addObject("faculties", facultyDao.getAllFaculties());
         model.addObject("msg", "Result:: Name: " + bestStudent.getName()
                 + ", is best via Faculty: " + facultyDao.getFacultyById(id).getTitle());
         return model;

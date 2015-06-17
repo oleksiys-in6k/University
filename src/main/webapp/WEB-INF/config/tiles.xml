@@ -16,7 +16,6 @@
 
     <definition name="/main" extends="mainTemplate">
         <put-attribute name="title" value="Main title"/>
-        <!--<put-attribute name="body" value="/WEB-INF/tiles/body.jsp"/>-->
     </definition>
 
     <!--Faculty JSP-->
@@ -116,5 +115,13 @@
         <put-attribute name="body" value="/WEB-INF/views/Marks/deleteMarks.jsp"/>
         <put-attribute name="menu" value="/WEB-INF/views/Marks/menu.jsp"/>
     </definition>
+
+    <!-- Search bestStudent JSP-->
+    <definition name="bestStudent" extends="mainTemplate">
+        <put-attribute name="title" value="Searching best student"/>
+        <put-attribute name="body" value="/WEB-INF/views/search/bestStudent.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/search/menu.jsp"/>
+    </definition>
+
 
 </tiles-definitions>
