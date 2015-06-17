@@ -23,7 +23,7 @@ public class StudentsController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView index() {
-		ModelAndView model = new ModelAndView("students/index");
+		ModelAndView model = new ModelAndView("indexStudent");
 		model.addObject("students", studentService.getAllStudents());
 		return model;
 	}

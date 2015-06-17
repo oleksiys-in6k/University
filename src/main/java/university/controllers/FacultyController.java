@@ -19,20 +19,20 @@ public class FacultyController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index() {
-        ModelAndView model = new ModelAndView("faculties/indexFaculty");
+        ModelAndView model = new ModelAndView("indexFaculty");
         model.addObject("faculties", facultyService.getAllFaculties());
         return model;
     }
 
     @RequestMapping(value = "new", method = RequestMethod.GET)
     public ModelAndView newFaculty() {
-        ModelAndView model = new ModelAndView("faculties/newFaculty");
+        ModelAndView model = new ModelAndView("newFaculty");
         return model;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView create(@RequestParam("title") String title) {
-        ModelAndView model = new ModelAndView("faculties/indexFaculty");
+        ModelAndView model = new ModelAndView("indexFaculty");
         Faculty faculty = new Faculty(title);
         facultyService.addFaculty(faculty);
 
@@ -44,7 +44,7 @@ public class FacultyController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public ModelAndView editStudent(@RequestParam("title") String title,
                                     @PathVariable("id") Integer facultyId) {
-        ModelAndView model = new ModelAndView("faculties/indexFaculty");
+        ModelAndView model = new ModelAndView("indexFaculty");
         Faculty faculty = facultyService.getFacultyById(facultyId);
         faculty.setTitle(title);
         facultyService.updateFaculty(faculty);
@@ -56,7 +56,7 @@ public class FacultyController {
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") Integer facultyId) {
-        ModelAndView modelAndView = new ModelAndView("faculties/editFaculty");
+        ModelAndView modelAndView = new ModelAndView("editFaculty");
         Faculty faculty = facultyService.getFacultyById(facultyId);
         modelAndView.addObject("faculty", faculty);
         return modelAndView;
@@ -71,7 +71,7 @@ public class FacultyController {
         Faculty faculty = facultyService.getFacultyById(facultyId);
         facultyService.deleteFaculty(faculty);
 
-        ModelAndView model = new ModelAndView("faculties/indexFaculty");
+        ModelAndView model = new ModelAndView("indexFaculty");
         model.addObject("faculties", facultyService.getAllFaculties());
 
         return model;

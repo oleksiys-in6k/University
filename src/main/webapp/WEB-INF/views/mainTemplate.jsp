@@ -5,30 +5,36 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <%--<title>--%>
-        <%--<tiles:insertAttribute name="title" />--%>
-    <%--</title>--%>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <title>
+        <tiles:insertAttribute name="title" />
+    </title>
 </head>
 <body>
-<table border="1" cellpadding="2" cellspacing="2" align="left">
-    <tr>
-        <td colspan="2" align="center">
-            <tiles:insertAttribute name="header"/>
-        </td>
-    </tr>
-    <tr>
-        <td>
+
+<div class="container">
+
+    <div class="page-header">
+        <tiles:insertAttribute name="header"/>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
             <tiles:insertAttribute name="menu"/>
-        </td>
-        <td>
+        </div>
+        <div class="col-lg-9">
             <tiles:insertAttribute name="body"/>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">
-            <tiles:insertAttribute name="footer"/>
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
+    <div class="row" align="center">
+        <tiles:insertAttribute name="footer"/>
+    </div>
+
+</div>
 </body>
 </html>
+
+
+
+
+

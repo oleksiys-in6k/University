@@ -1,4 +1,4 @@
-<div class="container">
+
     <h1> Save new faculty </h1>
 
     <form action="/faculties/create" method="post">
@@ -12,5 +12,5 @@
         <a href="/faculties" class="btn btn-primary">Cancel</a>
 
     </form>
-</div>
+
 

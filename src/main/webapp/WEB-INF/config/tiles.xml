@@ -19,11 +19,59 @@
         <!--<put-attribute name="body" value="/WEB-INF/tiles/body.jsp"/>-->
     </definition>
 
-    <!--Departments JSP-->
+    <!--Faculty JSP-->
 
-    <definition name="faculties" extends="mainTemplate">
-        <put-attribute name="title" value="Departments"/>
-        <put-attribute name="actions" value="/WEB-INF/views/tiles/departments/actions.jsp"/>
+    <definition name="indexFaculty" extends="mainTemplate">
+        <put-attribute name="title" value="Show all faculties"/>
+        <put-attribute name="body" value="/WEB-INF/views/faculties/indexFaculty.jsp"/>
+    </definition>
+
+    <definition name="newFaculty" extends="mainTemplate">
+        <put-attribute name="title" value="Admission new faculty"/>
+        <put-attribute name="body" value="/WEB-INF/views/faculties/newFaculty.jsp"/>
+    </definition>
+
+    <definition name="editFaculty" extends="mainTemplate">
+        <put-attribute name="title" value="Edit faculty"/>
+        <put-attribute name="body" value="/WEB-INF/views/faculties/editFaculty.jsp"/>
+    </definition>
+
+    <definition name="deleteFaculty" extends="mainTemplate">
+        <put-attribute name="title" value="Delete faculty"/>
+        <put-attribute name="body" value="/WEB-INF/views/faculties/deleteFaculty.jsp"/>
+    </definition>
+
+
+
+
+
+    <!--Course JSP-->
+
+    <definition name="indexCourse" extends="mainTemplate">
+        <put-attribute name="title" value="Show all courses"/>
+        <put-attribute name="body" value="/WEB-INF/views/courses/indexCourse.jsp"/>
+    </definition>
+
+    <definition name="newCourse" extends="mainTemplate">
+        <put-attribute name="title" value="Admission new course"/>
+        <put-attribute name="body" value="/WEB-INF/views/courses/newCourses.jsp"/>
+    </definition>
+
+    <definition name="editCourse" extends="mainTemplate">
+        <put-attribute name="title" value="Edit course"/>
+        <put-attribute name="body" value="/WEB-INF/views/courses/editCourses.jsp"/>
+    </definition>
+
+    <definition name="deleteCourse" extends="mainTemplate">
+        <put-attribute name="title" value="Delete course"/>
+        <put-attribute name="body" value="/WEB-INF/views/courses/deleteCourses.jsp"/>
+    </definition>
+
+    <!--Student JSP-->
+
+    <definition name="indexStudent" extends="mainTemplate">
+        <put-attribute name="title" value="Show all students"/>
+        <put-attribute name="body" value="/WEB-INF/views/students/indexStudent.jsp"/>
     </definition>
 
     <!--<definition name="faculties/" extends="Departments">-->
