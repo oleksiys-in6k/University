@@ -6,8 +6,17 @@ import javax.persistence.*;
 @Entity(name = "student")
 public class Student {
 
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Id
     @Column(name = "studentId")
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int studentId;
 

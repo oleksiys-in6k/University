@@ -39,7 +39,7 @@ public class BestStudentController {
         ModelAndView model = new ModelAndView("bestStudent");
 
         model.addObject("faculties", facultyDao.getAllFaculties());
-        model.addObject("msg", "Result:: Name: " + bestStudent.getName()
+        model.addObject("msg", "Name: " + bestStudent.getName()
                 + ", is best via Faculty: " + facultyDao.getFacultyById(id).getTitle());
         return model;
     }

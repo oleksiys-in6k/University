@@ -1,13 +1,13 @@
 package university.dao.bestStudentDao;
 
-import org.springframework.stereotype.Repository;
-import university.entity.Faculty;
-import university.entity.Student;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import university.entity.Faculty;
+import university.entity.Student;
 
 @Repository("bestStudentDao")
 @Transactional
@@ -19,7 +19,7 @@ public class BestStudentDaoImpl implements BestStudentDao {
     public Student getBestStudent(Faculty faculty) {
         Session session = getSession();
         SQLQuery query = session.createSQLQuery(
-                "SELECT student.studentId, student.name, course.facultyId, sum(Mark.rating) as sumMark " +
+                "SELECT student.studentId, student.name, course.facultyId, sum(Mark.rating) AS sumMark " +
                         "FROM student " +
                         "INNER JOIN Mark ON student.studentId = Mark.studentId " +
                         "INNER JOIN course ON course.courseId = Mark.courseId " +
@@ -33,8 +33,9 @@ public class BestStudentDaoImpl implements BestStudentDao {
         query.setParameter("facultyId", faculty.getFacultyId());
 
         Student student = (Student) query.uniqueResult();
-         if (student == null)
-             student = new Student(null,null);
+
+//         if (student == null)
+//             student = new Student(null,null);
 
         return student;
     }

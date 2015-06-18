@@ -15,6 +15,9 @@ public class FacultyServiceImpl implements FacultyService {
     @Autowired
     private FacultyDao facultyDao;
 
+    public FacultyServiceImpl() {
+    }
+
     public FacultyServiceImpl(FacultyDao facultyDao) {
         this.facultyDao = facultyDao;
     }
