@@ -19,7 +19,9 @@ public class Faculty {
     public Faculty() {
     }
 
-
+    public void setFacultyId(Integer facultyId) {
+        this.facultyId = facultyId;
+    }
 
     public void setTitle(String title) {
         this.title = title;

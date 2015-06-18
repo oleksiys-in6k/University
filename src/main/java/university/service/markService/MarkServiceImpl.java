@@ -34,4 +34,8 @@ public class MarkServiceImpl implements MarkService {
     public void deleteMark(Mark mark) {
         markDao.deleteMark(mark);
     }
+
+    public void setMarkDao(MarkDao markDao) {
+        this.markDao = markDao;
+    }
 }

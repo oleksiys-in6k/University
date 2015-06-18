@@ -40,4 +40,8 @@ public class CourseServiceImpl implements CourseService {
     public void deleteCourse(Course course) {
         courseDao.deleteCourse(course);
     }
+
+    public void setCourseDao(CourseDao courseDao) {
+        this.courseDao = courseDao;
+    }
 }

@@ -44,4 +44,8 @@ public class StudentServiceImpl implements StudentService {
     public Integer getCountOfStudents() {
         return studentDao.getCountOfStudents();
     }
+
+    public void setStudentDao(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
 }

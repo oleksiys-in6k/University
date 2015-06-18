@@ -15,6 +15,10 @@ public class FacultyServiceImpl implements FacultyService {
     @Autowired
     private FacultyDao facultyDao;
 
+    public FacultyServiceImpl(FacultyDao facultyDao) {
+        this.facultyDao = facultyDao;
+    }
+
     @Override
     public void addFaculty(Faculty faculty) {
         facultyDao.addFaculty(faculty);
@@ -38,5 +42,9 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     public void deleteFaculty(Faculty faculty) {
         facultyDao.deleteFaculty(faculty);
+    }
+
+    public void setFacultyDao(FacultyDao facultyDao) {
+        this.facultyDao = facultyDao;
     }
 }
