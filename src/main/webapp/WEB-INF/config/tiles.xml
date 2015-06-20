@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <definition name="mainTemplate" template="/WEB-INF/views/mainTemplate.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+        </definition>
+
+    <!--main JSP-->
+
+    <definition name="/main" extends="mainTemplate">
+        <put-attribute name="title" value="Main title"/>
+    </definition>
+
+    <!--Faculty JSP-->
+
+    <definition name="indexFaculty" extends="mainTemplate">
+        <put-attribute name="title" value="Show all faculties"/>
+        <put-attribute name="body" value="/WEB-INF/views/faculties/indexFaculty.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/faculties/menu.jsp"/>
+    </definition>
+
+    <definition name="newFaculty" extends="mainTemplate">
+        <put-attribute name="title" value="Admission new faculty"/>
+        <put-attribute name="body" value="/WEB-INF/views/faculties/newFaculty.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/faculties/menu.jsp"/>
+    </definition>
+
+    <definition name="editFaculty" extends="mainTemplate">
+        <put-attribute name="title" value="Edit faculty"/>
+        <put-attribute name="body" value="/WEB-INF/views/faculties/editFaculty.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/faculties/menu.jsp"/>
+    </definition>
+
+    <definition name="deleteFaculty" extends="mainTemplate">
+        <put-attribute name="title" value="Delete faculty"/>
+        <put-attribute name="menu" value="/WEB-INF/views/faculties/menu.jsp"/>
+    </definition>
+
+    <!--Course JSP-->
+
+    <definition name="indexCourse" extends="mainTemplate">
+        <put-attribute name="title" value="Show all courses"/>
+        <put-attribute name="body" value="/WEB-INF/views/courses/indexCourse.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/courses/menu.jsp"/>
+    </definition>
+
+    <definition name="newCourse" extends="mainTemplate">
+        <put-attribute name="title" value="Admission new course"/>
+        <put-attribute name="body" value="/WEB-INF/views/courses/newCourses.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/courses/menu.jsp"/>
+    </definition>
+
+    <definition name="editCourse" extends="mainTemplate">
+        <put-attribute name="title" value="Edit course"/>
+        <put-attribute name="body" value="/WEB-INF/views/courses/editCourses.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/courses/menu.jsp"/>
+    </definition>
+
+    <definition name="deleteCourse" extends="mainTemplate">
+        <put-attribute name="title" value="Delete course"/>
+        <put-attribute name="menu" value="/WEB-INF/views/courses/menu.jsp"/>
+    </definition>
+
+    <!--Student JSP-->
+
+    <definition name="indexStudent" extends="mainTemplate">
+        <put-attribute name="title" value="Show all students"/>
+        <put-attribute name="body" value="/WEB-INF/views/students/indexStudent.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/students/menu.jsp"/>
+    </definition>
+
+    <definition name="newStudent" extends="mainTemplate">
+        <put-attribute name="title" value="Admission new Student"/>
+        <put-attribute name="body" value="/WEB-INF/views/students/newStudent.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/students/menu.jsp"/>
+    </definition>
+
+    <definition name="editStudent" extends="mainTemplate">
+        <put-attribute name="title" value="Edit Student"/>
+        <put-attribute name="menu" value="/WEB-INF/views/students/menu.jsp"/>
+    </definition>
+
+    <definition name="deleteStudent" extends="mainTemplate">
+        <put-attribute name="title" value="Delete Student"/>
+        <put-attribute name="menu" value="/WEB-INF/views/students/menu.jsp"/>
+    </definition>
+
+    <!--Student JSP-->
+
+    <definition name="indexMark" extends="mainTemplate">
+        <put-attribute name="title" value="Show all marks"/>
+        <put-attribute name="body" value="/WEB-INF/views/Marks/indexMark.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/Marks/menu.jsp"/>
+    </definition>
+
+    <definition name="newMark" extends="mainTemplate">
+        <put-attribute name="title" value="Admission new Mark"/>
+        <put-attribute name="body" value="/WEB-INF/views/Marks/newMark.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/Marks/menu.jsp"/>
+    </definition>
+
+    <definition name="deleteMark" extends="mainTemplate">
+        <put-attribute name="title" value="Delete mark"/>
+        <put-attribute name="menu" value="/WEB-INF/views/Marks/menu.jsp"/>
+    </definition>
+
+    <!-- Search bestStudent JSP-->
+    <definition name="bestStudent" extends="mainTemplate">
+        <put-attribute name="title" value="Searching best student"/>
+        <put-attribute name="body" value="/WEB-INF/views/search/bestStudent.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/search/menu.jsp"/>
+    </definition>
+
+
+</tiles-definitions>
