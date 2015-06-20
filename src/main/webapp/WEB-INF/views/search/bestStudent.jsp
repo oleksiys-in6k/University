@@ -1,51 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
+<%--<html>--%>
+<%--<head>--%>
 
-<h2> search for the best student (the sum of marks) throughout the university on faculty </h2>
+    <%--<script src="<c:url value="/resources/core/jquery.1.10.2.min.js" />"></script>--%>
+    <%--<script src="<c:url value="/resources/core/jquery.autocomplete.min.js" />"></script>--%>
+    <%--<link href="<c:url value="/resources/core/main.css" />" rel="stylesheet">--%>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>autocomplete demo</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-</head>
+<%--</head>--%>
+<%--<body>--%>
+<%--<h2>Spring MVC + jQuery + Autocomplete example</h2>--%>
+
+<%--<div>--%>
+    <%--<input type="text"  id="w-input-search" value="">--%>
+		<%--<span>--%>
+			<%--<button id="w-button-search" type="button">Search</button>--%>
+		<%--</span>--%>
+<%--</div>--%>
+
+<%--<script>--%>
+    <%--$(document).ready(function() {--%>
+
+        <%--$('#w-input-search').autocomplete({--%>
+            <%--serviceUrl: '${pageContext.request.contextPath}/getTags',--%>
+            <%--paramName: "tagName",--%>
+            <%--delimiter: ",",--%>
+            <%--transformResult: function(response) {--%>
+
+                <%--return {--%>
+
+                    <%--suggestions: $.map($.parseJSON(response), function(item) {--%>
+
+                        <%--return { value: item.tagName, data: item.id };--%>
+                    <%--})--%>
+
+                <%--};--%>
+
+            <%--}--%>
+
+        <%--});--%>
 
 
-<body>
-<div id ="conteudo">
-    <h1>Auto complete com Jquery e Jsp</h1>
-    <input type ="text" name ="txtnomepais" id ="nomepais"/>
-</div>
+    <%--});--%>
+<%--</script>--%>
 
-<script>
-    $().ready(function() {
-        $("#nomepais").autocomplete("getFaculties.jsp", {
-            width: 303,
-            scrollHeight: 220
-        });
-    })
-</script>
-
-
-
-<%--<form action="/bestStudent/doneStudent" method="get">--%>
-    <%--<p>--%>
-        <%--Choose faculty :--%>
-
-        <%--<label>--%>
-            <%--<select name="studentFaculty" items="${faculties}">--%>
-                <%--<c:forEach items="${faculties}" var="faculty">--%>
-                    <%--<option value="${faculty.facultyId}">${faculty.title}</option>--%>
-                <%--</c:forEach>--%>
-            <%--</select>--%>
-        <%--</label>--%>
-    <%--</p>--%>
-    <%--<button type="submit" value=" Send" class="btn btn-success">Get best student</button>--%>
-    <%--<a href="<c:url value="/"/>" class="btn btn-primary">Cancel</a>--%>
-
-<%--</form>--%>
-
-<h3>${msg}</h3>
+<%--</body>--%>
+<%--</html>--%>

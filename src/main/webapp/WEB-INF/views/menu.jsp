@@ -4,6 +4,7 @@
         <li><a href="/faculties" class="list-group-item" contenteditable="false">Faculties</a></li>
         <li><a href="/students" class="list-group-item" contenteditable="false">Students</a></li>
         <li><a href="/courses" class="list-group-item" contenteditable="false">Courses</a></li>
+        <li><a href="/example/" class="list-group-item" contenteditable="false">example</a></li>
     </ul>
 
     <br>
