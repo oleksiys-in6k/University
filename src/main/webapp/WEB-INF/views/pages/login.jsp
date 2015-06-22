@@ -37,11 +37,11 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-<h1>Spring Security Login Form (Database + Hibernate Authentication)</h1>
+<%--<h1>Spring Security Login Form (Database + Hibernate Authentication)</h1>--%>
 
 <div id="login-box">
 
-    <%--<h3>Login with Username and Password</h3>--%>
+    <h3>Login with Username and Password</h3>
 
     <c:if test="${not empty error}">
         <div class="error">${error}</div>
@@ -51,7 +51,7 @@
     </c:if>
 
     <form name='loginForm'
-          action="<c:url value='/login' />" method='POST'>
+          action="/login" method='POST'>
 
         <table>
             <tr>

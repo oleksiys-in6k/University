@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
-import university.dao.studentDao.StudentDao;
 import university.entity.Student;
 import university.entity.UserRole;
 import university.service.studentService.StudentService;
@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 @Transactional
+@EnableTransactionManagement
 @Service("userDetailsService")
 public class MyUserDetailsService implements UserDetailsService {
 

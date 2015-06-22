@@ -1,8 +1,6 @@
 package university.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "userRole")
@@ -18,6 +16,9 @@ public class UserRole {
 
 	public UserRole(String userRoles) {
 		this.userRole = userRoles;
+	}
+
+	public UserRole() {
 	}
 
 	public String getUserRoles() {

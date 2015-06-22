@@ -1,7 +1,8 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.springframework.org/schema/beans
+             xsi:schemaLocation="
+             http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-4.0.xsd">
@@ -14,7 +15,7 @@
         <access-denied-handler error-page="/403"/>
         <form-login
                 login-page="/login"
-                default-target-url="/welcome"
+                default-target-url="/"
                 authentication-failure-url="/login?error"
                 username-parameter="username"
                 password-parameter="password"/>
@@ -26,7 +27,7 @@
     <!--<authentication-manager>-->
     <!--<authentication-provider>-->
     <!--<user-service>-->
-    <!--<user name="admin" password="pass" authorities="ROLE_ADMIN,ROLE_USER"/>-->
+    <!--<user name="admin" password="pass" authorities="ROLE_ADMIN"/>-->
     <!--<user name="user1" password="1111" authorities="ROLE_USER"/>-->
     <!--</user-service>-->
     <!--</authentication-provider>-->
