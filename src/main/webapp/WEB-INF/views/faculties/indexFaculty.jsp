@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 
 <div class="row">
@@ -8,9 +9,14 @@
         </div>
 
     </div>
-    <div class="col-md-2">
-        <a href="/faculties/new" class="glyphicon glyphicon-plus btn-lg">Add faculty</a>
-    </div>
+
+    <security:authorize access="hasRole('ADMIN')">
+        <div class="col-md-2">
+            <a href="/faculties/new" class="glyphicon glyphicon-plus btn-lg">Add faculty</a>
+        </div>
+    </security:authorize>
+
+
 </div>
 
 <%--<p>--%>
@@ -33,15 +39,15 @@
             <td>${faculty.facultyId}</td>
             <td>${faculty.title}</td>
             <td>
+                <security:authorize access="hasRole('ADMIN')">
+                    <a href="<c:url value="/faculties/${faculty.facultyId}/edit"/>" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
 
-                <a href="<c:url value="/faculties/${faculty.facultyId}/edit"/>" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                </a>
-
-                <a href="<c:url value="/faculties/${faculty.facultyId}/delete"/>" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </a>
-
+                    <a href="<c:url value="/faculties/${faculty.facultyId}/delete"/>" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                </security:authorize>
             </td>
         </tr>
     </c:forEach>

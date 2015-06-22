@@ -57,10 +57,11 @@ public class StudentDaoImpl implements StudentDao {
     public Student findStudentByName(String name) {
         Session session = getSession();
 
-        SQLQuery query = session.createSQLQuery("from student where name=?");
-        query.setParameter(0, name);
+        SQLQuery query = session.createSQLQuery("SELECT * from student where name=:name");
+        query.setParameter("name", name);
 
         query.addEntity(Student.class);
+        System.out.printf(String.valueOf(query));
 
         return (Student) query.uniqueResult();
     }

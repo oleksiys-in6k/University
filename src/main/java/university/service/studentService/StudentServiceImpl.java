@@ -45,6 +45,11 @@ public class StudentServiceImpl implements StudentService {
         return studentDao.getCountOfStudents();
     }
 
+    @Override
+    public Student findStudentByName(String name) {
+        return studentDao.findStudentByName(name);
+    }
+
     public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
     }

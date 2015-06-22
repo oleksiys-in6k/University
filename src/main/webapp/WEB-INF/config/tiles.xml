@@ -9,6 +9,7 @@
         <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
 
         <put-attribute name="loginButton" value="/WEB-INF/views/loginButton.jsp"/>
+        <put-attribute name="logoutButton" value="/WEB-INF/views/logoutButton.jsp"/>
 
         <put-attribute name="menu" value="/WEB-INF/views/menu.jsp"/>
         <put-attribute name="body" value=""/>
@@ -48,7 +49,6 @@
 
     <definition name="deleteFaculty" extends="mainTemplate">
         <put-attribute name="title" value="Delete faculty"/>
-        <!--<put-attribute name="body" value="/WEB-INF/views/faculties/deleteFaculty.jsp"/>-->
         <put-attribute name="menu" value="/WEB-INF/views/faculties/menu.jsp"/>
     </definition>
 

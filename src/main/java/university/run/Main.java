@@ -34,25 +34,7 @@ public class Main {
         MarkDao markDao = beanFactory.getBean(MarkDao.class);
 
 
-
-        Faculty faculty = new Faculty("asd");
-        facultyDao.addFaculty(faculty);
-
-        Student student = new Student("alex",faculty);
-
-        Course course = new Course(faculty, "asd");
-        courseDao.addCourse(course);
-
-        UserRole userRole = new UserRole();
-        student.setLogin("qwe");
-        student.setPassword("qwe");
-        student.setEnabled(true);
-
-        Set<UserRole> set = new HashSet<UserRole>();
-        set.add(userRole);
-        student.setUserRoles(set);
-
-        studentDao.addStudent(student);
+        System.out.println(studentDao.getAllStudents());
 
     }
 }

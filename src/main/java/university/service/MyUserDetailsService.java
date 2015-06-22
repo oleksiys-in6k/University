@@ -12,30 +12,30 @@ import org.springframework.transaction.annotation.Transactional;
 import university.dao.studentDao.StudentDao;
 import university.entity.Student;
 import university.entity.UserRole;
+import university.service.studentService.StudentService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
+@Transactional
 @Service("userDetailsService")
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private StudentDao studentDao;
+    public StudentService studentService;
 
-    @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        return studentDao.findStudentByName(username);
+//        return studentService.findStudentByName(username);
 
+        Student student = studentService.findStudentByName(username);
 
-//        Student student = studentDao.findStudentByName(username);
-//        List<GrantedAuthority> authorities = buildUserAuthority(student.getUserRoles());
-//
-//        return buildUserForAuthentication(student, authorities);
+        List<GrantedAuthority> authorities = buildUserAuthority(student.getUserRoles());
+
+        return buildUserForAuthentication(student, authorities);
     }
 
     private UserDetails buildUserForAuthentication(Student student, List<GrantedAuthority> authorities) {

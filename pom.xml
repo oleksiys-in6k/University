@@ -168,8 +168,6 @@
             <version>${spring.security.version}</version>
         </dependency>
 
-
-
     </dependencies>
 
     <build>
@@ -184,7 +182,6 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
 
             <!--disabling tests-->
 

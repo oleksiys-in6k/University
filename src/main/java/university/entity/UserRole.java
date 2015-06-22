@@ -13,7 +13,6 @@ public class UserRole {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer studentRoleId;
 
-//	@JoinColumn(name = "studentId", nullable = false)
 	@ManyToMany(mappedBy = "userRoles")
 	private Set<Student> student = new HashSet<>();
 

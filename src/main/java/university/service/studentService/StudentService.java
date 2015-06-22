@@ -12,5 +12,6 @@ public interface StudentService {
     Student getStudentById(Integer id);
     List getAllStudents();
     Integer getCountOfStudents();
+    Student findStudentByName(String name);
 
 }

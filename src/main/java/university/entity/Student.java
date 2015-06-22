@@ -1,15 +1,10 @@
 package university.entity;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.*;
 
-
 @Entity(name = "student")
-public class Student implements UserDetails {
+public class Student {
 
     @Id
     @Column(name = "studentId")
@@ -21,7 +16,6 @@ public class Student implements UserDetails {
     private Faculty faculty;
 
     private String name;
-    private String login;
     private String password;
     private boolean enabled;
 
@@ -39,6 +33,10 @@ public class Student implements UserDetails {
     public Student() {
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
@@ -51,10 +49,6 @@ public class Student implements UserDetails {
         this.name = name;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -65,39 +59,6 @@ public class Student implements UserDetails {
 
     public Set<UserRole> getUserRoles() {
         return userRoles;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> result = new ArrayList<>();
-
-        for (UserRole userRole : userRoles)
-            result.add(new SimpleGrantedAuthority(userRole.getListRole().name()));
-        return result;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
     }
 
     public boolean isEnabled() {
@@ -120,10 +81,6 @@ public class Student implements UserDetails {
         return name;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -131,7 +88,9 @@ public class Student implements UserDetails {
 
         Student student = (Student) o;
 
-        return !(faculty != null ? !faculty.equals(student.faculty) : student.faculty != null) && !(name != null ? !name.equals(student.name) : student.name != null);
+        return
+                !(faculty != null ? !faculty.equals(student.faculty) : student.faculty != null) &&
+                        !(name != null ? !name.equals(student.name) : student.name != null);
 
     }
 
@@ -144,6 +103,6 @@ public class Student implements UserDetails {
 
     @Override
     public String toString() {
-        return name + "(" + faculty + ")" + " Student ID: " + studentId + "\n";
+        return name + "(" + faculty + ")" + " Student ID: " + studentId + "" + "\n";
     }
 }
