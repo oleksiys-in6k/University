@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="university"/>
+    <context:component-scan base-package="university.*"/>
 
     <bean id="university" class="university.run.University">
         <property name="markReader" ref="reader"/>
@@ -19,4 +19,5 @@
     <bean id="reader" class="university.MarkIO.reader.ConsoleMarkReader"/>
     <bean id="writer" class="university.MarkIO.writer.MarkWriterImpl"/>
     <bean id="bestStudent" class="university.searchingRequests.SearchBestStudentImpl"/>
+
 </beans>

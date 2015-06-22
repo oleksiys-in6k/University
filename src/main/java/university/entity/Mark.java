@@ -10,11 +10,11 @@ public class Mark {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer markId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "courseId")
     private Course course;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "studentId")
     private Student student;
 

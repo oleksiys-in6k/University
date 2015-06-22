@@ -18,6 +18,8 @@
         <tiles:insertAttribute name="header"/>
     </div>
 
+    <tiles:insertAttribute name="loginButton"/>
+
     <div class="row">
         <div class="col-md-3">
             <tiles:insertAttribute name="menu"/>

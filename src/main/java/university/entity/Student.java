@@ -1,12 +1,15 @@
 package university.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity(name = "student")
-public class Student {
+public class Student implements UserDetails {
 
     @Id
     @Column(name = "studentId")
@@ -18,20 +21,27 @@ public class Student {
     private Faculty faculty;
 
     private String name;
-
     private String login;
     private String password;
-
-
     private boolean enabled;
 
-    public void setUserRole(Set<UserRole> userRole) {
-        this.userRole = userRole;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "studentId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId"))
+    private Set<UserRole> userRoles = new HashSet<>();
+
+    public Student(String name, Faculty faculty) {
+        this.name = name;
+        this.faculty = faculty;
     }
 
-    @OneToMany(mappedBy = "student")
-    private Set<UserRole> userRole = new HashSet<UserRole>(0);
+    public Student() {
+    }
 
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
 
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
@@ -39,11 +49,6 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Student(String name, Faculty faculty) {
-        this.name = name;
-        this.faculty = faculty;
     }
 
     public void setLogin(String login) {
@@ -58,12 +63,49 @@ public class Student {
         this.enabled = enabled;
     }
 
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<SimpleGrantedAuthority> result = new ArrayList<>();
+
+        for (UserRole userRole : userRoles)
+            result.add(new SimpleGrantedAuthority(userRole.getListRole().name()));
+        return result;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
 
     public Student(String name) {
         this.name = name;
-    }
-
-    public Student() {
     }
 
     public Faculty getFaculty() {
@@ -76,6 +118,10 @@ public class Student {
 
     public String getName() {
         return name;
+    }
+
+    public String getLogin() {
+        return login;
     }
 
     @Override

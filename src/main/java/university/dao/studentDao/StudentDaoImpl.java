@@ -1,14 +1,13 @@
 package university.dao.studentDao;
 
-import org.springframework.stereotype.Repository;
-import university.entity.Student;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import university.entity.Student;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository("studentDao")
@@ -52,5 +51,17 @@ public class StudentDaoImpl implements StudentDao {
     public Integer getCountOfStudents() {
         Session session = getSession();
         return session.createCriteria(Student.class).list().size();
+    }
+
+    @Override
+    public Student findStudentByName(String name) {
+        Session session = getSession();
+
+        SQLQuery query = session.createSQLQuery("from student where name=?");
+        query.setParameter(0, name);
+
+        query.addEntity(Student.class);
+
+        return (Student) query.uniqueResult();
     }
 }

@@ -1,8 +1,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<script language="JavaScript" type="text/javascript" src="code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script language="JavaScript" type="text/javascript" src="code.jquery.com/jquery-1.10.2.js"></script>
+<%--<script language="JavaScript" type="text/javascript" src="code.jquery.com/ui/1.11.4/jquery-ui.js"></script>--%>
+<%--<script language="JavaScript" type="text/javascript" src="code.jquery.com/jquery-1.10.2.js"></script>--%>
+
+<script language="JavaScript" type="text/javascript" src="/resources/core/jquery.1.10.2.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="/resources/core/jquery.autocomplete.min.js"></script>
+
 
 <%--<script src="${pageContext.request.contextPath}/resources/core/jquery.1.10.2.min.js" type="text/javascript"></script>--%>
 

@@ -1,53 +1,50 @@
 package university.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "student_roles",
-		uniqueConstraints = @UniqueConstraint(
-				columnNames = { "role", "studentId" }))
+@Table(name = "user_roles")
 public class UserRole {
 
 	@Id
-	@Column(name = "studentRoleId")
+	@Column(name = "roleId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer studentRoleId;
 
-	@ManyToOne
-	@JoinColumn(name = "studentId", nullable = false)
-	private Student student;
-	private String role;
+//	@JoinColumn(name = "studentId", nullable = false)
+	@ManyToMany(mappedBy = "userRoles")
+	private Set<Student> student = new HashSet<>();
+
+	@Enumerated(EnumType.STRING)
+	private ListRole listRole;
 
 	public UserRole() {
 	}
 
-	public UserRole(Student student, String role) {
+	public UserRole(Integer studentRoleId) {
+		this.studentRoleId = studentRoleId;
+	}
+
+	public Set<Student> getStudent() {
+		return student;
+	}
+
+	public void setStudent(Set<Student> student) {
 		this.student = student;
-		this.role = role;
+	}
+
+	public ListRole getListRole() {
+		return listRole;
+	}
+
+	public void setListRole(ListRole listRole) {
+		this.listRole = listRole;
 	}
 
 	public Integer getStudentRoleId() {
 		return this.studentRoleId;
-	}
-
-	public void setStudentRoleId(Integer studentRoleId) {
-		this.studentRoleId = studentRoleId;
-	}
-
-	public Student getStudent() {
-		return this.student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public String getRole() {
-		return this.role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 }

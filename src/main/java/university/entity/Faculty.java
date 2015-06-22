@@ -19,20 +19,16 @@ public class Faculty {
     public Faculty() {
     }
 
-    public void setFacultyId(Integer facultyId) {
-        this.facultyId = facultyId;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public Integer getFacultyId() {
         return facultyId;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override

@@ -4,16 +4,16 @@
     <h1>Admission new student</h1>
 </div>
 
-<form action="/courses/create" method="post">
+<form action="/students/create" method="post">
     <p>
-        Title : <input type="text" name="title"/>
+        Title : <input type="text" name="studentName"/>
     </p>
 
     <p>
         Faculty :
 
         <label>
-            <select name="courseFaculty" items="${faculties}">
+            <select name="studentFaculty" items="${faculties}">
                 <c:forEach items="${faculties}" var="faculty">
                     <option value="${faculty.facultyId}">${faculty.title}</option>
                 </c:forEach>
@@ -24,5 +24,5 @@
     <button type="submit" value=" Send" class="btn btn-success">
         Save new course
     </button>
-    <a href="/courses" class="btn btn-primary">Cancel</a>
+    <a href="/students" class="btn btn-primary">Cancel</a>
 </form>

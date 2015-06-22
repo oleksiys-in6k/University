@@ -12,7 +12,7 @@ public class Course {
 
     private String title;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "facultyId")
     private Faculty faculty;
 
@@ -22,14 +22,6 @@ public class Course {
     }
 
     public Course() {
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
     }
 
     public String getTitle() {
@@ -42,6 +34,14 @@ public class Course {
 
     public Integer getCourseId() {
         return courseId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     @Override
