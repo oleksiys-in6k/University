@@ -6,12 +6,11 @@ import university.dao.courseDao.CourseDao;
 import university.dao.facultyDao.FacultyDao;
 import university.dao.markDao.MarkDao;
 import university.dao.studentDao.StudentDao;
-import university.entity.Course;
-import university.entity.Faculty;
-import university.entity.Student;
-import university.entity.UserRole;
+import university.entity.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -28,10 +27,26 @@ public class Main {
 
     private void asd() {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("university.xml");
-        FacultyDao facultyDao = beanFactory.getBean(FacultyDao.class);
         StudentDao studentDao = beanFactory.getBean(StudentDao.class);
-        CourseDao courseDao = beanFactory.getBean(CourseDao.class);
-        MarkDao markDao = beanFactory.getBean(MarkDao.class);
+        FacultyDao facultyDao = beanFactory.getBean(FacultyDao.class);
+
+        Faculty faculty = new Faculty("Technical");
+        facultyDao.addFaculty(faculty);
+
+        Student student = new Student("josh", faculty);
+        student.setPassword("josh");
+        student.setEnabled(true);
+
+        UserRole userRoleAdmin = new UserRole("ADMIN_ROLE");
+        UserRole userRoleUser = new UserRole("USER_ROLE");
+
+        List <UserRole> userRoles = new ArrayList<>();
+        userRoles.add(userRoleAdmin);
+        userRoles.add(userRoleUser);
+
+        student.setUserRoles(userRoles);
+        studentDao.addStudent(student);
+
 
 
         System.out.println(studentDao.getAllStudents());

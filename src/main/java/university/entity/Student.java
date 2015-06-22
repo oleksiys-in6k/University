@@ -20,10 +20,10 @@ public class Student {
     private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role",
+    @JoinTable(name = "userRole",
             joinColumns = @JoinColumn(name = "studentId"),
             inverseJoinColumns = @JoinColumn(name = "roleId"))
-    private Set<UserRole> userRoles = new HashSet<>();
+    private List<UserRole> userRoles = new ArrayList<>();
 
     public Student(String name, Faculty faculty) {
         this.name = name;
@@ -33,12 +33,16 @@ public class Student {
     public Student() {
     }
 
-    public String getPassword() {
-        return password;
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
-    public void setUserRoles(Set<UserRole> userRoles) {
-        this.userRoles = userRoles;
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setFaculty(Faculty faculty) {
@@ -55,10 +59,6 @@ public class Student {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public Set<UserRole> getUserRoles() {
-        return userRoles;
     }
 
     public boolean isEnabled() {

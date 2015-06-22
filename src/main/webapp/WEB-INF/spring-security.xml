@@ -11,31 +11,29 @@
         <intercept-url pattern="/WEB-INF/views**" access="permitAll"/>
 
         <!-- access denied page -->
-        <access-denied-handler error-page="/403" />
+        <access-denied-handler error-page="/403"/>
         <form-login
                 login-page="/login"
                 default-target-url="/welcome"
                 authentication-failure-url="/login?error"
                 username-parameter="username"
-                password-parameter="password" />
-        <logout logout-success-url="/login?logout" />
+                password-parameter="password"/>
+        <logout logout-success-url="/login?logout"/>
         <!-- enable csrf protection -->
-        <csrf />
+        <csrf/>
     </http>
 
     <!--<authentication-manager>-->
-        <!--<authentication-provider>-->
-            <!--<user-service>-->
-                <!--<user name="admin" password="pass" authorities="ROLE_ADMIN,ROLE_USER"/>-->
-                <!--<user name="user1" password="1111" authorities="ROLE_USER"/>-->
-            <!--</user-service>-->
-        <!--</authentication-provider>-->
+    <!--<authentication-provider>-->
+    <!--<user-service>-->
+    <!--<user name="admin" password="pass" authorities="ROLE_ADMIN,ROLE_USER"/>-->
+    <!--<user name="user1" password="1111" authorities="ROLE_USER"/>-->
+    <!--</user-service>-->
+    <!--</authentication-provider>-->
     <!--</authentication-manager>-->
 
     <authentication-manager>
-        <authentication-provider user-service-ref="myUserDetailsService"/>
+        <authentication-provider user-service-ref="userDetailsService"/>
     </authentication-manager>
-
-    <beans:bean id="myUserDetailsService" class="university.service.MyUserDetailsService"/>
 
 </beans:beans>

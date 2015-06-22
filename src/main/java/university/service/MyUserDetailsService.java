@@ -42,12 +42,12 @@ public class MyUserDetailsService implements UserDetailsService {
         return new User(student.getName(), student.getPassword(), student.isEnabled(), true, true, true, authorities);
     }
 
-    private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {
+    private List<GrantedAuthority> buildUserAuthority(List<UserRole> userRoles) {
         Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
         // Build user's authorities
         for (UserRole userRole : userRoles) {
-            setAuths.add(new SimpleGrantedAuthority(userRole.getListRole().name()));
+            setAuths.add(new SimpleGrantedAuthority(userRole.getUserRoles()));
         }
 
         return new ArrayList<GrantedAuthority>(setAuths);

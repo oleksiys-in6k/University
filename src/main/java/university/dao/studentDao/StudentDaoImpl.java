@@ -61,8 +61,15 @@ public class StudentDaoImpl implements StudentDao {
         query.setParameter("name", name);
 
         query.addEntity(Student.class);
-        System.out.printf(String.valueOf(query));
 
-        return (Student) query.uniqueResult();
+        Student student = null;
+
+        try {
+            student = (Student) query.uniqueResult();
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+        return student;
     }
 }

@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user_roles")
+@Table(name = "userRole")
 public class UserRole {
 
 	@Id
@@ -13,37 +13,22 @@ public class UserRole {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer studentRoleId;
 
-	@ManyToMany(mappedBy = "userRoles")
-	private Set<Student> student = new HashSet<>();
+	@Column(name = "userRole")
+	private String userRole;
 
-	@Enumerated(EnumType.STRING)
-	private ListRole listRole;
-
-	public UserRole() {
+	public UserRole(String userRoles) {
+		this.userRole = userRoles;
 	}
 
-	public UserRole(Integer studentRoleId) {
-		this.studentRoleId = studentRoleId;
+	public String getUserRoles() {
+		return userRole;
 	}
 
-	public Set<Student> getStudent() {
-		return student;
-	}
-
-	public void setStudent(Set<Student> student) {
-		this.student = student;
-	}
-
-	public ListRole getListRole() {
-		return listRole;
-	}
-
-	public void setListRole(ListRole listRole) {
-		this.listRole = listRole;
+	public void setUserRoles(String userRoles) {
+		this.userRole = userRoles;
 	}
 
 	public Integer getStudentRoleId() {
-		return this.studentRoleId;
+		return studentRoleId;
 	}
-
 }
