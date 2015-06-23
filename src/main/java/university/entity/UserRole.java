@@ -32,4 +32,9 @@ public class UserRole {
     public Integer getStudentRoleId() {
         return studentRoleId;
     }
+
+    @Override
+    public String toString() {
+        return "(" + studentRoleId + " studentRoleId, " + "role= " + role + ')';
+    }
 }

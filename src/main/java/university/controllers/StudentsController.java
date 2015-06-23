@@ -38,10 +38,12 @@ public class StudentsController {
 	@RequestMapping( value = "create", method = RequestMethod.POST)
 	public ModelAndView create(
 			@RequestParam("studentName") String name,
-			@RequestParam("studentFaculty") Integer facultyId) {
+			@RequestParam("studentFaculty") Integer facultyId,
+			@RequestParam("studentFaculty") String login,
+			@RequestParam("studentFaculty") String password) {
 
 		// todo
-		studentService.addStudent(new Student(name, facultyService.getFacultyById(facultyId) , "pas", "pas1"));
+		studentService.addStudent(new Student(name, facultyService.getFacultyById(facultyId) , login, password));
 
 		ModelAndView model = new ModelAndView("indexStudent");
 		model.addObject("students", studentService.getAllStudents());

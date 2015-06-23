@@ -6,7 +6,7 @@
 
 <form action="/students/create" method="post">
     <p>
-        Title : <input type="text" name="studentName"/>
+        Name : <input type="text" name="studentName"/>
     </p>
 
     <p>
@@ -20,9 +20,15 @@
             </select>
         </label>
     </p>
+    <p>
+        Login : <input type="text" name="login"/>
+    </p>
+    <p>
+        Password : <input type="text" name="password"/>
+    </p>
 
     <button type="submit" value=" Send" class="btn btn-success">
-        Save new course
+        Save new student
     </button>
     <a href="/students" class="btn btn-primary">Cancel</a>
 </form>
