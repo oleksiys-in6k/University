@@ -3,7 +3,7 @@ package university.searchingRequests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import university.entity.Faculty;
-import university.entity.User;
+import university.entity.Student;
 import university.service.bestStudentService.BestStudentService;
 import university.service.facultyService.FacultyService;
 
@@ -18,7 +18,7 @@ public class SearchBestStudentImpl implements SearchBestStudent {
     @Autowired
     private FacultyService facultyService;
 
-    public User getBestStudent() {
+    public Student getBestStudent() {
         Faculty faculty = getFacultyFromList();
         return bestStudentService.getBestStudent(faculty);
     }

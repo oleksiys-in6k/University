@@ -40,10 +40,10 @@ public class StudentDaoImplTest {
 //        StudentRole userRole = new StudentRole();
 
 
-        Student student = new Student("bob", faculty);
-        student.setEnabled(true);
+        Student student = new Student("bob", faculty, "pas1", "pas1");
+//        student.setEnabled(true);
         student.setName("bob");
-        student.setPassword("bob");
+//        student.setPassword("bob");
         studentService.addStudent(student);
 
         System.out.println("student" + student);

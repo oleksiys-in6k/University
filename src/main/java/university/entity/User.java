@@ -1,8 +1,10 @@
 package university.entity;
 
-import javax.persistence.*;
-import java.util.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user")
 public class User {
 
     @Id
@@ -10,77 +12,57 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
-    private String name;
+    private String login;
     private String password;
-    private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "userRole",
-            joinColumns = @JoinColumn(name = "userId"),
-            inverseJoinColumns = @JoinColumn(name = "roleId"))
-    private List<UserRole> userRoles = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "userRole")
+    private UserRole userRole;
 
-    public User(String name) {
-        this.name = name;
+    public User(String login, String password, UserRole userRole) {
+        this.login = login;
+        this.password = password;
+        this.userRole = userRole;
     }
 
     public User() {
     }
 
-    public void setUserRoles(List<UserRole> userRoles) {
-        this.userRoles = userRoles;
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
     }
 
-    public List<UserRole> getUserRoles() {
-        return userRoles;
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public UserRole getUserRole() {
+        return userRole;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public int getUserId() {
         return userId;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User student = (User) o;
-
-        return
-                !(name != null ? !name.equals(student.name) : student.name != null);
-    }
-
-    @Override
-    public int hashCode() {
-        return 31 * (name != null ? name.hashCode() : 0);
-    }
-
     @Override
     public String toString() {
-        return name + " User ID: " + userId + "" + "\n";
+        return "(login='" + login + ", password='" + password + ", userRole=" + userRole + ")";
     }
 }

@@ -1,8 +1,8 @@
 package university.searchingRequests;
 
-import university.entity.User;
+import university.entity.Student;
 
 public interface SearchBestStudent {
-    User getBestStudent();
+    Student getBestStudent();
 
 }

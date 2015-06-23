@@ -37,7 +37,7 @@ public class StudentServiceImplTest {
         //given
         Faculty faculty = new Faculty("Economical");
         facultyService.addFaculty(faculty);
-        Student student = new Student("John Smith", faculty);
+        Student student = new Student("John Smith", faculty, "pas1", "pas1");
         studentService.addStudent(student);
 
         System.out.println("student" + student);
@@ -58,7 +58,7 @@ public class StudentServiceImplTest {
         //given
         Faculty faculty = new Faculty("Economical");
         facultyService.addFaculty(faculty);
-        Student student = new Student("John Smith", faculty);
+        Student student = new Student("John Smith", faculty, "pas1", "pas1");
         studentService.addStudent(student);
 
         //when
@@ -74,7 +74,7 @@ public class StudentServiceImplTest {
         //given
         Faculty faculty = new Faculty("Economical");
         facultyService.addFaculty(faculty);
-        Student student = new Student("John Smith", faculty);
+        Student student = new Student("John Smith", faculty, "pas1", "pas1");
 
         studentService.addStudent(student);
         System.out.println(student);
@@ -94,7 +94,7 @@ public class StudentServiceImplTest {
         //given
         Faculty faculty = new Faculty("Economical");
         facultyService.addFaculty(faculty);
-        Student student = new Student("John Smith", faculty);
+        Student student = new Student("John Smith", faculty, "pas1", "pas1");
         studentService.addStudent(student);
 
         //when
@@ -110,7 +110,7 @@ public class StudentServiceImplTest {
         facultyService.addFaculty(faculty);
         Faculty newFaculty = new Faculty("Fight");
         facultyService.addFaculty(newFaculty);
-        Student student = new Student("John Smith", faculty);
+        Student student = new Student("John Smith", faculty, "pas1", "pas1");
         studentService.addStudent(student);
 
         //when

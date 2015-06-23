@@ -53,7 +53,7 @@ public class BestStudentServiceImplTest {
         facultyService.addFaculty(faculty);
         course = new Course(faculty, "karate");
         courseService.addCourse(course);
-        student = new Student("Josh smith", faculty);
+        student = new Student("Josh smith", faculty, "pas1", "pas1");
         studentService.addStudent(student);
         mark = new Mark(student, course, 10);
         markService.addMark(mark);
@@ -63,7 +63,7 @@ public class BestStudentServiceImplTest {
     @Test
     public void searchBestStudentFromOneCourse__resultNewStudent() throws Exception {
         //given
-        Student student2 = new Student("Bruce Lee ", faculty);
+        Student student2 = new Student("Bruce Lee ", faculty, "pas1", "pas1");
         studentService.addStudent(student2);
         Mark mark2 = new Mark(student2, course, 12);
         markService.addMark(mark2);
@@ -78,7 +78,7 @@ public class BestStudentServiceImplTest {
     @Test
     public void searchBestStudentFromDifferentCourses__resultNewStudent() throws Exception {
         //given
-        Student student2 = new Student("Bruce Lee ", faculty);
+        Student student2 = new Student("Bruce Lee ", faculty, "pas1", "pas1");
         studentService.addStudent(student2);
         Course course2 = new Course(faculty, "Boxing");
         courseService.addCourse(course2);
@@ -98,7 +98,7 @@ public class BestStudentServiceImplTest {
         Faculty newFaculty = new Faculty("Not Economics");
         facultyService.addFaculty(newFaculty);
 
-        Student newStudent = new Student("Bruce Lee ", faculty);
+        Student newStudent = new Student("Bruce Lee ", faculty, "pas1", "pas1");
         studentService.addStudent(newStudent);
 
         Course newCourse = new Course(newFaculty, "Boxing");

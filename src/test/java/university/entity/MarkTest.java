@@ -11,7 +11,7 @@ public class MarkTest {
     public void fulfilsMarkInConstructor() throws Exception {
         // given
         Faculty faculty = new Faculty("Faculty");
-        Student student = new Student("name", faculty);
+        Student student = new Student("name", faculty, "pas1" , "pas1");
         Course course = new Course(faculty, "course");
 
         // when

@@ -41,7 +41,7 @@ public class MarkServiceImplTest {
         Faculty faculty = new Faculty("Economics");
         facultyService.addFaculty(faculty);
 
-        Student student = new Student("John Smith", faculty);
+        Student student = new Student("John Smith", faculty, "pas1", "pas1");
         studentService.addStudent(student);
 
         Course course = new Course(faculty, "Busyness Strategy");
@@ -62,7 +62,7 @@ public class MarkServiceImplTest {
         Faculty faculty = new Faculty("Economics");
         facultyService.addFaculty(faculty);
 
-        Student student = new Student("John Smith", faculty);
+        Student student = new Student("John Smith", faculty, "pas1", "pas1");
         studentService.addStudent(student);
 
         Course course = new Course(faculty, "Busyness Strategy");
@@ -85,7 +85,7 @@ public class MarkServiceImplTest {
         Faculty faculty = new Faculty("Economics");
         facultyService.addFaculty(faculty);
 
-        Student student = new Student("John Smith", faculty);
+        Student student = new Student("John Smith", faculty, "pas1", "pas1");
         studentService.addStudent(student);
 
         Course course = new Course(faculty, "Busyness Strategy");

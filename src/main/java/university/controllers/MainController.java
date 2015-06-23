@@ -18,25 +18,13 @@ import javax.servlet.http.HttpServletRequest;
 //@RequestMapping("/")
 public class MainController {
 
-	@RequestMapping(value = { "/welcome**" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
 
 		ModelAndView model = new ModelAndView("mainTemplate");
 //		model.addObject("title", "Spring Security + Hibernate Example");
 //		model.addObject("message", "This is default page!");
 //		model.setViewName("hello");
-		return model;
-
-	}
-
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
-
-		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
-		model.addObject("message", "This page is for ROLE_ADMIN only!");
-		model.setViewName("admin");
-
 		return model;
 
 	}

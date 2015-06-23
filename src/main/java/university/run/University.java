@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import university.MarkIO.reader.MarkReader;
 import university.MarkIO.writer.MarkWriter;
 import university.entity.Mark;
-import university.entity.User;
+import university.entity.Student;
 import university.searchingRequests.SearchBestStudent;
 
 import java.util.Scanner;
@@ -34,7 +34,7 @@ public class University {
                     markWriter.saveMark(mark);
                     break;
                 case 2:
-                    User best = searchBestStudent.getBestStudent();
+                    Student best = searchBestStudent.getBestStudent();
                     System.out.println();
                     System.out.println("Best student are \n" + best);
                     break;

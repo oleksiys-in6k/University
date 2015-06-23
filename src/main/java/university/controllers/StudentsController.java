@@ -40,8 +40,8 @@ public class StudentsController {
 			@RequestParam("studentName") String name,
 			@RequestParam("studentFaculty") Integer facultyId) {
 
-		// Uncomment this for saving in DB
-		studentService.addStudent(new Student(name, facultyService.getFacultyById(facultyId)));
+		// todo
+		studentService.addStudent(new Student(name, facultyService.getFacultyById(facultyId) , "pas", "pas1"));
 
 		ModelAndView model = new ModelAndView("indexStudent");
 		model.addObject("students", studentService.getAllStudents());

@@ -6,30 +6,30 @@ import javax.persistence.*;
 @Table(name = "userRole")
 public class UserRole {
 
-	@Id
-	@Column(name = "roleId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer studentRoleId;
+    @Id
+    @Column(name = "roleId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer studentRoleId;
 
-	@Column(name = "userRole")
-	private String userRole;
+    @Column(name = "userRole")
+    private String role;
 
-	public UserRole(String userRoles) {
-		this.userRole = userRoles;
-	}
+    public UserRole(String userRoles) {
+        this.role = userRoles;
+    }
 
-	public UserRole() {
-	}
+    public UserRole() {
+    }
 
-	public String getUserRoles() {
-		return userRole;
-	}
+    public String getUserRoles() {
+        return role;
+    }
 
-	public void setUserRoles(String userRoles) {
-		this.userRole = userRoles;
-	}
+    public void setUserRoles(String userRoles) {
+        this.role = userRoles;
+    }
 
-	public Integer getStudentRoleId() {
-		return studentRoleId;
-	}
+    public Integer getStudentRoleId() {
+        return studentRoleId;
+    }
 }

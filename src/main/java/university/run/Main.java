@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import university.dao.courseDao.CourseDao;
 import university.dao.facultyDao.FacultyDao;
 import university.dao.studentDao.StudentDao;
+//import university.dao.teacherDao.TeacherDao;
 import university.dao.teacherDao.TeacherDao;
 import university.entity.*;
 
@@ -30,32 +31,27 @@ public class Main {
         CourseDao courseDao = beanFactory.getBean(CourseDao.class);
         TeacherDao teacherDao = beanFactory.getBean(TeacherDao.class);
 
-
+        UserRole userRoleUser = new UserRole("USER_ROLE");
+        UserRole userRoleAdmin = new UserRole("ADMIN_ROLE");
 
         Faculty faculty = new Faculty("Technical");
         facultyDao.addFaculty(faculty);
 
-        Student student = new Student("josh", faculty);
-        student.setPassword("josh");
-        student.setEnabled(true);
-
-        UserRole userRoleAdmin = new UserRole("ADMIN_ROLE");
-        UserRole userRoleUser = new UserRole("USER_ROLE");
-
-        List <UserRole> userRoles = new ArrayList<>();
-        userRoles.add(userRoleAdmin);
-        userRoles.add(userRoleUser);
-
-        student.setUserRoles(userRoles);
+        Student student = new Student("josh", faculty, "josh", "josh", userRoleUser);
         studentDao.addStudent(student);
 
-        Course course = new Course(faculty, "Math");
-        courseDao.addCourse(course);
+//        List <UserRole> userRoles = new ArrayList<>();
+//        userRoles.add(userRoleAdmin);
+//        student.setUserRoles(userRoles);
 
-        Teacher teacher = new Teacher("Bruce", course);
-        teacherDao.addTeacher(teacher);
-
-
+//        student.setUserRoles(userRoles);
+//        studentDao.addStudent(student);
+//
+//        Course course = new Course(faculty, "Math");
+//        courseDao.addCourse(course);
+//
+//        Teacher teacher = new Teacher("Bruce", faculty);
+//        teacherDao.addTeacher(teacher);
 
         System.out.println(studentDao.getAllStudents());
 
