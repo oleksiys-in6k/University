@@ -19,11 +19,12 @@
         </label>
     </p>
 
-
     <button type="submit" value=" Send" class="btn btn-success">
         Submit changes
     </button>
 
     <a href="/students" class="btn btn-primary">Cancel</a>
+
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 </form>

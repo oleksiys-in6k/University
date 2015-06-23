@@ -8,18 +8,18 @@ public class UserRole {
 
     @Id
     @Column(name = "roleId")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer studentRoleId;
+    @GeneratedValue
+    private Integer roleId;
 
     @Column(name = "userRole")
     private String role;
 
-    public UserRole(String userRoles) {
-        this.role = userRoles;
-    }
-
-    public UserRole() {
-    }
+//    public UserRole(String userRoles) {
+//        this.role = userRoles;
+//    }
+//
+//    public UserRole() {
+//    }
 
     public String getUserRoles() {
         return role;
@@ -30,11 +30,11 @@ public class UserRole {
     }
 
     public Integer getStudentRoleId() {
-        return studentRoleId;
+        return roleId;
     }
 
     @Override
     public String toString() {
-        return "(" + studentRoleId + " studentRoleId, " + "role= " + role + ')';
+        return "(" + roleId + " studentRoleId, " + "role= " + role + ')';
     }
 }

@@ -1,7 +1,11 @@
 package university.entity;
 
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -15,15 +19,12 @@ public class User {
     private String login;
     private String password;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "userRole")
-    private UserRole userRole;
-
-    public User(String login, String password, UserRole userRole) {
-        this.login = login;
-        this.password = password;
-        this.userRole = userRole;
-    }
+    @ManyToMany(fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinTable(name = "user_role",
+            joinColumns = {@JoinColumn(name = "fk_user", referencedColumnName = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "ifk_role", referencedColumnName = "roleId")})
+    private List<UserRole> userRole;
 
     public User() {
     }
@@ -31,6 +32,14 @@ public class User {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public List<UserRole> getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(List<UserRole> userRole) {
+        this.userRole = userRole;
     }
 
     public String getLogin() {
@@ -47,14 +56,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public UserRole getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(UserRole userRole) {
-        this.userRole = userRole;
     }
 
     public int getUserId() {

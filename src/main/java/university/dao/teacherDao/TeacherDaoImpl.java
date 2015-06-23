@@ -33,6 +33,12 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
+    public Teacher getTeacherById(Integer id) {
+        Session session = getSession();
+        return (Teacher) session.get(Teacher.class, id);
+    }
+
+    @Override
     public List getAllTeachers() {
         Session session = getSession();
         return session.createCriteria(Teacher.class).list();

@@ -8,7 +8,7 @@
         </div>
 
     </div>
-    <security:authorize access="hasRole('ADMIN')">
+    <security:authorize access="hasRole('ROLE_TEACHER')">
         <div class="col-md-2">
             <a href="/marks/new" class="glyphicon glyphicon-plus btn-lg">Add mark</a>
         </div>

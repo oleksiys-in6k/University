@@ -8,6 +8,9 @@
         <security:authorize access="isAuthenticated()">
             <li><a href="/students" class="list-group-item" contenteditable="false">Students</a></li>
         </security:authorize>
+        <security:authorize access="isAuthenticated()">
+            <li><a href="/teachers" class="list-group-item" contenteditable="false">Teachers</a></li>
+        </security:authorize>
     </ul>
 
     <br>

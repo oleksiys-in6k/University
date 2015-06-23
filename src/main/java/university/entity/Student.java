@@ -1,7 +1,6 @@
 package university.entity;
 
 import javax.persistence.*;
-import java.util.*;
 
 @Entity(name = "student")
 public class Student {
@@ -17,7 +16,7 @@ public class Student {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "student_user",
             joinColumns = @JoinColumn(name = "studentId"),
             inverseJoinColumns = @JoinColumn(name = "userId"))
@@ -33,11 +32,11 @@ public class Student {
         super();
     }
 
-    public Student(String name, Faculty faculty,String login,String password, UserRole userRoleUser) {
-        this.name = name;
-        this.faculty = faculty;
-        this.user = new User(login, password,userRoleUser);
-    }
+//    public Student(String name, Faculty faculty,String login,String password, UserRole userRoleUser) {
+//        this.name = name;
+//        this.faculty = faculty;
+//        this.user = new User(login, password,userRoleUser);
+//    }
 
     public User getUser() {
         return user;

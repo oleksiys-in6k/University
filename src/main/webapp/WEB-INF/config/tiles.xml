@@ -77,7 +77,33 @@
         <put-attribute name="menu" value="/WEB-INF/views/courses/menu.jsp"/>
     </definition>
 
-    <!--User JSP-->
+    <!--Student JSP-->
+    <definition name="indexTeacher" extends="mainTemplate">
+        <put-attribute name="title" value="Show all teachers"/>
+        <put-attribute name="body" value="/WEB-INF/views/teachers/indexTeacher.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/teachers/menu.jsp"/>
+    </definition>
+
+    <definition name="newTeacher" extends="mainTemplate">
+        <put-attribute name="title" value="Admission new teacher"/>
+        <put-attribute name="body" value="/WEB-INF/views/teachers/newTeacher.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/teachers/menu.jsp"/>
+    </definition>
+
+    <definition name="editTeacher" extends="mainTemplate">
+        <put-attribute name="title" value="Edit Student"/>
+        <put-attribute name="body" value="/WEB-INF/views/teachers/editTeacher.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/teachers/menu.jsp"/>
+    </definition>
+
+    <definition name="deleteTeacher" extends="mainTemplate">
+        <put-attribute name="title" value="Delete teacher"/>
+        <!--<put-attribute name="body" value="/WEB-INF/views/Students/deleteStudents.jsp"/>-->
+        <put-attribute name="menu" value="/WEB-INF/views/teachers/menu.jsp"/>
+    </definition>
+
+
+    <!--Student JSP-->
     <definition name="indexStudent" extends="mainTemplate">
         <put-attribute name="title" value="Show all students"/>
         <put-attribute name="body" value="/WEB-INF/views/students/indexStudent.jsp"/>
@@ -102,7 +128,7 @@
         <put-attribute name="menu" value="/WEB-INF/views/students/menu.jsp"/>
     </definition>
 
-    <!--User JSP-->
+    <!--Mark JSP-->
     <definition name="indexMark" extends="mainTemplate">
         <put-attribute name="title" value="Show all marks"/>
         <put-attribute name="body" value="/WEB-INF/views/Marks/indexMark.jsp"/>

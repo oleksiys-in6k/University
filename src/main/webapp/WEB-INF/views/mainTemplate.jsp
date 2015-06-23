@@ -19,7 +19,7 @@
         <tiles:insertAttribute name="header"/>
     </div>
 
-    <security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER')">
+    <security:authorize access="isAuthenticated()">
         <tiles:insertAttribute name="logoutButton"/>
     </security:authorize>
 

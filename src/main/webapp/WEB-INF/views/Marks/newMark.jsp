@@ -34,6 +34,8 @@
         </button>
         <a href="/marks" class="btn btn-primary">Cancel</a>
 
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
     </form>
 
 

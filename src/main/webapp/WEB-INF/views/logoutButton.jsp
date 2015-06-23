@@ -12,8 +12,12 @@
 </script>
 
 <c:if test="${pageContext.request.userPrincipal.name != null}">
-    <h2>
+
+    <h4>
         Welcome : ${pageContext.request.userPrincipal.name} | <a
-            href="/login?logout"> Logout</a>
-    </h2>
+            href="/login?logout"}> Logout</a>
+    </h4>
 </c:if>
+
+<%--logout!!--%>
+<%--${pageContext.request.logout()}--%>

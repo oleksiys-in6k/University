@@ -1,7 +1,6 @@
 package university.entity;
 
 import javax.persistence.*;
-import java.util.*;
 
 @Entity(name = "teacher")
 public class Teacher {
@@ -18,7 +17,7 @@ public class Teacher {
     @Column(name = "name", unique = true)
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "teacher_user",
             joinColumns = @JoinColumn(name = "teacherId"),
             inverseJoinColumns = @JoinColumn(name = "roleId"))
