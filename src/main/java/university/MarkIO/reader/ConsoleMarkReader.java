@@ -1,14 +1,13 @@
 package university.MarkIO.reader;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import university.entity.Course;
 import university.entity.Mark;
 import university.entity.Student;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import university.service.courseService.CourseService;
 import university.service.studentService.StudentService;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 @Transactional

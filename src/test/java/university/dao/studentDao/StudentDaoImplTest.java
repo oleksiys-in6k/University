@@ -10,13 +10,11 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import university.entity.Faculty;
 import university.entity.Student;
-import university.entity.UserRole;
 import university.service.facultyService.FacultyService;
 import university.service.studentService.StudentService;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:testUniversity.xml"})
@@ -39,7 +37,7 @@ public class StudentDaoImplTest {
         Faculty faculty = new Faculty("Economical");
         facultyService.addFaculty(faculty);
 
-//        UserRole userRole = new UserRole();
+//        StudentRole userRole = new StudentRole();
 
 
         Student student = new Student("bob", faculty);

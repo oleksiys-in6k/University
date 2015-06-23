@@ -77,7 +77,7 @@
         <put-attribute name="menu" value="/WEB-INF/views/courses/menu.jsp"/>
     </definition>
 
-    <!--Student JSP-->
+    <!--User JSP-->
     <definition name="indexStudent" extends="mainTemplate">
         <put-attribute name="title" value="Show all students"/>
         <put-attribute name="body" value="/WEB-INF/views/students/indexStudent.jsp"/>
@@ -102,7 +102,7 @@
         <put-attribute name="menu" value="/WEB-INF/views/students/menu.jsp"/>
     </definition>
 
-    <!--Student JSP-->
+    <!--User JSP-->
     <definition name="indexMark" extends="mainTemplate">
         <put-attribute name="title" value="Show all marks"/>
         <put-attribute name="body" value="/WEB-INF/views/Marks/indexMark.jsp"/>

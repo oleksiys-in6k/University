@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import university.entity.Faculty;
 import university.entity.Student;
+import university.entity.User;
 
 @Repository("bestStudentDao")
 @Transactional
@@ -28,14 +29,14 @@ public class BestStudentDaoImpl implements BestStudentDao {
                         "ORDER BY sumMark " +
                         "DESC LIMIT 1;  ");
 
-        query.addEntity(Student.class);
+        query.addEntity(User.class);
 
         query.setParameter("facultyId", faculty.getFacultyId());
 
         Student student = (Student) query.uniqueResult();
 
 //         if (student == null)
-//             student = new Student(null,null);
+//             student = new User(null,null);
 
         return student;
     }

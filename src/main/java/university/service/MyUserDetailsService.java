@@ -3,14 +3,13 @@ package university.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
-import university.entity.Student;
+import university.entity.User;
 import university.entity.UserRole;
 import university.service.studentService.StudentService;
 
@@ -32,15 +31,15 @@ public class MyUserDetailsService implements UserDetailsService {
 
 //        return studentService.findStudentByName(username);
 
-        Student student = studentService.findStudentByName(username);
+        User student = studentService.findStudentByName(username);
 
         List<GrantedAuthority> authorities = buildUserAuthority(student.getUserRoles());
 
         return buildUserForAuthentication(student, authorities);
     }
 
-    private UserDetails buildUserForAuthentication(Student student, List<GrantedAuthority> authorities) {
-        return new User(student.getName(), student.getPassword(), student.isEnabled(), true, true, true, authorities);
+    private UserDetails buildUserForAuthentication(User student, List<GrantedAuthority> authorities) {
+        return new org.springframework.security.core.userdetails.User(student.getName(), student.getPassword(), student.isEnabled(), true, true, true, authorities);
     }
 
     private List<GrantedAuthority> buildUserAuthority(List<UserRole> userRoles) {

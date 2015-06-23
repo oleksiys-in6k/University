@@ -1,8 +1,6 @@
 package university.entity;
 
 import org.junit.Test;
-import university.entity.Faculty;
-import university.entity.Student;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

@@ -72,7 +72,7 @@ public class Mark {
         return course;
     }
 
-    public Student getStudent() {
+    public User getStudent() {
         return student;
     }
 

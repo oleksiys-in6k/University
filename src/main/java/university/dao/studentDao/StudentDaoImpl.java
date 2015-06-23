@@ -64,7 +64,7 @@ public class StudentDaoImpl implements StudentDao {
 
 //        String s = (String) query.uniqueResult();
 
-//        Student student = null;
+//        User student = null;
 
         return student;
     }

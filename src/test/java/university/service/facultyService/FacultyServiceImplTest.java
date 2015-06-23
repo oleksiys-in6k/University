@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import university.entity.Faculty;
-import university.entity.Student;
+import university.entity.User;
 
 import java.util.List;
 
@@ -64,7 +64,7 @@ public class FacultyServiceImplTest {
         facultyService.addFaculty(faculty);
 
         //when
-        List<Student> faculties = facultyService.getAllFaculties();
+        List<User> faculties = facultyService.getAllFaculties();
 
         System.out.println(facultyService.getAllFaculties());
 
