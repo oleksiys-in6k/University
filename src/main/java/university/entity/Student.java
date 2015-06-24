@@ -32,11 +32,18 @@ public class Student {
         super();
     }
 
-//    public Student(String name, Faculty faculty,String login,String password, UserRole userRoleUser) {
-//        this.name = name;
-//        this.faculty = faculty;
-//        this.user = new User(login, password,userRoleUser);
-//    }
+    public Student(String name, Faculty faculty,String login,String password, UserRole userRoleUser) {
+        this.name = name;
+        this.faculty = faculty;
+        this.user = new User(login, password,userRoleUser);
+
+    }
+
+    public Student(String name, Faculty faculty, User studentUser) {
+        this.name = name;
+        this.faculty = faculty;
+        this.user = studentUser;
+    }
 
     public User getUser() {
         return user;

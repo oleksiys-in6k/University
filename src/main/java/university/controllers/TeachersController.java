@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import university.entity.Teacher;
+import university.service.courseService.CourseService;
 import university.service.facultyService.FacultyService;
 import university.service.teacherService.TeacherService;
 
@@ -19,7 +20,7 @@ public class TeachersController {
     private TeacherService teacherService;
 
     @Autowired
-    private FacultyService facultyService;
+    private CourseService courseService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index() {
@@ -31,18 +32,18 @@ public class TeachersController {
     @RequestMapping(value = "new", method = RequestMethod.GET)
     public ModelAndView newTeacher() {
         ModelAndView model = new ModelAndView("newTeacher");
-        model.addObject("faculties", facultyService.getAllFaculties());
+        model.addObject("faculties", courseService.getAllCourses());
         return model;
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public ModelAndView create(
             @RequestParam("teacherName") String name,
-            @RequestParam("teacherFaculty") Integer facultyId,
+            @RequestParam("teacherFaculty") Integer courseId,
             @RequestParam("login") String login,
             @RequestParam("password") String password) {
 
-        teacherService.addTeacher(new Teacher(name, facultyService.getFacultyById(facultyId), login, password));
+        teacherService.addTeacher(new Teacher(name, courseService.getCourseById(courseId), login, password));
 
         ModelAndView model = new ModelAndView("indexTeacher");
         model.addObject("teachers", teacherService.getAllTeachers());

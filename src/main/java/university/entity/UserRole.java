@@ -11,8 +11,8 @@ public class UserRole {
     @GeneratedValue
     private Integer roleId;
 
-    @Column(name = "userRole")
-    private String role;
+    @Column(name = "name")
+    private String name;
 
 //    public UserRole(String userRoles) {
 //        this.role = userRoles;
@@ -22,11 +22,11 @@ public class UserRole {
 //    }
 
     public String getUserRoles() {
-        return role;
+        return name;
     }
 
-    public void setUserRoles(String userRoles) {
-        this.role = userRoles;
+    public void setUserRoles(String name) {
+        this.name = name;
     }
 
     public Integer getStudentRoleId() {
@@ -35,6 +35,6 @@ public class UserRole {
 
     @Override
     public String toString() {
-        return "(" + roleId + " studentRoleId, " + "role= " + role + ')';
+        return "(" + roleId + " studentRoleId, " + "role= " + name + ')';
     }
 }

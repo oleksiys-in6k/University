@@ -10,7 +10,7 @@
     </div>
     <security:authorize access="hasRole('ADMIN')">
         <div class="col-md-2">
-            <a href="/students/new" class="glyphicon glyphicon-plus btn-lg">Add student</a>
+            <a href="/students/new" class="glyphicon glyphicon-plus btn-lg">Add teacher</a>
         </div>
     </security:authorize>
 </div>
@@ -20,7 +20,7 @@
     <tr>
         <th>Teacher Id</th>
         <th>Name</th>
-        <th>Faculty</th>
+        <th>Course</th>
         <th></th>
     </tr>
     </thead>
@@ -30,7 +30,7 @@
         <tr>
             <td>${teacher.studentId}</td>
             <td>${teacher.name}</td>
-            <td>${teacher.faculty.title}</td>
+            <td>${teacher.course.title}</td>
             <td>
                 <security:authorize access="hasRole('ADMIN')">
                     <a href="<c:url value="/teachers/${student.studentId}/edit"/>" class="btn btn-default btn-sm">

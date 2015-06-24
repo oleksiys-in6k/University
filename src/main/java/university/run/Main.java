@@ -4,10 +4,11 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import university.dao.courseDao.CourseDao;
 import university.dao.facultyDao.FacultyDao;
+import university.dao.roleDao.RoleDao;
 import university.dao.studentDao.StudentDao;
 import university.dao.teacherDao.TeacherDao;
-import university.entity.Faculty;
-import university.entity.Student;
+import university.dao.userDao.UserDao;
+import university.entity.*;
 
 //import university.dao.teacherDao.TeacherDao;
 
@@ -29,6 +30,8 @@ public class Main {
         FacultyDao facultyDao = beanFactory.getBean(FacultyDao.class);
         CourseDao courseDao = beanFactory.getBean(CourseDao.class);
         TeacherDao teacherDao = beanFactory.getBean(TeacherDao.class);
+        RoleDao roleDao = beanFactory.getBean(RoleDao.class);
+        UserDao userDao = beanFactory.getBean(UserDao.class);
 
 //        UserRole userRoleUser = new UserRole("USER_ROLE");
 //        UserRole userRoleAdmin = new UserRole("ADMIN_ROLE");
@@ -36,8 +39,20 @@ public class Main {
         Faculty faculty = new Faculty("Technical");
         facultyDao.addFaculty(faculty);
 
-        Student student = new Student("josh", faculty, "josh", "josh");
+        Course course = new Course(faculty, "Math");
+        courseDao.addCourse(course);
+
+        User studentUser = new User("josh", "josh", roleDao.findRoleById(1));
+        userDao.addUser(studentUser);
+
+        Student student = new Student("josh", faculty, studentUser);
         studentDao.addStudent(student);
+
+        User teacherUser = new User("alex", "alex", roleDao.findRoleById(2));
+        userDao.addUser(teacherUser);
+
+        Teacher teacher = new Teacher("alex", course, teacherUser);
+        teacherDao.addTeacher(teacher);
 
 //        List <UserRole> userRoles = new ArrayList<>();
 //        userRoles.add(userRoleAdmin);

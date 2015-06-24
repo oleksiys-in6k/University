@@ -6,10 +6,10 @@
         <li><a href="/faculties" class="list-group-item " contenteditable="false">Faculties</a></li>
         <li><a href="/courses" class="list-group-item" contenteditable="false">Courses</a></li>
         <security:authorize access="isAuthenticated()">
-            <li><a href="/students" class="list-group-item active" contenteditable="false">Students</a></li>
+            <li><a href="/students" class="list-group-item" contenteditable="false">Students</a></li>
         </security:authorize>
         <security:authorize access="isAuthenticated()">
-            <li><a href="/teachers" class="list-group-item" contenteditable="false">Teachers</a></li>
+            <li><a href="/teachers" class="list-group-item active" contenteditable="false">Teachers</a></li>
         </security:authorize>
     </ul>
 

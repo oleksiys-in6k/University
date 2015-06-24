@@ -5,6 +5,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class User {
     @JoinTable(name = "user_role",
             joinColumns = {@JoinColumn(name = "fk_user", referencedColumnName = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "ifk_role", referencedColumnName = "roleId")})
-    private List<UserRole> userRole;
+    private List<UserRole> userRole = new ArrayList<UserRole>();
 
     public User() {
     }
@@ -32,6 +33,12 @@ public class User {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public User(String login, String password, UserRole userRoleUser) {
+        this.login = login;
+        this.password = password;
+        this.userRole.add(userRoleUser);
     }
 
     public List<UserRole> getUserRole() {
@@ -64,6 +71,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "(login='" + login + ", password='" + password + ", userRole=" + userRole + ")";
+        return "(login= " + login + ", password= " + password + ", userRole= " + userRole + ")";
     }
 }
